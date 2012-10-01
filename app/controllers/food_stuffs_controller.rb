@@ -1,13 +1,22 @@
 class FoodStuffsController < ApplicationController
   # GET /food_stuffs
   # GET /food_stuffs.json
-  def index
-    @food_stuffs = FoodStuff.all
+  #def index
+  #  @food_stuffs = FoodStuff.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @food_stuffs }
-    end
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @food_stuffs }
+  #  end
+  #end
+
+  def index
+    print params[:search]
+    print params[:search]
+    print params[:search]
+    print params[:search]
+    print params[:search]
+    @food_stuffs = FoodStuff.search(params[:search])
   end
 
   # GET /food_stuffs/1

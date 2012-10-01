@@ -8,7 +8,7 @@
       <p class="alignright"><%= link_to 'Sign in' %>   <%= link_to 'Register' %></p>
     </div> 
 
-    
+   
     <br>
     <br>
     <br>
@@ -22,17 +22,19 @@
     <p align="middle">
       <%= link_to image_tag('OpenFoodDBLogo.png'); %>
     </p>
+    
 
-    <table align="center">
-	  <tr>
-	    <td>
-	      <%= text_field_tag :search, params[:search], :id => 'search_field' %>
-	    </td>
-	    <td>
-	      <%= button_to "Search" %>
-	    </td>
-	  </tr>
-	</table>
-	
-  </body>
+<table align="center">
+<tr>
+<td>
+  <%= form_tag food_stuffs_path, :action => 'search', :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %> 
+  <% end %> 
+</td>
+</tr>
+</table>
+
+</body>
+
 <html>
