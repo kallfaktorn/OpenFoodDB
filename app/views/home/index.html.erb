@@ -1,0 +1,38 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+    <div id="textbox">
+      <p class="alignleft"><%= link_to 'Add foodstuff', new_food_stuff_path %></p>
+      <p class="alignright"><%= link_to 'Sign in' %>   <%= link_to 'Register' %></p>
+    </div> 
+
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    
+    <p align="middle">
+      <%= link_to image_tag('OpenFoodDBLogo.png'); %>
+    </p>
+
+    <table align="center">
+	  <tr>
+	    <td>
+	      <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+	    </td>
+	    <td>
+	      <%= button_to "Search" %>
+	    </td>
+	  </tr>
+	</table>
+	
+  </body>
+<html>
