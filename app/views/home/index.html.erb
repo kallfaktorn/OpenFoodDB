@@ -19,17 +19,35 @@
     </p>
 
 
-  <%= form_tag food_stuffs_path, :id => 'myform', :method => 'get', :remote => true do %>
+  <%= form_tag food_stuffs_path, :id => 'food_stuffs_form', :method => 'get', :remote => true do %>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   <% end %>
 
-  <div id="mydiv" class="mydiv">
+  <div id="food_stuffs">
   </div>
 
 
+
 <script type="text/javascript">
- $('#myform').bind('ajax:success', function(evt, data, status, xhr){
-    alert("hello world!");
+ $('#food_stuffs_form').bind('ajax:success', function(evt, data){
+    
+    var food_stuffs_div = $('#food_stuffs');
+    food_stuffs_div.empty();
+
+    var food_stuffs = data;
+    var table = "<table>";
+
+    for(i in food_stuffs) {
+      table += "<tr>";
+      table += "<td>" + food_stuffs[i].name + "</td>";
+      table += "<td>" + food_stuffs[i].protein + "</td>";
+      table += "</tr>";
+    }
+
+    table += "</table>";
+
+    food_stuffs_div.append(table);
+
   });
 </script>

@@ -15,13 +15,37 @@ class FoodStuffsController < ApplicationController
   #         :content_type => "text/javascript"
   #end
 
+  #respond_to :html, :xml, :json
 
   def index
     #render :text => "alert('Hello, world!')",
     #:content_type => "text/javascript"
     @food_stuffs = FoodStuff.all
-    #render :partial => "food", :locals => { :food_stuffs => @food_stuffs }
-    render :json => @food_stuffs
+
+    print @food_stuffs.length
+    print @food_stuffs.length
+    print @food_stuffs.length
+    print @food_stuffs.length
+    print @food_stuffs.length
+    print @food_stuffs.length
+    print @food_stuffs.length
+    print @food_stuffs.length
+    #respond_with(@food_stuffs = FoodStuff.all)
+
+    respond_to do |format|
+    #  format.html
+    #  format.xml { render :xml => @food_stuffs }
+      format.json { render :json => @food_stuffs }
+    end
+    #render :text => "<h1>hello world!</h1>"
+    #render :partial => "food", :locals => { :food_stuffs => @food_stuffs }, :content_type => 'text/html'
+    #render :json => @food_stuffs
+
+    #render :partial => 'food', :content_type => 'text/html'
+
+    #render :update do |page|
+    #    page.replace_html('mydiv', :partial => 'food')
+    #end
     #render @food_stuffs
     #render :partial => "food", :collection => @food_stuffs
 
