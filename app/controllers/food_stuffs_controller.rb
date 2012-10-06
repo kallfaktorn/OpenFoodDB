@@ -10,13 +10,25 @@ class FoodStuffsController < ApplicationController
   #  end
   #end
 
+  #def javascript_test
+  #  render :text => "alert('Hello, world!')",
+  #         :content_type => "text/javascript"
+  #end
+
   def index
-    print params[:search]
-    print params[:search]
-    print params[:search]
-    print params[:search]
-    print params[:search]
-    @food_stuffs = FoodStuff.search(params[:search])
+    #render :text => "alert('Hello, world!')",
+    #:content_type => "text/javascript"
+    #render :partial => "food", :collection => @food_stuffs
+    @food_stuffs = FoodStuff.all
+    render :partial => "food", :locals => { :food_stuffs => @food_stuffs }
+
+
+    #@food_stuffs = FoodStuff.search(params[:search])
+
+    #respond_to do |format|
+    #  format.html { redirect_to @food_stuffs }
+    #  format.js
+    #end
   end
 
   # GET /food_stuffs/1
