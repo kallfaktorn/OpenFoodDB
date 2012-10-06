@@ -18,44 +18,12 @@ class FoodStuffsController < ApplicationController
   #respond_to :html, :xml, :json
 
   def index
-    #render :text => "alert('Hello, world!')",
-    #:content_type => "text/javascript"
-    @food_stuffs = FoodStuff.all
-
-    print @food_stuffs.length
-    print @food_stuffs.length
-    print @food_stuffs.length
-    print @food_stuffs.length
-    print @food_stuffs.length
-    print @food_stuffs.length
-    print @food_stuffs.length
-    print @food_stuffs.length
-    #respond_with(@food_stuffs = FoodStuff.all)
+    search_string = "%" + params[:search] + "%"
+    @food_stuffs = FoodStuff.find(:all, :conditions => ['name LIKE ?', search_string])
 
     respond_to do |format|
-    #  format.html
-    #  format.xml { render :xml => @food_stuffs }
       format.json { render :json => @food_stuffs }
     end
-    #render :text => "<h1>hello world!</h1>"
-    #render :partial => "food", :locals => { :food_stuffs => @food_stuffs }, :content_type => 'text/html'
-    #render :json => @food_stuffs
-
-    #render :partial => 'food', :content_type => 'text/html'
-
-    #render :update do |page|
-    #    page.replace_html('mydiv', :partial => 'food')
-    #end
-    #render @food_stuffs
-    #render :partial => "food", :collection => @food_stuffs
-
-
-    #@food_stuffs = FoodStuff.search(params[:search])
-
-    #respond_to do |format|
-    #  format.html { redirect_to @food_stuffs }
-    #  format.js
-    #end
   end
 
   # GET /food_stuffs/1
