@@ -19,12 +19,4 @@ ActiveRecord::Schema.define(:version => 20120930203157) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "ingredients", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "protein"
-  end
-
 end
