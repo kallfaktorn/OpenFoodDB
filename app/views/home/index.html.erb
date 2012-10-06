@@ -1,12 +1,8 @@
-<html>
-  <head>
-  </head>
-  <body>
-
     <div id="textbox">
       <p class="alignleft"><%= link_to 'Add foodstuff', new_food_stuff_path %></p>
       <p class="alignright"><%= link_to 'Sign in' %>   <%= link_to 'Register' %></p>
     </div> 
+   
    
     <br>
     <br>
@@ -21,14 +17,19 @@
     <p align="middle">
       <%= link_to image_tag('OpenFoodDBLogo.png'); %>
     </p>
- 
 
-  <%= form_tag food_stuffs_path, :method => 'get', :remote => true, :update => 'result' do %>
+
+  <%= form_tag food_stuffs_path, :id => 'myform', :method => 'get', :remote => true do %>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %> 
-    <%= text_field_tag "result" %>
+    <%= submit_tag "Search", :name => nil %>
   <% end %>
 
-</body>
+  <div id="mydiv" class="mydiv">
+  </div>
 
-<html>
+
+<script type="text/javascript">
+ $('#myform').bind('ajax:success', function(evt, data, status, xhr){
+    alert("hello world!");
+  });
+</script>

@@ -15,12 +15,15 @@ class FoodStuffsController < ApplicationController
   #         :content_type => "text/javascript"
   #end
 
+
   def index
     #render :text => "alert('Hello, world!')",
     #:content_type => "text/javascript"
-    #render :partial => "food", :collection => @food_stuffs
     @food_stuffs = FoodStuff.all
-    render :partial => "food", :locals => { :food_stuffs => @food_stuffs }
+    #render :partial => "food", :locals => { :food_stuffs => @food_stuffs }
+    render :json => @food_stuffs
+    #render @food_stuffs
+    #render :partial => "food", :collection => @food_stuffs
 
 
     #@food_stuffs = FoodStuff.search(params[:search])
