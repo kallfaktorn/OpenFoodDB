@@ -1,9 +1,9 @@
     <div id="textbox">
       <p class="alignleft"><%= link_to 'Add foodstuff', new_food_stuff_path %></p>
-      <p class="alignright"><%= link_to 'Sign in' %>   <%= link_to 'Register' %></p>
-    </div> 
-   
-   
+      <p class="alignright"><%= link_to 'Sign in', new_session_path %> <%= link_to 'Create account', signup_path %></p>
+    </div>
+
+
     <br>
     <br>
     <br>
@@ -13,7 +13,7 @@
     <br>
     <br>
 
-    
+
     <p align="middle">
       <%= link_to image_tag('OpenFoodDBLogo.png'); %>
     </p>
@@ -32,10 +32,9 @@
   </div>
 
 
-
 <script type="text/javascript">
- $('#food_stuffs_form').bind('ajax:success', function(evt, data){
-    
+  $('#food_stuffs_form').bind('ajax:success', function(evt, data) {
+
     var food_stuffs_div = $('#food_stuffs');
     food_stuffs_div.empty();
 
