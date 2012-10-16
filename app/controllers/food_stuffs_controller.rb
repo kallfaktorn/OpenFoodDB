@@ -56,7 +56,9 @@ class FoodStuffsController < ApplicationController
   # POST /food_stuffs
   # POST /food_stuffs.json
   def create
-    @food_stuff = FoodStuff.new(params[:food_stuff])
+
+    @food_stuff = current_user.food_stuffs.build(params[:food_stuff])
+    #@food_stuff = FoodStuff.new(params[:food_stuff])
 
     respond_to do |format|
       if @food_stuff.save
