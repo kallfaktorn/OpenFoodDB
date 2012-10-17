@@ -11,26 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :protein %><br />
-    <%= f.number_field :protein %>
-  </div>  
-  
+
   <table>
     <tr>
       <td>
-        <label>Energy</label>
+        <%= f.label :name %>
+      </td>
+      <td>
+        <%= f.text_field :name %>
       </td>
     </tr>
     <tr>
       <td>
-        <div class="field">
-          <input id="energy"></input>
-        </div>
+        <label>Energy</label>
+      </td>
+      <td>
+         <input id="energy"></input>
       </td>
       <td>
         <select id="energy_select">
@@ -39,8 +35,29 @@
         </select>
       </td>
     </tr>
+    <tr>
+      <td>
+        <%= f.label :protein %>
+      </td>
+      <td>
+        <%= f.number_field :protein %>
+      </td>
+      <td>
+        <label>g</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :fat %>
+      </td>
+      <td>
+        <%= f.number_field :fat %>
+      </td>
+      <td>
+        <label>g</label>
+      </td>
   </table>
-
+  
 
   <%= f.hidden_field :energy_kcal %>
   <%= f.hidden_field :energy_kj %>
@@ -63,16 +80,12 @@
     var kcal_to_kj = 4.184;
     var kj_to_kcal = 0.239;
 
-    var energy_select = $('#energy_select').attr('value');
-
     if($('#energy_select').attr('value') == "kcal") {
 
       var energy = $('#energy').attr('value');
 
       $('#food_stuff_energy_kcal').attr('value', $('#energy').attr('value'));
       $('#food_stuff_energy_kj').attr('value', $('#energy').attr('value') * kcal_to_kj);
-
-      var energy_kj = $('#food_stuff_energy_kj').attr('value');
 
     }
     else {
