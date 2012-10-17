@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017164545) do
+ActiveRecord::Schema.define(:version => 20121017165632) do
 
   create_table "food_stuffs", :force => true do |t|
     t.string   "name"
     t.integer  "protein"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.integer  "user_id"
     t.integer  "energy_kcal"
     t.integer  "energy_kj"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20121017164545) do
     t.integer  "disaccharides"
     t.integer  "sackaros"
     t.integer  "whole_grain_total"
+    t.integer  "total_saturated_fatty_acids"
+    t.integer  "fatty_acid_40_100"
   end
 
   create_table "ingredients", :force => true do |t|
