@@ -18,9 +18,69 @@
   <div class="field">
     <%= f.label :protein %><br />
     <%= f.number_field :protein %>
-  </div>
+  </div>  
+  
+  <table>
+    <tr>
+      <td>
+        <label>Energy</label>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="field">
+          <input id="energy"></input>
+        </div>
+      </td>
+      <td>
+        <select id="energy_select">
+          <option value="kcal">KCal</option>
+          <option value="kj">kJ</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
+
+  <%= f.hidden_field :energy_kcal %>
+  <%= f.hidden_field :energy_kj %>
+
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+  var form = $('#new_food_stuff').submit(function () {
+    fill_form_with_energy_data();
+  });
+
+
+  function fill_form_with_energy_data() {
+
+    var kcal_to_kj = 4.184;
+    var kj_to_kcal = 0.239;
+
+    var energy_select = $('#energy_select').attr('value');
+
+    if($('#energy_select').attr('value') == "kcal") {
+
+      var energy = $('#energy').attr('value');
+
+      $('#food_stuff_energy_kcal').attr('value', $('#energy').attr('value'));
+      $('#food_stuff_energy_kj').attr('value', $('#energy').attr('value') * kcal_to_kj);
+
+      var energy_kj = $('#food_stuff_energy_kj').attr('value');
+
+    }
+    else {
+
+      $('#food_stuff_energy_kj').attr('value', $('#energy').attr('value'));
+      $('#food_stuff_energy_kcal').attr('value', $('#energy').attr('value') * kj_to_kcal);
+      
+    }
+  }
+  
+</script>
