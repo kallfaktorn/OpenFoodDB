@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017170224) do
+ActiveRecord::Schema.define(:version => 20121017170802) do
 
   create_table "food_stuffs", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20121017170224) do
     t.integer  "total_saturated_fatty_acids"
     t.integer  "fatty_acid_40_100"
     t.integer  "fatty_acid_120"
+    t.integer  "fatty_acid_140"
+    t.integer  "fatty_acid_160"
   end
 
   create_table "ingredients", :force => true do |t|
