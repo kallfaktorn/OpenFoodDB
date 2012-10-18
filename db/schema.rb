@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018103939) do
+ActiveRecord::Schema.define(:version => 20121018104851) do
 
   create_table "food_stuffs", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(:version => 20121018103939) do
     t.integer  "retinol"
     t.integer  "beta_carotene"
     t.integer  "vitamin_d"
+    t.integer  "vitamin_e"
+    t.integer  "vitamin_k"
+    t.integer  "thiamine"
+    t.integer  "riboflavin"
   end
 
   create_table "ingredients", :force => true do |t|
