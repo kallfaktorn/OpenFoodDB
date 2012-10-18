@@ -262,6 +262,9 @@
       <td>
         <%= f.number_field :total_monounsaturated_fatty_acids %>
       </td>
+      <td>
+        <label>g</label>
+      </td>
     </tr>
     <tr>
       <td> 
@@ -382,6 +385,25 @@
       </td>
       <td>
         <label>g</label>
+      </td>
+    </tr>
+    <tr>
+      <td> 
+         <%= f.label :cholesterol %>
+      </td>
+      <td>
+        <%= f.number_field :cholesterol %>
+      </td>
+      <td>
+        <label>mg</label>
+      </td>
+    </tr>
+    <tr>
+      <td> 
+         <%= f.label :retinol_equivalents %>
+      </td>
+      <td>
+        <%= f.number_field :retinol_equivalents %>
       </td>
     </tr>
   </table>
