@@ -246,17 +246,6 @@
     </tr>
     <tr>
       <td> 
-         <%= f.label :fatty_acid_200 %>
-      </td>
-      <td>
-        <%= f.number_field :fatty_acid_200 %>
-      </td>
-      <td>
-        <label>g</label>
-      </td>
-    </tr>
-    <tr>
-      <td> 
          <%= f.label :total_monounsaturated_fatty_acids %>
       </td>
       <td>
@@ -667,7 +656,7 @@
 
 
 <script type="text/javascript">
-  var form = $('#new_food_stuff').submit(function () {
+  var form = $('form').submit(function () {
     fill_form_with_energy_data();
   });
 
