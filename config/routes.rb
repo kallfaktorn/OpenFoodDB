@@ -1,6 +1,9 @@
 Openfooddb::Application.routes.draw do
 
-  resources :food_stuffs
+  resources :food_stuffs do 
+    resources :comments
+  end
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

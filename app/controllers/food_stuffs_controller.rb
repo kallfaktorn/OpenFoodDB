@@ -1,22 +1,5 @@
 class FoodStuffsController < ApplicationController
-  # GET /food_stuffs
-  # GET /food_stuffs.json
-  #def index
-  #  @food_stuffs = FoodStuff.all
-
-  #  respond_to do |format|
-  #    format.html # index.html.erb
-  #    format.json { render json: @food_stuffs }
-  #  end
-  #end
-
-  #def javascript_test
-  #  render :text => "alert('Hello, world!')",
-  #         :content_type => "text/javascript"
-  #end
-
-  #respond_to :html, :xml, :json
-
+ 
   def index
     search_string = "%" + params[:search] + "%"
     @food_stuffs = FoodStuff.find(:all, :conditions => ['name LIKE ?', search_string])
@@ -30,6 +13,13 @@ class FoodStuffsController < ApplicationController
   # GET /food_stuffs/1.json
   def show
     @food_stuff = FoodStuff.find(params[:id])
+   
+    @comment = Comment.new(:food_stuff => @food_stuff)
+    #@comment = food_stuff.comments.build(:food_stuff => @food_stuff)
+    #@comment = food_stuff.comments.build
+
+    print "blablabla"
+    print @comment
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +34,7 @@ class FoodStuffsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @food_stuff }
+      #format.json { render json: @food_stuff }
     end
   end
 
@@ -56,17 +46,6 @@ class FoodStuffsController < ApplicationController
   # POST /food_stuffs
   # POST /food_stuffs.json
   def create
-
-    print "blablablablabla"
-    print "blablablablabla"
-    print "blablablablabla"
-    print "blablablablabla"
-    print "blablablablabla"
-    print "blablablablabla"
-    print "blablablablabla"
-    print params[:food_stuff]
-   
-
     @food_stuff = current_user.food_stuffs.build(params[:food_stuff])
 
     respond_to do |format|
