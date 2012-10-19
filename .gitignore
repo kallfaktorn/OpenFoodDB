@@ -15,7 +15,7 @@
 /tmp
 
 # Ignore the database config file.
-# it should be different on produciton
+# it should be different on production
 # servers than the one in your local setup.
 # production should probably use mysql or pgsql for example
 config/database.yml
