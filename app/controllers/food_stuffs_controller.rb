@@ -15,12 +15,7 @@ class FoodStuffsController < ApplicationController
     @food_stuff = FoodStuff.find(params[:id])
    
     @comment = Comment.new(:food_stuff => @food_stuff)
-    #@comment = food_stuff.comments.build(:food_stuff => @food_stuff)
-    #@comment = food_stuff.comments.build
-
-    print "blablabla"
-    print @comment
-
+   
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @food_stuff }

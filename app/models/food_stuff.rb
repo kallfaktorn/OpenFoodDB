@@ -10,5 +10,4 @@ class FoodStuff < ActiveRecord::Base
       find(:all)
     end
   end
-
 end
