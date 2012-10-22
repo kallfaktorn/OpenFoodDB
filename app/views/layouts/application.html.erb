@@ -6,6 +6,17 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  
+  <% if signed_in? %>
+  <% else %>
+    <% if request.path_parameters == {:action=>"new", :controller=>"sessions"}  %>
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
+  <% end %>
+
+
 </head>
 <body>
 
