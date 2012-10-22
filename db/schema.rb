@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018170619) do
+ActiveRecord::Schema.define(:version => 20121021235521) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -86,6 +86,25 @@ ActiveRecord::Schema.define(:version => 20121018170619) do
     t.integer  "selenium"
     t.integer  "zinc"
     t.integer  "waste"
+    t.integer  "logo_id"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "food_stuff_image_file_name"
+    t.string   "food_stuff_image_content_type"
+    t.integer  "food_stuff_image_file_size"
+    t.datetime "food_stuff_image_updated_at"
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "name"
+    t.string   "content_type"
+    t.integer  "file_size"
+    t.binary   "data"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "food_stuff_id"
   end
 
   create_table "ingredients", :force => true do |t|
@@ -104,6 +123,10 @@ ActiveRecord::Schema.define(:version => 20121018170619) do
     t.string   "salt"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

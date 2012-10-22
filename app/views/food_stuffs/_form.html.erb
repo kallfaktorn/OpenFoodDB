@@ -1,4 +1,4 @@
-<%= form_for(@food_stuff) do |f| %>
+<%= form_for(@food_stuff, :url => food_stuffs_path, :html => { :multipart => true }) do |f| %>
   <% if @food_stuff.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@food_stuff.errors.count, "error") %> prohibited this food_stuff from being saved:</h2>
@@ -642,6 +642,22 @@
         <%= f.number_field :waste %>
       </td>
     </tr>
+    <tr>
+      <td>
+        <%= f.label :logo %>
+      </td>
+      <td>
+        <%= f.file_field :logo %>
+      </td>
+    </tr>
+     <tr>
+      <td>
+        <%= f.label :food_stuff_image %>
+      </td>
+      <td>
+        <%= f.file_field :food_stuff_image %>
+      </td>
+    </tr>
   </table>
   
 
@@ -678,7 +694,6 @@
 
       $('#food_stuff_energy_kj').attr('value', $('#energy').attr('value'));
       $('#food_stuff_energy_kcal').attr('value', $('#energy').attr('value') * kj_to_kcal);
-      
     }
   }
   
