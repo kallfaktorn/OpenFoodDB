@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
                        :confirmation => true,
                        :length       => { :within => 6..40 }
 
+  acts_as_voter
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)

@@ -63,8 +63,10 @@
 <strong>Zinc</strong> <%= @food_stuff.zinc %><br />
 <strong>Waste</strong> <%= @food_stuff.waste %><br />
 <strong>Logo</strong> <%= image_tag @food_stuff.logo.url(:thumb) %><br />
-<strong>Foodstuff image</strong> <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %>
+<strong>Foodstuff image</strong> <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
 
+<%= link_to image_tag('Thumb up!', :border => 0), vote_up_food_stuff_path(@food_stuff), :remote => true, :id => "thumbs_up" %>
+<label id="votes_id"><%= @food_stuff.votes_for %></label>
 
 <%= render :partial => 'comment', :collection => @food_stuff.comments %>
 
@@ -82,6 +84,12 @@
 <% end %>
 
 
-
 <%= link_to 'Edit', edit_food_stuff_path(@food_stuff) %> |
 <%= link_to 'Back', home_index_path %>
+
+
+<script type="text/javascript">
+  $('#thumbs_up').bind('ajax:success', function(evt, data) {
+  	$('#votes_id').text(data);
+  });
+</script>

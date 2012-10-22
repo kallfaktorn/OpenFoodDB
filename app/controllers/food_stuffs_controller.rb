@@ -13,9 +13,9 @@ class FoodStuffsController < ApplicationController
   # GET /food_stuffs/1.json
   def show
     @food_stuff = FoodStuff.find(params[:id])
-   
+
     @comment = Comment.new(:food_stuff => @food_stuff)
-   
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @food_stuff }
@@ -78,6 +78,15 @@ class FoodStuffsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to food_stuffs_url }
       format.json { head :no_content }
+    end
+  end
+
+  def vote_up
+    current_user.vote_for(@food_stuff = FoodStuff.find(params[:id]))
+    @count = @food_stuff.votes_for
+
+    respond_to do |format|
+      format.json { render :json => @count }
     end
   end
 end

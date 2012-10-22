@@ -9,6 +9,8 @@ class FoodStuff < ActiveRecord::Base
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   has_attached_file :food_stuff_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+  acts_as_voteable
+
   def self.search(search)
     if search
       find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
