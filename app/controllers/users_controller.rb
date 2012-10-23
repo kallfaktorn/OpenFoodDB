@@ -19,7 +19,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @title = @user.name
+    @food_stuffs = FoodStuff.find_all_by_user_id(@user.id)
+  end
+
+  def index
+    search_string = "%" + params[:search] + "%"
+    @food_stuffs = FoodStuff.find(:all, :conditions => ['name LIKE ?', search_string])
+
+    respond_to do |format|
+      format.json { render :json => @food_stuffs }
+    end
   end
 
   def edit

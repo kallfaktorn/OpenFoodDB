@@ -5,14 +5,16 @@
         <%= @user.name %>
       </h1>
     </td>
-    <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <p class="alignleft"><%= link_to 'Add foodstuff', new_food_stuff_path %></p>
-    </td>
   </tr>
 </table>
+
+<p class="alignleft"><%= link_to 'Add foodstuff', new_food_stuff_path %></p>
+<br />
+<br />
+
+<p><label>FoodStuffs added by </label><strong><%= @user.name %></strong></p>
+
+<% @food_stuffs.each do |f| %>
+  <%= link_to f.name, f %> <%= link_to 'Edit', edit_food_stuff_path(f) %>
+  <br />
+<% end %>
