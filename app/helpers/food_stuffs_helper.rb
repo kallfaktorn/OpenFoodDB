@@ -8,4 +8,11 @@ module FoodStuffsHelper
 
     @template.content_tag(:ul, errors_list.html_safe, :class => "error-recap round-border")
   end
+
+  def column(arg1, arg2)
+  	unless arg2.blank?
+  	  render :partial => "column", :locals => { :arg1 => arg1, :arg2 => arg2 }
+  	end
+  end
+
 end
