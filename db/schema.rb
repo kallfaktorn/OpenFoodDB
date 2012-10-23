@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022011603) do
+ActiveRecord::Schema.define(:version => 20121023121809) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20121022011603) do
   add_index "comments", ["food_stuff_id"], :name => "index_comments_on_food_stuff_id"
 
   create_table "food_stuffs", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                              :null => false
     t.integer  "protein"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20121022011603) do
     t.datetime "food_stuff_image_updated_at"
   end
 
+  add_index "food_stuffs", ["name"], :name => "index_food_stuffs_on_name", :unique => true
+
   create_table "images", :force => true do |t|
     t.string   "name"
     t.string   "content_type"
@@ -148,4 +150,5 @@ ActiveRecord::Schema.define(:version => 20121022011603) do
   add_index "votes", ["voteable_id", "voteable_type"], :name => "index_votes_on_voteable_id_and_voteable_type"
   add_index "votes", ["voter_id", "voter_type", "voteable_id", "voteable_type"], :name => "fk_one_vote_per_user_per_entity", :unique => true
   add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
+
 end
