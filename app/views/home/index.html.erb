@@ -20,14 +20,13 @@
     <td>
       <%= form_tag food_stuffs_path, :id => 'food_stuffs_form', :method => 'get', :remote => true do %>
         <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :name => nil %>
+        <%= submit_tag t(:Home_Index_Button_Search), :name => nil %>
       <% end %>
     </td>
   </tr>
 </table>
   <div id="food_stuffs", class="food_stuff_links">
   </div>
-
 
 <script type="text/javascript">
   $('#food_stuffs_form').bind('ajax:success', function(evt, data) {
