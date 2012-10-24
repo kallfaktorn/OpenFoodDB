@@ -1,7 +1,15 @@
 
 
 <p id="notice"><%= notice %></p>
+<br />
+<%= link_to image_tag('Thumb up!', :border => 0), vote_up_food_stuff_path(@food_stuff), :remote => true, :id => "thumbs_up" %>
+<label id="votes_id"><%= @food_stuff.votes_for %></label>
+<br />
+<br />
+<br />
 
+<%= image_tag @food_stuff.logo.url(:medium) %><br />
+<br />
 
 <%= column('Name', @food_stuff.name) %>
 <%= column('Energy(kcal)', @food_stuff.energy_kcal) %>
@@ -62,11 +70,8 @@
 <%= column('Selenium', @food_stuff.selenium) %>
 <%= column('Zinc', @food_stuff.zinc) %>
 <%= column('Waste', @food_stuff.waste) %>
-<strong>Logo</strong> <%= image_tag @food_stuff.logo.url(:thumb) %><br />
-<strong>Foodstuff image</strong> <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
 
-<%= link_to image_tag('Thumb up!', :border => 0), vote_up_food_stuff_path(@food_stuff), :remote => true, :id => "thumbs_up" %>
-<label id="votes_id"><%= @food_stuff.votes_for %></label>
+<%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
 
 <%= render :partial => 'comment', :collection => @food_stuff.comments %>
 
