@@ -14,9 +14,16 @@ Openfooddb::Application.routes.draw do
   get "home/index"
   post "home/index"
 
+
+  
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+
+  match '/users/:id/' => 'users#show'
+
+  match 'food_stuffs/:id/' => 'food_stuffs#show'
+  match 'food_stuffs/:id/edit' => 'food_stuffs#edit'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

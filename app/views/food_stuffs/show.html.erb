@@ -11,65 +11,66 @@
 <%= image_tag @food_stuff.logo.url(:medium) %><br />
 <br />
 
-<%= column('Name', @food_stuff.name) %>
-<%= column('Energy(kcal)', @food_stuff.energy_kcal) %>
-<%= column('Energy(kj)', @food_stuff.energy_kj) %>
-<%= column('Protein', @food_stuff.protein) %>
-<%= column('Fat', @food_stuff.fat) %>
-<%= column('Carbohydrates', @food_stuff.carbohydrates) %>
-<%= column('Fibers', @food_stuff.fibers) %>
-<%= column('Salt', @food_stuff.salt) %>
-<%= column('Ash', @food_stuff.ash) %>
-<%= column('Water', @food_stuff.water) %>
-<%= column('Alcohol', @food_stuff.alcohol) %>
-<%= column('Monosaccharides', @food_stuff.monosaccharides) %>
-<%= column('Disaccharides', @food_stuff.disaccharides) %>
-<%= column('Sacharos', @food_stuff.sackaros) %>
-<%= column('Whole grain total', @food_stuff.whole_grain_total) %>
-<%= column('Total saturated fatty acids', @food_stuff.total_saturated_fatty_acids) %>
-<%= column('Fatty acid 4:0-10:0', @food_stuff.fatty_acid_40_100) %>
-<%= column('Fatty acid 12:0', @food_stuff.fatty_acid_120) %>
-<%= column('Fatty acid 14:0', @food_stuff.fatty_acid_140) %>
-<%= column('Fatty acid 16:0', @food_stuff.fatty_acid_160) %>
-<%= column('Fatty acid 18:0', @food_stuff.fatty_acid_180) %>
-<%= column('Fatty acid 20:0', @food_stuff.fatty_acid_200) %>
-<%= column('Total monounsaturated fatty acids', @food_stuff.total_monounsaturated_fatty_acids) %>
-<%= column('Fatty acid 16:1', @food_stuff.fatty_acid_161) %>
-<%= column('Fatty acid 18:1', @food_stuff.fatty_acid_181) %>
-<%= column('Total polyunsaturated fatty acids', @food_stuff.total_polyunsaturated_fatty_acids) %>
-<%= column('Total n6 fatty acids', @food_stuff.total_n6_fatty_acids) %>
-<%= column('Fatty acid 18:2', @food_stuff.fatty_acid_182) %>
-<%= column('Fatty acid 20:4', @food_stuff.fatty_acid_204) %>
-<%= column('Total n3 fatty acids', @food_stuff.total_n3_fatty_acids) %>
-<%= column('EPA (Fatty acid 20:5)', @food_stuff.EPA_fatty_acid_205) %>
-<%= column('DPA (Fatty acid 22:5)', @food_stuff.DPA_fatty_acid_225) %>
-<%= column('DHA (Fatty acid 22:6)', @food_stuff.DHA_fatty_acid_226) %>
-<%= column('Total trans fatty acids', @food_stuff.total_trans_fatty_acids) %>
-<%= column('Cholesterol', @food_stuff.cholesterol) %>
-<%= column('Retinol equivalents', @food_stuff.retinol_equivalents) %>
-<%= column('Retinol', @food_stuff.retinol) %>
-<%= column('β-Carotene', @food_stuff.beta_carotene) %>
-<%= column('Vitamin D', @food_stuff.vitamin_d) %>
-<%= column('Vitamin E', @food_stuff.vitamin_e) %>
-<%= column('Vitamin K', @food_stuff.vitamin_k) %>
-<%= column('Thiamine', @food_stuff.thiamine) %>
-<%= column('Riboflavin', @food_stuff.riboflavin) %>
-<%= column('Vitamin C', @food_stuff.vitamin_c) %>
-<%= column('Niacin', @food_stuff.niacin) %>
-<%= column('Niacin equivalents', @food_stuff.niacin_equivalents) %>
-<%= column('Vitamin B6', @food_stuff.vitamin_b6) %>
-<%= column('Vitamin B12', @food_stuff.vitamin_b12) %>
-<%= column('Folate', @food_stuff.folate) %>
-<%= column('Phosphorus', @food_stuff.phosphorus) %>
-<%= column('Iodine', @food_stuff.iodine) %>
-<%= column('Iron', @food_stuff.iron) %>
-<%= column('Calcium', @food_stuff.calcium) %>
-<%= column('Potassium', @food_stuff.potassium) %>
-<%= column('Magnesium', @food_stuff.magnesium) %>
-<%= column('Sodium', @food_stuff.sodium) %>
-<%= column('Selenium', @food_stuff.selenium) %>
-<%= column('Zinc', @food_stuff.zinc) %>
-<%= column('Waste', @food_stuff.waste) %>
+<%= column(t(:FoodStuff_Name), @food_stuff.name) %>
+<%= column(t(:FoodStuff_Energy_kcal), @food_stuff.energy_kcal) %>
+<%= column(t(:FoodStuff_Energy_kj), @food_stuff.energy_kj) %>
+<%= column(t(:FoodStuff_Protein), @food_stuff.protein) %>
+<%= column(t(:FoodStuff_Fat), @food_stuff.fat) %>
+<%= column(t(:FoodStuff_Carbohydrates), @food_stuff.carbohydrates) %>
+<%= column(t(:FoodStuff_Fibers), @food_stuff.fibers) %>
+<%= column(t(:FoodStuff_Salt), @food_stuff.salt) %>
+<%= column(t(:FoodStuff_Ash), @food_stuff.ash) %>
+<%= column(t(:FoodStuff_Water), @food_stuff.water) %>
+<%= column(t(:FoodStuff_Alcohol), @food_stuff.alcohol) %>
+<%= column(t(:FoodStuff_Monosaccharides), @food_stuff.monosaccharides) %>
+<%= column(t(:FoodStuff_Disaccharides), @food_stuff.disaccharides) %>
+<%= column(t(:FoodStuff_Sackaros), @food_stuff.sackaros) %>
+<%= column(t(:FoodStuff_Whole_grain_total), @food_stuff.whole_grain_total) %>
+<%= column(t(:FoodStuff_Total_saturated_fatty_acids), @food_stuff.total_saturated_fatty_acids) %>
+<%= column(t(:FoodStuff_Fatty_acid_40_100), @food_stuff.fatty_acid_40_100) %>
+<%= column(t(:FoodStuff_Fatty_acid_120), @food_stuff.fatty_acid_120) %>
+<%= column(t(:FoodStuff_Fatty_acid_140), @food_stuff.fatty_acid_140) %>
+<%= column(t(:FoodStuff_Fatty_acid_160), @food_stuff.fatty_acid_160) %>
+<%= column(t(:FoodStuff_Fatty_acid_180), @food_stuff.fatty_acid_180) %>
+<%= column(t(:FoodStuff_Fatty_acid_200), @food_stuff.fatty_acid_200) %>
+<%= column(t(:FoodStuff_Total_monounsaturated_fatty_acids), @food_stuff.total_monounsaturated_fatty_acids) %>
+<%= column(t(:FoodStuff_Fatty_acid_161), @food_stuff.fatty_acid_161) %>
+<%= column(t(:FoodStuff_Fatty_acid_181), @food_stuff.fatty_acid_181) %>
+<%= column(t(:FoodStuff_Total_polyunsaturated_fatty_acids), @food_stuff.total_polyunsaturated_fatty_acids) %>
+<%= column(t(:FoodStuff_Total_n6_fatty_acids), @food_stuff.total_n6_fatty_acids) %>
+<%= column(t(:FoodStuff_Fatty_acid_182), @food_stuff.fatty_acid_182) %>
+<%= column(t(:FoodStuff_Fatty_acid_204), @food_stuff.fatty_acid_204) %>
+<%= column(t(:FoodStuff_Total_n3_fatty_acids), @food_stuff.total_n3_fatty_acids) %>
+<%= column(t(:FoodStuff_Fatty_acid_183), @food_stuff.fatty_acid_183) %>
+<%= column(t(:FoodStuff_EPA_Fatty_acid_205), @food_stuff.EPA_fatty_acid_205) %>
+<%= column(t(:FoodStuff_DPA_Fatty_acid_225), @food_stuff.DPA_fatty_acid_225) %>
+<%= column(t(:FoodStuff_DHA_Fatty_acid_226), @food_stuff.DHA_fatty_acid_226) %>
+<%= column(t(:FoodStuff_Total_trans_fatty_acids), @food_stuff.total_trans_fatty_acids) %>
+<%= column(t(:FoodStuff_Cholesterol), @food_stuff.cholesterol) %>
+<%= column(t(:FoodStuff_Retinol_equivalents), @food_stuff.retinol_equivalents) %>
+<%= column(t(:FoodStuff_Retinol), @food_stuff.retinol) %>
+<%= column(t(:FoodStuff_Beta_Carotene), @food_stuff.beta_carotene) %>
+<%= column(t(:FoodStuff_Vitamin_D), @food_stuff.vitamin_d) %>
+<%= column(t(:FoodStuff_Vitamin_E), @food_stuff.vitamin_e) %>
+<%= column(t(:FoodStuff_Vitamin_K), @food_stuff.vitamin_k) %>
+<%= column(t(:FoodStuff_Thiamine), @food_stuff.thiamine) %>
+<%= column(t(:FoodStuff_Riboflavin), @food_stuff.riboflavin) %>
+<%= column(t(:FoodStuff_Vitamin_C), @food_stuff.vitamin_c) %>
+<%= column(t(:FoodStuff_Niacin), @food_stuff.niacin) %>
+<%= column(t(:FoodStuff_Niacin_equivalents), @food_stuff.niacin_equivalents) %>
+<%= column(t(:FoodStuff_Vitamin_B6), @food_stuff.vitamin_b6) %>
+<%= column(t(:FoodStuff_Vitamin_B12), @food_stuff.vitamin_b12) %>
+<%= column(t(:FoodStuff_Folate), @food_stuff.folate) %>
+<%= column(t(:FoodStuff_Phosphorus), @food_stuff.phosphorus) %>
+<%= column(t(:FoodStuff_Iodine), @food_stuff.iodine) %>
+<%= column(t(:FoodStuff_Iron), @food_stuff.iron) %>
+<%= column(t(:FoodStuff_Calcium), @food_stuff.calcium) %>
+<%= column(t(:FoodStuff_Potassium), @food_stuff.potassium) %>
+<%= column(t(:FoodStuff_Magnesium), @food_stuff.magnesium) %>
+<%= column(t(:FoodStuff_Sodium), @food_stuff.sodium) %>
+<%= column(t(:FoodStuff_Selenium), @food_stuff.selenium) %>
+<%= column(t(:FoodStuff_Zinc), @food_stuff.zinc) %>
+<%= column(t(:FoodStuff_Waste), @food_stuff.waste) %>
 
 <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
 
@@ -79,18 +80,18 @@
   <%= f.hidden_field :food_stuff_id %>
 
   <div class="field">
-    <%= f.label :body %><br />
+    <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
     <%= f.text_area :body %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Post Comment" %>
+    <%= f.submit t(:FoodStuff_Show_Button_Post_Comment) %>
   </div>
 <% end %>
 
 
-<%= link_to 'Edit', edit_food_stuff_path(@food_stuff) %> |
-<%= link_to 'Back', home_index_path %>
+<%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff) %> |
+<%= link_to t(:Button_Back), home_index_path %>
 
 
 <script type="text/javascript">

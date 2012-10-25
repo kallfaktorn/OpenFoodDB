@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20121023121809) do
     t.float    "fatty_acid_182"
     t.float    "fatty_acid_204"
     t.float    "total_n3_fatty_acids"
+    t.float    "fatty_acid_183"
     t.float    "EPA_fatty_acid_205"
     t.float    "DPA_fatty_acid_225"
     t.float    "DHA_fatty_acid_226"

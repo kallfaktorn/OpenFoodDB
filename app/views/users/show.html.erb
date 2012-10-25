@@ -8,13 +8,13 @@
   </tr>
 </table>
 
-<p class="alignleft"><%= link_to 'Add foodstuff', new_food_stuff_path %></p>
+<p class="alignleft"><%= link_to t(:User_Show_Link_Add_foodstuff), new_food_stuff_path %></p>
 <br />
 <br />
 
-<p><label>FoodStuffs added by </label><strong><%= @user.name %></strong></p>
+<p><%= label_tag t(:User_Show_Label_FoodStuffs_added_by) %><strong><%= @user.name %></strong></p>
 
 <% @food_stuffs.each do |f| %>
-  <%= link_to f.name, f %> <%= link_to 'Edit', edit_food_stuff_path(f) %>
+  <%= link_to f.name, f %> <%= link_to t(:Button_Edit), edit_food_stuff_path(f) %>
   <br />
 <% end %>
