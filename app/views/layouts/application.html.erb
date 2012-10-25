@@ -26,10 +26,10 @@
     <table>
       <tr>
         <td>
-          <%= button_to 'Swedish', switch_locale('se') %> 
+          <%= link_to image_tag("english_flag.gif"), switch_locale('en') %>
         </td>
         <td>
-          <%= button_to 'English', switch_locale('en') %>
+          <%= link_to image_tag("swedish_flag.gif"), switch_locale('se') %>
         </td>
       </tr>
     </table>
