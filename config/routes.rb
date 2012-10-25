@@ -20,7 +20,14 @@ Openfooddb::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
+  match 'sessions/new', to: 'sessions#new'
+  
+  match '/users/new/' => 'users#new'
   match '/users/:id/' => 'users#show'
+
+
+
+
 
   match 'food_stuffs/new' => 'food_stuffs#new'
   match 'food_stuffs/:id/' => 'food_stuffs#show'

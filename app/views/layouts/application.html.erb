@@ -6,15 +6,16 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
 
   <% if signed_in? %>
-    <% if current_page?(:controller => "users", :action => "show", :id => current_user.id) %>
+    <% if request.path_parameters == {:action=>"show", :controller=>"users", :id => "#{current_user.id}"} %>
     <% elsif request.path_parameters == {:controller=>"sessions", :action=>"show"} %>
     <% else %>
       <%= render 'layouts/greet_user' %>
     <% end %>
   <% else %>
-    <% if current_page?(:controller => "sessions", :action => "new") == true %>
+    <% if request.path_parameters == {:controller=>"sessions", :action=>"new"} %>
     <% elsif request.path_parameters == {:controller=>"users", :action=>"new"} %>
     <% else %>
       <%= render 'layouts/sign_in_create_account' %>
