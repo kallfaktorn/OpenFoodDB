@@ -9,9 +9,13 @@ se:
   FoodStuff_Comment_Body: "Kommentar"
   Button_Edit: "Ändra"
   Button_Back: "Tillbaka"
+  Button_Show: "Visa"
+  FoodStuff_New_Header: "Nytt livsmedel"
+  FoodStuffs_Edit_Header: "Redigera livsmedel"
   User_Show_Link_Add_foodstuff: "Lägg till livsmedel"
   User_Show_Label_FoodStuffs_added_by: "Livsmedel tillagda av "
   FoodStuff_Show_Button_Post_Comment: "Posta kommentar"
+  FoodStuff_Edit_Button_Update_FoodStuff: "Uppdatera livsmedel"
   FoodStuff_Name: "Namn"
   FoodStuff_Energy: "Energi"
   FoodStuff_Energy_kcal: "Energi (kcal)"
@@ -73,7 +77,8 @@ se:
   FoodStuff_Selenium: "Selen"
   FoodStuff_Zinc: "Zink"
   FoodStuff_Waste: "Avfall"
-
+  FoodStuff_Logo: "Logotyp"
+  FoodStuff_Image: "Bild på livsmedel"
 
 
   activerecord:
