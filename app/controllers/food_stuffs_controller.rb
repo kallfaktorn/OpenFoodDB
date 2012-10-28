@@ -26,6 +26,7 @@ class FoodStuffsController < ApplicationController
   # GET /food_stuffs/new.json
   def new
     @food_stuff = FoodStuff.new
+    @food_stuff_marks = FoodStuffMark.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb

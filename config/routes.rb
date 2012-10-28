@@ -9,6 +9,8 @@ Openfooddb::Application.routes.draw do
 
   resources :users
 
+  resources :food_stuff_marks
+
   resources :sessions, only: [:new, :create, :destroy]
 
   get "home/index"
@@ -25,14 +27,12 @@ Openfooddb::Application.routes.draw do
   match '/users/new/' => 'users#new'
   match '/users/:id/' => 'users#show'
 
-
-
-
-
   match 'food_stuffs/new' => 'food_stuffs#new'
   match 'food_stuffs/:id/' => 'food_stuffs#show'
   match 'food_stuffs/:id/edit' => 'food_stuffs#edit'
-  
+
+  match 'food_stuff_marks/new' => 'food_stuff_marks#new'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

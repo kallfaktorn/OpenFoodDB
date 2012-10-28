@@ -661,7 +661,7 @@
         <%= f.file_field :logo %>
       </td>
     </tr>
-     <tr>
+    <tr>
       <td>
         <%= f.label t(:FoodStuff_Image) %>
       </td>
@@ -670,7 +670,26 @@
       </td>
     </tr>
   </table>
-  
+
+
+
+  </br>
+
+
+
+  <div style="float:left; width:150px; height:50px; overflow:auto; white-space:nowrap;">
+    <%@food_stuff_marks.each do|mark|%>
+      <%= content_tag :div, :id => "mark#{mark.id}", :style => 'width:25px; float:left;' do %>
+        <%= image_tag mark.food_stuff_mark_image.url(:thumb), class: "mark", onclick:"javascript:mark(mark#{mark.id}, #{mark.id});" %>
+      <%end%>
+    <%end%>
+  </div>
+
+  </br>
+  </br>
+  </br>
+  </br>
+
 
   <%= f.hidden_field :energy_kcal %>
   <%= f.hidden_field :energy_kj %>
@@ -678,8 +697,8 @@
 
   <div class="actions">
     <%= f.submit t(:FoodStuff_Edit_Button_Update_FoodStuff) %>
+    <%end%>
   </div>
-<% end %>
 
 
 <script type="text/javascript">
@@ -687,6 +706,10 @@
     fill_form_with_energy_data();
   });
 
+  function mark(htmlId, dbId) {
+    var mark = $(htmlId);
+    htmlId.style.backgroundColor="#959595";
+  }
 
   function fill_form_with_energy_data() {
 
@@ -699,7 +722,6 @@
 
       $('#food_stuff_energy_kcal').attr('value', $('#energy').attr('value'));
       $('#food_stuff_energy_kj').attr('value', $('#energy').attr('value') * kcal_to_kj);
-
     }
     else {
 

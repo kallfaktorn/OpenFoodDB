@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023121809) do
+ActiveRecord::Schema.define(:version => 20121025205500) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20121023121809) do
   end
 
   add_index "comments", ["food_stuff_id"], :name => "index_comments_on_food_stuff_id"
+
+  create_table "food_stuff_marks", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "food_stuff_mark_image_file_name"
+    t.string   "food_stuff_mark_image_content_type"
+    t.integer  "food_stuff_mark_image_file_size"
+    t.datetime "food_stuff_mark_image_updated_at"
+  end
 
   create_table "food_stuffs", :force => true do |t|
     t.string   "name",                              :null => false
