@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025205500) do
+ActiveRecord::Schema.define(:version => 20121028201257) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20121025205500) do
     t.string   "food_stuff_image_content_type"
     t.integer  "food_stuff_image_file_size"
     t.datetime "food_stuff_image_updated_at"
+    t.text     "mark_names"
   end
 
   create_table "users", :force => true do |t|

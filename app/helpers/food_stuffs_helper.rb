@@ -15,4 +15,16 @@ module FoodStuffsHelper
   	end
   end
 
+  def mark_in_foodstuff(markName, foodStuffMarkNames)
+    names = foodStuffMarkNames.split(/,/)
+
+    for n in names do
+      if n == markName
+        return true
+      end
+    end
+
+    return false
+  end
+
 end

@@ -678,9 +678,9 @@
 
 
   <div style="float:left; width:150px; height:50px; overflow:auto; white-space:nowrap;">
-    <%@food_stuff_marks.each do|mark|%>
+    <% @food_stuff_marks.each do|mark| %>
       <%= content_tag :div, :id => "mark#{mark.id}", :style => 'width:25px; float:left;' do %>
-        <%= image_tag mark.food_stuff_mark_image.url(:thumb), class: "mark", onclick:"javascript:mark(mark#{mark.id}, #{mark.id});", alt:"test" %>
+        <%= image_tag mark.food_stuff_mark_image.url(:thumb), class: "mark", onclick:"javascript:mark(mark#{mark.id}, '#{mark.name}');", alt:"test" %>
       <%end%>
     <%end%>
   </div>
@@ -693,6 +693,7 @@
 
   <%= f.hidden_field :energy_kcal %>
   <%= f.hidden_field :energy_kj %>
+  <%= f.hidden_field :mark_names %>
 
 
   <div class="actions">
@@ -703,24 +704,30 @@
 
 <script type="text/javascript">
 
-  var listOfMarkIds = [];
+  var listOfMarkNames = [];
 
   var form = $('form').submit(function () {
     fill_form_with_energy_data();
+    fill_form_with_mark_names();
   });
 
-  function mark(htmlId, dbId) {
+  function mark(htmlId, dbName) {
 
-    var index = jQuery.inArray(dbId, listOfMarkIds);
+    var index = jQuery.inArray(dbName, listOfMarkNames);
 
     if(index == -1) {
-      listOfMarkIds.push(dbId);
+      listOfMarkNames.push(dbName);
       htmlId.style.backgroundColor = "#959595";
     }
     else {
-      listOfMarkIds.splice(index, 1);
+      listOfMarkNames.splice(index, 1);
       htmlId.style.backgroundColor = "";
     }
+  }
+
+  function fill_form_with_mark_names() {
+
+    $('#food_stuff_mark_names').attr('value', listOfMarkNames);
   }
 
   function fill_form_with_energy_data() {

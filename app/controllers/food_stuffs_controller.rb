@@ -13,6 +13,7 @@ class FoodStuffsController < ApplicationController
   # GET /food_stuffs/1.json
   def show
     @food_stuff = FoodStuff.find(params[:id])
+    @food_stuff_marks = FoodStuffMark.all
 
     @comment = Comment.new(:food_stuff => @food_stuff)
 

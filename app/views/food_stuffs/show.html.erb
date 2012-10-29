@@ -74,6 +74,12 @@
 
 <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
 
+<% @food_stuff_marks.each do |mark| %>
+  <% if mark_in_foodstuff(mark.name, @food_stuff.mark_names) %>
+    <%= image_tag mark.food_stuff_mark_image.url(:thumb) %>
+  <% end %>
+<% end %>
+
 <%= render :partial => 'comment', :collection => @food_stuff.comments %>
 
 <%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
