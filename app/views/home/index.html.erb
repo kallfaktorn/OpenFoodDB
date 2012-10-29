@@ -1,34 +1,35 @@
 
 
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="openfoodlogo">
+      <%= link_to image_tag('test3.jpg'); %>
+    </div>
 
-
-    <p align="middle">
-      <%= link_to image_tag('OpenFoodDBLogo.png'); %>
-    </p>
-
-<table align="center">
-  <tr>
-    <td>
+<div class="searchformDB">
+  
       <%= form_tag food_stuffs_path, :id => 'food_stuffs_form', :method => 'get', :remote => true do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag t(:Home_Index_Button_Search), :name => nil %>
+        <%= text_field_tag :search, params[:search], class: 'fields' %>
+        <%= submit_tag t(:Home_Index_Button_Search), :name => nil, class: 'buttonhov' %>
       <% end %>
-    </td>
-  </tr>
-</table>
+</div>
+
   <div id="food_stuffs", class="food_stuff_links">
   </div>
 
+<div class="socialcontainer">
+  <div class="fbicon"></div>
+  <div class="twittericon"></div>
+  <div class="youtube"></div>
+  <div class="linkedin"></div>
+  <div class="dropbox"></div>
+</div>
+
+
+<!--test-->
+<!--a href="#" class="button">search</a-->
+
 <script type="text/javascript">
+
   $('#food_stuffs_form').bind('ajax:success', function(evt, data) {
 
     var food_stuffs_div = $('#food_stuffs');

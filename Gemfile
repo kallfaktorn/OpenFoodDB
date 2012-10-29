@@ -28,6 +28,8 @@ gem "paperclip", "~> 3.1"
 
 gem 'thumbs_up'
 
+gem 'activeadmin'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

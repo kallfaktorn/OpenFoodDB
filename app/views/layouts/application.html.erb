@@ -8,7 +8,28 @@
   <%= csrf_meta_tags %>
   
 
-  <% if signed_in? %>
+  
+
+
+</head>
+<body>
+
+  
+
+  
+
+  <div id="container">
+    <header>
+      <div class="background">
+        <div class="locale">
+          <ul class="flags">
+            <%= link_to image_tag("english_flag.gif"), switch_locale('en') %>
+            <%= link_to image_tag("swedish_flag.gif"), switch_locale('se') %>
+          </ul>
+         </div> 
+    
+
+    <% if signed_in? %>
     <% if request.path_parameters == {:action=>"show", :controller=>"users", :id => "#{current_user.id}"} %>
     <% elsif request.path_parameters == {:controller=>"sessions", :action=>"show"} %>
     <% else %>
@@ -21,25 +42,24 @@
       <%= render 'layouts/sign_in_create_account' %>
     <% end %>
   <% end %>
+    </div>
+    <div class="headerline"></div>
+    </header>
+    
+    
 
-  <p class="alignleft">
-    <table>
-      <tr>
-        <td>
-          <%= link_to image_tag("english_flag.gif"), switch_locale('en') %>
-        </td>
-        <td>
-          <%= link_to image_tag("swedish_flag.gif"), switch_locale('se') %>
-        </td>
-      </tr>
-    </table>
-  </p>
+    <div id="main">
+      <%= yield %>
+    </div>
+    
+    <footer>
+      <div class="footnote">
+        <a href="http://additionalmind.se">Additionalmind</a> & <a href="http://google.se">Mattias Petterson Copyright 2012</a></div>
+    </footer>
+  </div> <!--! end of #container -->
 
 
-</head>
-<body>
 
-<%= yield %>
 
 </body>
 </html>
