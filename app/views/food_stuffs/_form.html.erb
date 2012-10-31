@@ -690,6 +690,25 @@
   </br>
   </br>
 
+  <div class="field" id="ingredients" type="hidden">
+    
+  <% if @ingredients != [] %> 
+    <% @ingredients.each do |ing| %>
+      <p>
+        <%= label_tag "Ingredient: " %>
+        <%= text_field_tag "ingredient[name][]", ing.name, id:"ingredient#{ing.id}" %>
+      </p>
+    <% end %>
+  <% else %>
+      <label for="food_stuff_ingredient">Ingredient: </label>
+      <input name="ingredient[name][]" size="30" type="text" />
+  <% end %>
+  
+  
+   </div>
+
+  <%= button_tag 'Add ingredient', type:"button", onclick:"javascript:addIngredient();" %>
+
 
   <%= f.hidden_field :energy_kcal %>
   <%= f.hidden_field :energy_kj %>
@@ -747,6 +766,17 @@
       $('#food_stuff_energy_kj').attr('value', $('#energy').attr('value'));
       $('#food_stuff_energy_kcal').attr('value', $('#energy').attr('value') * kj_to_kcal);
     }
+  }
+
+  function addIngredient() {
+    var ingredientDiv = $('#ingredients');
+    
+    var ingredientLabel = "</br>" + "</br>" + "<label>" + "Ingredient: " + "</label>";
+    ingredientLabel = $(ingredientLabel).attr("id", "ing");
+    ingredientDiv.append(ingredientLabel);
+
+    var ingredientInput = "<input name='ingredient[name][]' size='30' type='text' />";
+    ingredientDiv.append(ingredientInput);
   }
 
 </script>

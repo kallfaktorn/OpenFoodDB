@@ -74,6 +74,8 @@
 
 <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
 
+<%= render :partial => 'ingredient', :collection => @food_stuff.ingredients %>
+
 <% @food_stuff_marks.each do |mark| %>
   <% if mark_in_foodstuff(mark.name, @food_stuff.mark_names) %>
     <%= image_tag mark.food_stuff_mark_image.url(:thumb) %>
