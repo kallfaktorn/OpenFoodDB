@@ -9,5 +9,5 @@ class IngredientsController < ApplicationController
     
   #  @ingredient = @food_stuff.ingredients.create(params_ingredient)
   #  redirect_to food_stuff_path(@food_stuff)
-  #end
+  end
 end
