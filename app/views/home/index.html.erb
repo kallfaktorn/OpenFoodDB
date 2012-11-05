@@ -37,13 +37,13 @@
     var food_stuffs = data;
 
     if(food_stuffs.length == 1) {
-      window.location.href = window.location.host + "/food_stuffs/" + 
+      window.location.href = "/food_stuffs/" + 
       food_stuffs[0].id + window.location.search;
     }
     else {
       for(i in food_stuffs) {
         var food_stuff_anchor = "<a>" + food_stuffs[i].name + "</a>";
-        var url = window.location.host + "/food_stuffs/" + food_stuffs[i].id +
+        var url = "/food_stuffs/" + food_stuffs[i].id +
          window.location.search;
          
          alert("window.location: " + window.location + "\n" +
