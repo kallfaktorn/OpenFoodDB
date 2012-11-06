@@ -24,19 +24,34 @@
       <% end %>
     </td>
   </tr>
+  <tr>
+    <td>
+      <%= label_tag t(:Home_Index_No_Results_Header), nil, :id => 'no_results_header' %>
+    </td>
+  </tr>
 </table>
   <div id="food_stuffs", class="food_stuff_links">
   </div>
 
 <script type="text/javascript">
+  $(document).ready(function() {
+    $('#no_results_header').hide();
+  }); 
+  
   $('#food_stuffs_form').bind('ajax:success', function(evt, data) {
 
     var food_stuffs_div = $('#food_stuffs');
     food_stuffs_div.empty();
 
     var food_stuffs = data;
+    
+    $('#no_results_header').hide();
 
-    if(food_stuffs.length == 1) {
+    if(food_stuffs.length == 0) {
+      $('#no_results_header').show();
+    }
+
+    else if(food_stuffs.length == 1) {
       window.location.href = "/food_stuffs/" + 
       food_stuffs[0].id + window.location.search;
     }

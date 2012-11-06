@@ -3,6 +3,7 @@
 
 se:
   Home_Index_Button_Search: "Sök"
+  Home_Index_No_Results_Header: "Inga resultat"
   Account_Link_Create_Account: "Skapa konto"
   Account_Link_Sign_in: "Logga in"
   Sign_in_Header_Sign_in: "Logga in"
