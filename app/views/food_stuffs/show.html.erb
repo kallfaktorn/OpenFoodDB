@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 <br />
-<%= link_to image_tag('Thumb up!', :border => 0), vote_up_food_stuff_path(@food_stuff), :remote => true, :id => "thumbs_up" %>
+<%= link_to image_tag('thumbs-up.png', :border => 0), vote_up_food_stuff_path(@food_stuff), :remote => true, :id => "thumbs_up" %>
 <label id="votes_id"><%= @food_stuff.votes_for %></label>
 <br />
 <br />
@@ -74,19 +74,29 @@
 
 <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
 
+<%= render :partial => 'ingredient', :collection => @food_stuff.ingredients %>
+
+<% @food_stuff_marks.each do |mark| %>
+  <% if mark_in_foodstuff(mark.name, @food_stuff.mark_names) %>
+    <%= image_tag mark.food_stuff_mark_image.url(:thumb) %>
+  <% end %>
+<% end %>
+
 <%= render :partial => 'comment', :collection => @food_stuff.comments %>
 
-<%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
-  <%= f.hidden_field :food_stuff_id %>
-
-  <div class="field">
-    <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
-    <%= f.text_area :body %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t(:FoodStuff_Show_Button_Post_Comment) %>
-  </div>
+<% if current_user != nil %>
+  <%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
+    <%= f.hidden_field :food_stuff_id %>
+  
+    <div class="field">
+      <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
+      <%= f.text_area :body %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit t(:FoodStuff_Show_Button_Post_Comment) %>
+    </div>
+  <% end %>
 <% end %>
 
 

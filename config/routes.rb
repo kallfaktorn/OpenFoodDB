@@ -6,12 +6,15 @@ Openfooddb::Application.routes.draw do
 
   resources :food_stuffs do 
     resources :comments
+    resources :ingredients
     member do
       get :vote_up
     end
   end
 
   resources :users
+
+  resources :food_stuff_marks
 
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -29,14 +32,12 @@ Openfooddb::Application.routes.draw do
   match '/users/new/' => 'users#new'
   match '/users/:id/' => 'users#show'
 
-
-
-
-
   match 'food_stuffs/new' => 'food_stuffs#new'
   match 'food_stuffs/:id/' => 'food_stuffs#show'
   match 'food_stuffs/:id/edit' => 'food_stuffs#edit'
-  
+
+  match 'food_stuff_marks/new' => 'food_stuff_marks#new'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,5 +1,5 @@
 class FoodStuffsController < ApplicationController
- 
+
   def index
     search_string = "%" + params[:search] + "%"
     @food_stuffs = FoodStuff.find(:all, :conditions => ['name LIKE ?', search_string])
@@ -13,6 +13,7 @@ class FoodStuffsController < ApplicationController
   # GET /food_stuffs/1.json
   def show
     @food_stuff = FoodStuff.find(params[:id])
+    @food_stuff_marks = FoodStuffMark.all
 
     @comment = Comment.new(:food_stuff => @food_stuff)
 
@@ -26,6 +27,8 @@ class FoodStuffsController < ApplicationController
   # GET /food_stuffs/new.json
   def new
     @food_stuff = FoodStuff.new
+    @food_stuff_marks = FoodStuffMark.find(:all)
+    @ingredients = []
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +38,20 @@ class FoodStuffsController < ApplicationController
   # GET /food_stuffs/1/edit
   def edit
     @food_stuff = FoodStuff.find(params[:id])
+    @food_stuff_marks = FoodStuffMark.find(:all)
+    @ingredients = @food_stuff.ingredients
   end
 
   # POST /food_stuffs
   # POST /food_stuffs.json
   def create
-    @food_stuff = current_user.food_stuffs.build(params[:food_stuff])
+    @food_stuff = current_user.food_stuffs.create(params[:food_stuff])
+
+    for n in params[:ingredient][:name] do
+      unless n.blank?
+        @food_stuff.ingredients.create(name: n)
+      end
+    end
 
     respond_to do |format|
       if @food_stuff.save
@@ -57,6 +68,16 @@ class FoodStuffsController < ApplicationController
   # PUT /food_stuffs/1.json
   def update
     @food_stuff = FoodStuff.find(params[:id])
+
+    for @ingredient in @food_stuff.ingredients do
+      @ingredient.destroy
+    end
+
+    for n in params[:ingredient][:name] do
+      unless n.blank?
+        @food_stuff.ingredients.create(name: n)
+      end
+    end
 
     respond_to do |format|
       if @food_stuff.update_attributes(params[:food_stuff])

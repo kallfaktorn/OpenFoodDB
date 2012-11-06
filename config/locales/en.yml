@@ -2,7 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  Home_Index_Button_Search: "MySearch"
+  Home_Index_Button_Search: "Search"
+  Home_Index_No_Results_Header: "No results"
   Account_Link_Create_Account: "Create account"
   Account_Link_Sign_in: "Sign in"
   Sign_in_Header_Sign_in: "Sign in"

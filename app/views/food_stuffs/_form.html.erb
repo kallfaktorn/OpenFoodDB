@@ -661,7 +661,7 @@
         <%= f.file_field :logo %>
       </td>
     </tr>
-     <tr>
+    <tr>
       <td>
         <%= f.label t(:FoodStuff_Image) %>
       </td>
@@ -670,23 +670,84 @@
       </td>
     </tr>
   </table>
+
+
+
+  </br>
+
+
+
+  <div style="float:left; width:150px; height:50px; overflow:auto; white-space:nowrap;">
+    <% @food_stuff_marks.each do|mark| %>
+      <%= content_tag :div, :id => "mark#{mark.id}", :style => 'width:25px; float:left;' do %>
+        <%= image_tag mark.food_stuff_mark_image.url(:thumb), class: "mark", onclick:"javascript:mark(mark#{mark.id}, '#{mark.name}');", alt:"test" %>
+      <%end%>
+    <%end%>
+  </div>
+
+  </br>
+  </br>
+  </br>
+  </br>
+
+  <div class="field" id="ingredients" type="hidden">
+    
+  <% if @ingredients != [] %> 
+    <% @ingredients.each do |ing| %>
+      <p>
+        <%= label_tag "Ingredient: " %>
+        <%= text_field_tag "ingredient[name][]", ing.name, id:"ingredient#{ing.id}" %>
+      </p>
+    <% end %>
+  <% else %>
+      <label for="food_stuff_ingredient">Ingredient: </label>
+      <input name="ingredient[name][]" size="30" type="text" />
+  <% end %>
   
+  
+   </div>
+
+  <%= button_tag 'Add ingredient', type:"button", onclick:"javascript:addIngredient();" %>
+
 
   <%= f.hidden_field :energy_kcal %>
   <%= f.hidden_field :energy_kj %>
+  <%= f.hidden_field :mark_names %>
 
 
   <div class="actions">
     <%= f.submit t(:FoodStuff_Edit_Button_Update_FoodStuff) %>
+    <%end%>
   </div>
-<% end %>
 
 
 <script type="text/javascript">
+
+  var listOfMarkNames = [];
+
   var form = $('form').submit(function () {
     fill_form_with_energy_data();
+    fill_form_with_mark_names();
   });
 
+  function mark(htmlId, dbName) {
+
+    var index = jQuery.inArray(dbName, listOfMarkNames);
+
+    if(index == -1) {
+      listOfMarkNames.push(dbName);
+      htmlId.style.backgroundColor = "#959595";
+    }
+    else {
+      listOfMarkNames.splice(index, 1);
+      htmlId.style.backgroundColor = "";
+    }
+  }
+
+  function fill_form_with_mark_names() {
+
+    $('#food_stuff_mark_names').attr('value', listOfMarkNames);
+  }
 
   function fill_form_with_energy_data() {
 
@@ -699,7 +760,6 @@
 
       $('#food_stuff_energy_kcal').attr('value', $('#energy').attr('value'));
       $('#food_stuff_energy_kj').attr('value', $('#energy').attr('value') * kcal_to_kj);
-
     }
     else {
 
@@ -707,5 +767,16 @@
       $('#food_stuff_energy_kcal').attr('value', $('#energy').attr('value') * kj_to_kcal);
     }
   }
-  
+
+  function addIngredient() {
+    var ingredientDiv = $('#ingredients');
+    
+    var ingredientLabel = "</br>" + "</br>" + "<label>" + "Ingredient: " + "</label>";
+    ingredientLabel = $(ingredientLabel).attr("id", "ing");
+    ingredientDiv.append(ingredientLabel);
+
+    var ingredientInput = "<input name='ingredient[name][]' size='30' type='text' />";
+    ingredientDiv.append(ingredientInput);
+  }
+
 </script>
