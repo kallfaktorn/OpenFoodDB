@@ -84,17 +84,19 @@
 
 <%= render :partial => 'comment', :collection => @food_stuff.comments %>
 
-<%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
-  <%= f.hidden_field :food_stuff_id %>
-
-  <div class="field">
-    <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
-    <%= f.text_area :body %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t(:FoodStuff_Show_Button_Post_Comment) %>
-  </div>
+<% if current_user != nil %>
+  <%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
+    <%= f.hidden_field :food_stuff_id %>
+  
+    <div class="field">
+      <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
+      <%= f.text_area :body %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit t(:FoodStuff_Show_Button_Post_Comment) %>
+    </div>
+  <% end %>
 <% end %>
 
 
