@@ -27,4 +27,19 @@ module FoodStuffsHelper
     return false
   end
 
+  def display_segment( node )
+
+    html = "<li>"
+    node_class = node.children.length == 0 ? "file" : "folder"
+    html << "<span class=\"#{node_class}\"><%= label_tag t(:FoodStuff_Image) %> <%= file_field_tag :food_stuff_image %></span>"
+    html << "<ul id=\"children_of_#{h(node.sid)}\">"
+    node.children.each{|child_node|
+
+      html << display_segment( child_node )
+    }
+    html << "</ul></li>"
+
+    render :inline =>
+      html
+  end
 end
