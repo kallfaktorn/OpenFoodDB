@@ -8,7 +8,9 @@
 <br />
 <br />
 
-<%= image_tag @food_stuff.logo.url(:medium) %><br />
+<% if @food_stuff.logo.exists? %>
+  <%= image_tag @food_stuff.logo.url(:medium) %><br />
+<% end %>
 <br />
 
 <%= column(t(:FoodStuff_Name), @food_stuff.name) %>
@@ -72,7 +74,9 @@
 <%= column(t(:FoodStuff_Zinc), @food_stuff.zinc) %>
 <%= column(t(:FoodStuff_Waste), @food_stuff.waste) %>
 
-<%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
+<% if @food_stuff.food_stuff_image.exists? %>
+  <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
+<% end %>
 
 <%= render :partial => 'ingredient', :collection => @food_stuff.ingredients %>
 

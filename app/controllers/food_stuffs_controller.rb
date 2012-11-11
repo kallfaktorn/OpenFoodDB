@@ -40,16 +40,6 @@ class FoodStuffsController < ApplicationController
     @food_stuff = FoodStuff.find(params[:id])
     @food_stuff_marks = FoodStuffMark.find(:all)
     @ingredients = @food_stuff.ingredients
-    
-    @root_node = Node.new
-    @root_node.sid = 0
-    @a = Node.new
-    @a.sid = 1
-    @a.children = []
-    @b = Node.new
-    @b.sid = 2
-    @b.children = []
-    @root_node.children = [@a, @b]
   end
 
   # POST /food_stuffs
