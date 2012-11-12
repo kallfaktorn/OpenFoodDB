@@ -1,14 +1,27 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  margin:0;
+  padding:0;
+}
+.header {
+  position: fixed;
+  width: 100%;
+  overflow:hidden;
+  background-repeat: repeat-x;
+  background-color: #ececec;
+}
 
 .alignleft {
 	float: left;
 }
 .alignright {
 	float: right;
+	margin-right:3px;
 }
 
 .food_stuff_links {
-  text-align:center
+  text-align: center;
 }
+
