@@ -14,13 +14,15 @@
     <p align="middle">
       <%= link_to image_tag('OpenFoodDBLogo.png'); %>
     </p>
+    
+    <br>
 
 <table align="center">
   <tr>
     <td>
       <%= form_tag food_stuffs_path, :id => 'food_stuffs_form', :method => 'get', :remote => true do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag t(:Home_Index_Button_Search), :name => nil %>
+        <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+        <%= submit_tag t(:Home_Index_Button_Search), :id => 'search_button', :name => nil %>
       <% end %>
     </td>
   </tr>
