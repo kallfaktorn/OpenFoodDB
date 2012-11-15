@@ -1,3 +1,38 @@
 // Place all the styles related to the FoodStuffs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container {
+  margin-left: 290px;
+  margin-right: 290px;
+}
+
+.hero-unit {
+  color: inherit;
+  background-color: #FFFFFF;
+  font-size: 12px;
+  text-align:center;
+  font-weight: 200;
+  line-height: 30px;
+  -webkit-border-radius: 25px;
+     -moz-border-radius: 25px;
+          border-radius: 25px
+}
+
+table.nutritionTable, td.nutritionTD, th.nutritionTH
+{
+border-collapse:collapse;
+border:1px solid #abcc8b;
+}
+th
+{
+background-color:#aae277;
+color:white;
+}
+
+tr.d0 td {
+  background-color: #f7fcf2; color: black;
+}
+tr.d1 td {
+  background-color: #ffffff; color: black;
+}

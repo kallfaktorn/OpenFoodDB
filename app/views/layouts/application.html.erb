@@ -6,9 +6,10 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
+
+
   <div class="header">
-  
+
   <% if signed_in? %>
     <% if request.path_parameters == {:action=>"show", :controller=>"users", :id => "#{current_user.id}"} %>
     <% elsif request.path_parameters == {:controller=>"sessions", :action=>"show"} %>
@@ -41,6 +42,7 @@
   <%= javascript_include_tag 'lib/jquery', 'jquery.treeview', 'custom' %>
   <%= stylesheet_link_tag 'jquery.treeview.css' %>
 
+ 
 </head>
 <body>
 
