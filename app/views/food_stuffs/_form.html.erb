@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <div class="container">
 
   <table>
     <tr>
@@ -283,7 +284,6 @@
   
 
 
-
   <div style="float:left; width:150px; height:50px; overflow:auto; white-space:nowrap;">
     <% @food_stuff_marks.each do|mark| %>
       <%= content_tag :div, :id => "mark#{mark.id}", :style => 'width:25px; float:left;' do %>
@@ -325,6 +325,8 @@
   <div class="actions">
     <%= f.submit t(:FoodStuff_Edit_Button_Update_FoodStuff) %>
     <%end%>
+  </div>
+
   </div>
 
 
