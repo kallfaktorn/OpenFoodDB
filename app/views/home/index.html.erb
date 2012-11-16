@@ -22,7 +22,7 @@
     <td>
       <%= form_tag food_stuffs_path, :id => 'food_stuffs_form', :method => 'get', :remote => true do %>
         <%= text_field_tag :search, params[:search], :id => 'search_field' %>
-        <%= submit_tag t(:Home_Index_Button_Search), :id => 'search_button', :name => nil %>
+        <%= submit_tag t(:Home_Index_Button_Search), :id => 'search_button', :class => 'custom_button', :name => nil %>
       <% end %>
     </td>
   </tr>

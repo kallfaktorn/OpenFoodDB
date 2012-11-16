@@ -53,8 +53,7 @@ body {
   border-color:#d0cfcf
 }
 
-#search_button {
-  width:60px;
+.custom_button {
   color:#707070;
   border-radius: 7px;
   border-style:solid;
@@ -75,11 +74,16 @@ body {
   );
 }
 
-#search_button:hover {
+#search_button {
+  width: 60px;
+}
+
+
+.custom_button:hover {
   border-color:#b2b1b1;
 }
 
-#search_button:active {
+.custom_button:active {
   border-color:#d0cfcf;
   
   background-image: linear-gradient(bottom, rgb(253,253,253) 37%, rgb(242,242,242) 100%);
