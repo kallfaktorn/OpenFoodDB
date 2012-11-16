@@ -36,3 +36,40 @@ tr.d0 td {
 tr.d1 td {
   background-color: #ffffff; color: black;
 }
+
+
+.comment-body {
+  width: 344px;
+  background-color: #dae2d2;
+}
+
+.comment-name {
+  float: left;
+  padding-left: 20px;
+  padding-top: 20px;  
+  font-size: 90%;
+  font-weight:bold;
+}
+
+.comment-date {
+  float: right;
+  padding-right: 20px;
+  padding-top: 20px;
+  font-size: 90%;
+}
+
+.comment-message {
+  padding-top:70px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  word-wrap:break-word;
+}
+
+.comment-color0 {
+  background-color: #DDF3C9
+}
+
+.comment-color1 {
+  background-color: #FEE0BF
+}

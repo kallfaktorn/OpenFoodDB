@@ -1,2 +1,9 @@
-<p><%= label_tag t(:FoodStuff_Comment_Name) %> <%= comment.name %></p>
-<p><%= label_tag t(:FoodStuff_Comment_Body) %> <%= comment.body %></p>
+<div class="comment-body">
+  <%= label_tag "", comment.name, :class => "comment-name" %> 
+  <%= label_tag "", comment.created_at, :class => "comment-date" %>
+  
+  <div class="comment-message">
+    <%= comment.body %>
+  </div>
+</div>
+<br/>

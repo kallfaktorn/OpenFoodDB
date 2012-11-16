@@ -1,5 +1,4 @@
 
-
 <br />
 <br />
 <br />
@@ -8,12 +7,10 @@
   
 <%= link_to image_tag('thumbs-up.png', :border => 0), vote_up_food_stuff_path(@food_stuff), :remote => true, :id => "thumbs_up" %>
 <label id="votes_id"><%= @food_stuff.votes_for %></label>
+
 <br />
 <br />
 <br />
-
-
-
 
 <% if @food_stuff.logo.exists? %>
   <%= image_tag @food_stuff.logo.url(:medium) %>
@@ -88,7 +85,8 @@
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Zinc), :amount => @food_stuff.zinc, :unit => "g" } %>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Waste), :amount => @food_stuff.waste, :unit => "g" } %>
   </table>
-
+  
+  <br />
 
 <% if @food_stuff.food_stuff_image.exists? %>
   <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
@@ -145,5 +143,18 @@
       if($(this).attr('class') == "NutritionTableRow")
         $(this).attr('class', "NutritionTableRow " + d);
     });
+    
+    i = 0;
+    $("div").each(function() {
+      
+      if($(this).attr('class') == "comment-body") {
+      
+        i = (i + 1) % 2;
+        var c = 'comment-color' + i;
+        
+        $(this).attr('class', "comment-body " + c);
+      }
+    });
+   
   });
 </script>
