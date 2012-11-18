@@ -37,10 +37,11 @@ tr.d1 td {
   background-color: #ffffff; color: black;
 }
 
-
 .comment-body {
   width: 344px;
-  background-color: #dae2d2;
+  border-style:solid;
+  border-width:1px;
+  border-color:#d0cfcf;
 }
 
 .comment-name {
@@ -72,4 +73,24 @@ tr.d1 td {
 
 .comment-color1 {
   background-color: #FEE0BF
+}
+
+.ingredients-body {
+  width: 344px;
+  background-color: #ffb86a;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #f79d35
+}
+
+.ingredients-title {
+  padding-left: 1em;
+  padding-right: 1em;
+  word-wrap: break-word;
+}
+
+.ingredients-list {
+  padding-left: 2em;
+  padding-right: 1em;
+  word-wrap: break-word;
 }

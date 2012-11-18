@@ -5,9 +5,6 @@
 
 <div class="container">
   
-<%= link_to image_tag('thumbs-up.png', :border => 0), vote_up_food_stuff_path(@food_stuff), :remote => true, :id => "thumbs_up" %>
-<label id="votes_id"><%= @food_stuff.votes_for %></label>
-
 <br />
 <br />
 <br />
@@ -94,7 +91,32 @@
 
 </div>
 
-<%= render :partial => 'ingredient', :collection => @food_stuff.ingredients %>
+
+
+<% if @food_stuff.ingredients.length > 0 %>
+  <div class="ingredients-body">
+    <div class="ingredients-title">
+      Ingredients:
+    </div>
+    <div class="ingredients-list">
+      <% if @food_stuff.ingredients.length == 1 %>
+        <%= ingredients.first.name %>
+      <% else %>
+        <% @food_stuff.ingredients.each_with_index do |ingredient, index| %>
+          <% if index > 0 %>
+            <%= ", " %>
+          <% end %>
+          
+          <%= ingredient.name %>
+          
+        <% end %>      
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<br/>
+<br/>
 
 <% @food_stuff_marks.each do |mark| %>
   <% if mark_in_foodstuff(mark.name, @food_stuff.mark_names) %>
@@ -144,17 +166,17 @@
         $(this).attr('class', "NutritionTableRow " + d);
     });
     
-    i = 0;
-    $("div").each(function() {
+   // i = 0;
+    //$("div").each(function() {
       
-      if($(this).attr('class') == "comment-body") {
+    //  if($(this).attr('class') == "comment-body") {
       
-        i = (i + 1) % 2;
-        var c = 'comment-color' + i;
+     //   i = (i + 1) % 2;
+      //  var c = 'comment-color' + i;
         
-        $(this).attr('class', "comment-body " + c);
-      }
-    });
+      //  $(this).attr('class', "comment-body " + c);
+     // }
+   // });
    
   });
 </script>
