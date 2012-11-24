@@ -21,13 +21,14 @@
 
 table.nutritionTable, td.nutritionTD, th.nutritionTH
 {
-border-collapse:collapse;
-border:1px solid #abcc8b;
+  width: 550px;
+  border-collapse:collapse;
+  border:1px solid #abcc8b;
 }
 th
 {
-background-color:#aae277;
-color:white;
+  background-color:#aae277;
+  color:white;
 }
 
 tr.d0 td {
@@ -38,7 +39,7 @@ tr.d1 td {
 }
 
 .comment-body {
-  width: 344px;
+  width: 550px;
   border-style:solid;
   border-width:1px;
   border-color:#d0cfcf;
@@ -76,7 +77,7 @@ tr.d1 td {
 }
 
 .ingredients-body {
-  width: 344px;
+  width: 550px;
   background-color: #ffb86a;
   border-style: solid;
   border-width: 1px;
