@@ -1,6 +1,8 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 body {
   margin: 0;
   padding: 0;
@@ -72,6 +74,10 @@ body {
     color-stop(0.37, rgb(242,242,242)),
     color-stop(1, rgb(253,253,253))
   );
+}
+
+.custom_file_field {
+  color: #707070;
 }
 
 #search_button {

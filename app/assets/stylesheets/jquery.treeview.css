@@ -10,5 +10,5 @@
 
 
 .filetree span.folder, .filetree span.file { padding: 1px 0 1px 16px; display: block; }
-.filetree span.folder { background: url(../images/jquery.treeview.images/minus.gif) 0px 5px no-repeat; }
-.filetree li.expandable span.folder { background: url(../images/jquery.treeview.images/plus.gif) 0px 5px no-repeat; }
+.filetree span.folder { background: url(../images/jquery.treeview.images/minus.png) 0px 5px no-repeat; }
+.filetree li.expandable span.folder { background: url(../images/jquery.treeview.images/plus.png) 0px 5px no-repeat; }
