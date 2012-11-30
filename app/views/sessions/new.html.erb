@@ -5,11 +5,11 @@
     <div class="span6 offset3">
       <%= form_for(:session, url: sessions_path) do |f| %>
       
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
   
         <table>
           
@@ -21,7 +21,7 @@
               <%= f.text_field :email %>
             </td>
           </tr>
-  
+
           <tr>
             <td>
               <%= f.label t(:Sign_in_Label_Password) %>
@@ -33,13 +33,13 @@
   
           <tr>
             <td>
-              <%= f.submit t(:Sign_in_Button_Sign_in), class: "btn btn-large btn-primary" %>
+              <%= f.submit t(:Sign_in_Button_Sign_in), class: "custom_button" %>
             </td>
           </tr>
   
         </table>
       <% end %>
-  
+
       <p><%= t(:Sign_in_Text_New_user) %> <%= link_to t(:Sign_in_Link_Sign_up_now), signup_path %></p>
     </div>
   </div>
