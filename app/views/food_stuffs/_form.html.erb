@@ -191,6 +191,22 @@
             <%= f.text_field :vendor, :class => "field_width" %>
           </td>
         </tr>
+        <tr>
+          <td align="left">
+            <%= f.label "Days until expiration when unopened" %>
+          </td>
+          <td align="middle">
+            <%= f.text_field :expiration_date_unopened, :class => "field_width" %>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            <%= f.label "Days until expiration when broached" %>
+          </td>
+          <td align="middle">
+            <%= f.text_field :expiration_date_broached, :class => "field_width" %>
+          </td>
+        </tr>
       </table>
      
       

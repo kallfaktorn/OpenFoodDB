@@ -137,6 +137,24 @@
         <% end %>
       <% end %>
     <% end %>
+    
+    <% if @food_stuff.expiration_date_unopened != nil %>
+      <%= content_tag :tr, :class => "InformationTableRow" do %>
+        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+        <%= "Days until expiration when unopened: " %>
+        <%= @food_stuff.expiration_date_unopened %>
+        <% end %>
+      <% end %>
+    <% end %>
+    
+    <% if @food_stuff.expiration_date_broached != nil %>
+      <%= content_tag :tr, :class => "InformationTableRow" do %>
+        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+        <%= "Days until expiration when broached: " %>
+        <%= @food_stuff.expiration_date_broached %>
+        <% end %>
+      <% end %>
+    <% end %>
   </table>
 
 <% if @food_stuff.food_stuff_image.exists? %>
