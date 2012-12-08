@@ -3,10 +3,12 @@ class FoodStuff < ActiveRecord::Base
   belongs_to :user
   has_many :comments
   has_many :ingredients
+  has_many :retailers
 
   validates :name, presence: true, length: { minimum: 1 }, :uniqueness => true
 
   accepts_nested_attributes_for :ingredients, :allow_destroy => true
+  accepts_nested_attributes_for :retailers, :allow_destroy => true
 
 
   # Paperclip

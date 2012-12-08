@@ -3,6 +3,7 @@ Openfooddb::Application.routes.draw do
   resources :food_stuffs do 
     resources :comments
     resources :ingredients
+    resources :retailers
     member do
       get :vote_up
     end

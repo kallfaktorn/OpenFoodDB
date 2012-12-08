@@ -27,8 +27,14 @@ class FoodStuffsController < ApplicationController
   # GET /food_stuffs/new.json
   def new
     @food_stuff = FoodStuff.new
+
     @food_stuff_marks = FoodStuffMark.find(:all)
+    if @food_stuff_marks == nil
+      @food_stuff_marks = []
+    end
+
     @ingredients = []
+    @retailers = []
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +46,7 @@ class FoodStuffsController < ApplicationController
     @food_stuff = FoodStuff.find(params[:id])
     @food_stuff_marks = FoodStuffMark.find(:all)
     @ingredients = @food_stuff.ingredients
+    @retailers = @food_stuff.retailers
   end
 
   # POST /food_stuffs
@@ -50,6 +57,12 @@ class FoodStuffsController < ApplicationController
     for n in params[:ingredient][:name] do
       unless n.blank?
         @food_stuff.ingredients.create(name: n)
+      end
+    end
+    
+    for n in params[:retailer][:name] do
+      unless n.blank?
+        @food_stuff.retailers.create(name: n)
       end
     end
 
@@ -73,9 +86,19 @@ class FoodStuffsController < ApplicationController
       @ingredient.destroy
     end
 
+    for @retailer in @food_stuff.retailers do
+      @retailer.destroy
+    end
+
     for n in params[:ingredient][:name] do
       unless n.blank?
         @food_stuff.ingredients.create(name: n)
+      end
+    end
+
+    for n in params[:retailer][:name] do
+      unless n.blank?
+        @food_stuff.retailers.create(name: n)
       end
     end
 

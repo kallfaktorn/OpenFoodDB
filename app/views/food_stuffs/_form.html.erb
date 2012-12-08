@@ -243,8 +243,27 @@
 
     </div>
 
-
     <%= button_tag 'Add ingredient', type:"button", onclick:"javascript:addIngredient();", class:"custom_button" %>
+
+
+
+    <div class="field" id="retailers" type="hidden">
+
+      <% if @retailers != [] %>
+        <% @retailers.each do |ret| %>
+          <p>
+            <%= label_tag "Retailer: " %>
+            <%= text_field_tag "retailer[name][]", ret.name, id:"retailer#{ret.id}" %>
+          </p>
+        <% end %>
+      <% else %>
+          <label for="food_stuff_retailer">Retailer: </label>
+          <input name="retailer[name][]" size="30" type="text" />
+      <% end %>
+
+    </div>
+
+    <%= button_tag 'Add retailer', type:"button", onclick:"javascript:addRetailer();", class:"custom_button" %>
 
     </br>
     </br>
@@ -260,9 +279,9 @@
       <%= f.submit t(:FoodStuff_Edit_Button_Update_FoodStuff), class:"custom_button" %>
       <% end %>
     </div>
-    
-   
-    
+
+
+
 </div>
 
   </div>
@@ -345,6 +364,17 @@
 
     var ingredientInput = "<input name='ingredient[name][]' size='30' type='text' />";
     ingredientDiv.append(ingredientInput);
+  }
+
+  function addRetailer() {
+    var retailerDiv = $('#retailers');
+
+    var retailerLabel = "</br>" + "</br>" + "<label>" + "Retailer: " + "</label>";
+    retailerLabel = $(retailerLabel).attr("id", "ret");
+    retailerDiv.append(retailerLabel);
+
+    var retailerInput = "<input name='retailer[name][]' size='30' type='text' />";
+    retailerDiv.append(retailerInput);
   }
 
 </script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029170630) do
+ActiveRecord::Schema.define(:version => 20121205085349) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -114,6 +114,15 @@ ActiveRecord::Schema.define(:version => 20121029170630) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "retailers", :force => true do |t|
+    t.string   "name"
+    t.integer  "food_stuff_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "retailers", ["food_stuff_id"], :name => "index_retailers_on_food_stuff_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

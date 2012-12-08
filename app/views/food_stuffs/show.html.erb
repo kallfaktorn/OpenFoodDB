@@ -84,36 +84,61 @@
   </table>
   
   <br />
+  
+  <table class="informationTable">
+    <tr>
+      <th class="informationTH">Information </th>
+    </tr>
+    <tr class="InformationTableRow">
+      <td class="informationTD" align="left">
+        <%= "Ingredients: " %>
+        <% if @food_stuff.ingredients.length > 0 %>
+          <% if @food_stuff.ingredients.length == 1 %>
+            <%= @food_stuff.ingredients.first.name %>
+          <% else %>
+            <% @food_stuff.ingredients.each_with_index do |ingredient, index| %>
+              <% if index > 0 %>
+                <%= ", " %>
+              <% end %>
+
+              <%= ingredient.name %>
+
+            <% end %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <tr class="InformationTableRow">
+      <td class="informationTD" align="left">
+        <%= "Retailers: " %>
+        <% if @food_stuff.retailers.length > 0 %>
+          <% if @food_stuff.retailers.length == 1 %>
+            <%= @food_stuff.retailers.first.name %>
+          <% else %>
+            <% @food_stuff.retailers.each_with_index do |retailer, index| %>
+              <% if index > 0 %>
+                <%= ", " %>
+              <% end %>
+
+              <%= retailer.name %>
+
+            <% end %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
 
 <% if @food_stuff.food_stuff_image.exists? %>
-  <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br /> 
+  <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
 <% end %>
 
 </div>
 
 
 
-<% if @food_stuff.ingredients.length > 0 %>
-  <div class="ingredients-body">
-    <div class="ingredients-title">
-      Ingredients:
-    </div>
-    <div class="ingredients-list">
-      <% if @food_stuff.ingredients.length == 1 %>
-        <%= ingredients.first.name %>
-      <% else %>
-        <% @food_stuff.ingredients.each_with_index do |ingredient, index| %>
-          <% if index > 0 %>
-            <%= ", " %>
-          <% end %>
-          
-          <%= ingredient.name %>
-          
-        <% end %>      
-      <% end %>
-    </div>
-  </div>
-<% end %>
+
+
 
 <br/>
 <br/>
@@ -129,7 +154,7 @@
 <% if current_user != nil %>
   <%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
     <%= f.hidden_field :food_stuff_id %>
-  
+
     <div class="field">
       <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
       <%= f.text_area :body, :style => "width:550px"%>
@@ -162,21 +187,15 @@
       
       i = (i + 1) % 2;
       var d = 'd' + i;
+      var e = 'e' + i;
+      
       if($(this).attr('class') == "NutritionTableRow")
         $(this).attr('class', "NutritionTableRow " + d);
+        
+      if($(this).attr('class') == "InformationTableRow")
+        $(this).attr('class', "InformationTableRow " + e);
     });
     
-   // i = 0;
-    //$("div").each(function() {
-      
-    //  if($(this).attr('class') == "comment-body") {
-      
-     //   i = (i + 1) % 2;
-      //  var c = 'comment-color' + i;
-        
-      //  $(this).attr('class', "comment-body " + c);
-     // }
-   // });
    
   });
 </script>

@@ -25,7 +25,7 @@ table.nutritionTable, td.nutritionTD, th.nutritionTH
   border-collapse: collapse;
   border: 1px solid #abcc8b;
 }
-th
+th.nutritionTH
 {
   background-color:#aae277;
   color:white;
@@ -36,6 +36,24 @@ tr.d0 td {
 }
 tr.d1 td {
   background-color: #ffffff; color: black;
+}
+
+table.informationTable, td.informationTD, th.informationTH
+{
+  width: 550px;
+  border-collapse: collapse;
+  border: 1px solid #f79d35;
+}
+th.informationTH
+{
+  background-color:#ffb86a;
+  color:white;
+}
+tr.e0 td {
+  background-color: #ffffff; color: black;
+}
+tr.e1 td {
+  background-color: #fff5eb; color: black;
 }
 
 .expandedTable {
