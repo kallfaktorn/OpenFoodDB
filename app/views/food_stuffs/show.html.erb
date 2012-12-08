@@ -128,6 +128,15 @@
         <% end %>
       <% end %>
     <% end %>
+    
+    <% if @food_stuff.vendor != nil %>
+      <%= content_tag :tr, :class => "InformationTableRow" do %>
+        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+        <%= "Vendor: " %>
+        <%= @food_stuff.vendor %>
+        <% end %>
+      <% end %>
+    <% end %>
   </table>
 
 <% if @food_stuff.food_stuff_image.exists? %>
