@@ -157,16 +157,11 @@
     <% end %>
   </table>
 
-<% if @food_stuff.food_stuff_image.exists? %>
-  <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
-<% end %>
+  <% if @food_stuff.food_stuff_image.exists? %>
+    <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
+  <% end %>
 
 </div>
-
-
-
-
-
 
 <br/>
 <br/>
@@ -176,6 +171,10 @@
     <%= image_tag mark.food_stuff_mark_image.url(:thumb) %>
   <% end %>
 <% end %>
+
+<br />
+<br />
+
 
 <%= render :partial => 'comment', :collection => @food_stuff.comments %>
 
@@ -207,12 +206,12 @@
   $('#thumbs_up').bind('ajax:success', function(evt, data) {
   	$('#votes_id').text(data);
   });
-  
+
   $(document).ready(function() {
 
     var i = 0;
     $("tr").each(function( j ) {
-      
+
       i = (i + 1) % 2;
       var d = 'd' + i;
       var e = 'e' + i;

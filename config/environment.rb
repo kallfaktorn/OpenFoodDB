@@ -5,3 +5,4 @@ require File.expand_path('../application', __FILE__)
 Openfooddb::Application.initialize!
 
 Paperclip.options[:command_path] = "/usr/bin/"
+
