@@ -1,0 +1,58 @@
+<% provide(:title, t(:Sign_up_Tab_title_Sign_up)) %>
+<h1><%= t(:Sign_up_Header_Sign_up) %></h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+
+
+    <table>
+
+      <tr>
+        <td>
+          <%= f.label t(:Sign_up_Label_Name) %>
+        </td>
+        <td>
+          <%= f.text_field :name %>
+        </td>
+      </tr>
+   
+
+      <tr>
+        <td>
+          <%= f.label t(:Sign_up_Label_Email) %>
+        </td>
+        <td>
+          <%= f.text_field :email %>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <%= f.label t(:Sign_up_Label_Password) %>
+        </td>
+        <td>
+          <%= f.password_field :password %>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>
+          <%= f.label t(:Sign_up_Label_Confirmation) %>
+        </td>
+        <td>
+          <%= f.password_field :password_confirmation %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= f.submit t(:Sign_up_Button_Create_my_account), class: "btn btn-large btn-primary" %>
+        </td>
+      </tr>
+    </table>
+
+    <% end %>
+  </div>
+</div>

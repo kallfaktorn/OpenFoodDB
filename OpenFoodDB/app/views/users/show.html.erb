@@ -1,0 +1,26 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </td>
+  </tr>
+</table>
+
+<p class="alignleft"><%= link_to t(:User_Show_Link_Add_foodstuff), new_food_stuff_path %></p>
+<br />
+<br />
+
+<p><%= label_tag t(:User_Show_Label_FoodStuffs_added_by) %><strong><%= @user.name %></strong></p>
+
+<% @food_stuffs.each do |f| %>
+  <%= link_to f.name, f %> <%= link_to t(:Button_Edit), edit_food_stuff_path(f) %>
+  <br />
+<% end %>
+
+<br />
+<br />
+<%= link_to t(:User_Show_Label_Sign_out), signout_path, method: "delete" %>
+<br />
+<%= link_to t(:Button_Home), home_index_path %>

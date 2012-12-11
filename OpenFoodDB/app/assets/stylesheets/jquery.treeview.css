@@ -1,0 +1,35 @@
+.treeview, .treeview ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul {
+	background-color: white;
+	margin-top: 4px;
+}
+
+.treeview li { 
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected {
+	background-color: #eee;
+}
+
+#treecontrol { margin: 1em 0; display: none; }
+
+.treeview .expandable-hitarea { background-position: -80px -3px; }
+
+
+.treeview .placeholder {
+	background: url(../images/jquery.treeview.images/ajax-loader.gif) 0 0 no-repeat;
+	height: 16px;
+	width: 16px;
+	display: block;
+}
+
+.filetree span.folder, .filetree span.file { padding: 1px 0 1px 16px; display: block; }
+.filetree span.folder { background: url(../images/jquery.treeview.images/minus.gif) 0 0 no-repeat; }
+.filetree li.expandable span.folder { background: url(../images/jquery.treeview.images/plus.gif) 0 0 no-repeat; }

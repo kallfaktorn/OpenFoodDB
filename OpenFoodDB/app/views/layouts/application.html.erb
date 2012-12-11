@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Openfooddb</title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+
+  <div class="header">
+
+  <% if signed_in? %>
+    <% if request.path_parameters == {:action=>"show", :controller=>"users", :id => "#{current_user.id}"} %>
+    <% elsif request.path_parameters == {:controller=>"sessions", :action=>"show"} %>
+    <% else %>
+      <%= render 'layouts/greet_user' %>
+    <% end %>
+  <% else %>
+    <% if request.path_parameters == {:controller=>"sessions", :action=>"new"} %>
+    <% elsif request.path_parameters == {:controller=>"users", :action=>"new"} %>
+    <% else %>
+      <%= render 'layouts/sign_in_create_account' %>
+    <% end %>
+  <% end %>
+
+
+  <div class="alignleft">
+    <table>
+      <tr>
+        <td>
+          <%= link_to image_tag("english_flag.gif"), switch_locale('en') %>
+        </td>
+        <td>
+          <%= link_to image_tag("swedish_flag.gif"), switch_locale('se') %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  </div>
+
+  <%= javascript_include_tag 'lib/jquery', 'jquery.treeview', 'custom' %>
+  <%= stylesheet_link_tag 'jquery.treeview.css' %>
+
+ 
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

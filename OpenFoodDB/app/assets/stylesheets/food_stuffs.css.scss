@@ -1,0 +1,97 @@
+// Place all the styles related to the FoodStuffs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container {
+  margin-left: 290px;
+  margin-right: 290px;
+}
+
+.hero-unit {
+  color: inherit;
+  background-color: #FFFFFF;
+  font-size: 12px;
+  text-align:center;
+  font-weight: 200;
+  line-height: 30px;
+  -webkit-border-radius: 25px;
+     -moz-border-radius: 25px;
+          border-radius: 25px
+}
+
+table.nutritionTable, td.nutritionTD, th.nutritionTH
+{
+  width: 550px;
+  border-collapse:collapse;
+  border:1px solid #abcc8b;
+}
+th
+{
+  background-color:#aae277;
+  color:white;
+}
+
+tr.d0 td {
+  background-color: #f7fcf2; color: black;
+}
+tr.d1 td {
+  background-color: #ffffff; color: black;
+}
+
+.comment-body {
+  width: 550px;
+  border-style:solid;
+  border-width:1px;
+  border-color:#d0cfcf;
+}
+
+.comment-name {
+  float: left;
+  padding-left: 20px;
+  padding-top: 20px;  
+  font-size: 90%;
+  font-weight:bold;
+}
+
+.comment-date {
+  float: right;
+  padding-right: 20px;
+  padding-top: 20px;
+  font-size: 90%;
+}
+
+.comment-message {
+  padding-top:70px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  word-wrap:break-word;
+}
+
+.comment-color0 {
+  background-color: #DDF3C9
+}
+
+.comment-color1 {
+  background-color: #FEE0BF
+}
+
+.ingredients-body {
+  width: 550px;
+  background-color: #ffb86a;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #f79d35
+}
+
+.ingredients-title {
+  padding-left: 1em;
+  padding-right: 1em;
+  word-wrap: break-word;
+}
+
+.ingredients-list {
+  padding-left: 2em;
+  padding-right: 1em;
+  word-wrap: break-word;
+}

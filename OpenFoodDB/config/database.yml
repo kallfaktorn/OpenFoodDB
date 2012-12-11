@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: db/openfooddb_development
+  pool: 5
+  username: postgres
+  password:
+
+test: &TEST
+  adapter: postgresql
+  encoding: utf8
+  database: db/openfooddb_test
+  pool: 5
+  username: postgres
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: db/openfooddb_production
+  pool: 5
+  username: postgres
+  password:
