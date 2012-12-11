@@ -89,10 +89,11 @@
     <tr>
       <th class="informationTH">Information </th>
     </tr>
-    <tr class="InformationTableRow">
-      <td class="informationTD" align="left">
-        <%= "Ingredients: " %>
-        <% if @food_stuff.ingredients.length > 0 %>
+    
+    <% if @food_stuff.ingredients.length > 0 %>
+      <%= content_tag :tr, :class => "InformationTableRow" do %>
+        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+          <%= "Ingredients: " %>
           <% if @food_stuff.ingredients.length == 1 %>
             <%= @food_stuff.ingredients.first.name %>
           <% else %>
@@ -106,8 +107,9 @@
             <% end %>
           <% end %>
         <% end %>
-      </td>
-    </tr>
+      <% end %>
+    <% end %>
+
     <% if @food_stuff.retailers.length > 0 %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
@@ -129,7 +131,7 @@
       <% end %>
     <% end %>
     
-    <% if @food_stuff.vendor != nil %>
+    <% if @food_stuff.vendor.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
         <%= "Vendor: " %>
@@ -138,7 +140,7 @@
       <% end %>
     <% end %>
     
-    <% if @food_stuff.expiration_date_unopened != nil %>
+    <% if @food_stuff.expiration_date_unopened.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
         <%= "Days until expiration when unopened: " %>
@@ -147,7 +149,7 @@
       <% end %>
     <% end %>
     
-    <% if @food_stuff.expiration_date_broached != nil %>
+    <% if @food_stuff.expiration_date_broached.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
         <%= "Days until expiration when broached: " %>
