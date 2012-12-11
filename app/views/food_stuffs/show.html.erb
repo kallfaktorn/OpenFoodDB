@@ -30,6 +30,15 @@
       <% end %>
     <% end %>
     
+    <% if @food_stuff.bar_code_number.blank? == false %>
+      <%= content_tag :tr, :class => "InformationTableRow" do %>
+        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+          <%= "Bar code number: " %>
+          <%= @food_stuff.bar_code_number %>
+        <% end %>
+      <% end %>
+    <% end %>
+    
     
     <% if @food_stuff.ingredients.length > 0 %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>

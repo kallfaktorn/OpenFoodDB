@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121208182944) do
+ActiveRecord::Schema.define(:version => 20121211164211) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20121208182944) do
     t.string   "vendor"
     t.string   "expiration_date_unopened"
     t.string   "expiration_date_broached"
+    t.string   "bar_code_number"
   end
 
   create_table "ingredients", :force => true do |t|
