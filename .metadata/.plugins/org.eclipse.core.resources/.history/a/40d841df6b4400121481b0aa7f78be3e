@@ -41,7 +41,7 @@
         <%= f.label t(:FoodStuff_Protein) %>
       </td>
       <td>
-        <%= f.number_field :protein, :step => "0.01",werexzw %>
+        <%= f.number_field :protein, :step => "0.01", %>
       </td>
       <td>
         <label>g</label>
@@ -134,7 +134,6 @@
           <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Monosaccharides), :number =>  :monosaccharides, :unit => "g" } %>
           <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Disaccharides), :number =>  :disaccharides, :unit => "g" } %>
           <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Sackaros), :number =>  :sackaros, :unit => "g" } %>
-          <%= render :partial => 'item', :locals => {:f => f, :label => "Lactose", :number =>  :lactose, :unit => "g" } %>
           <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Whole_grain_total), :number =>  :whole_grain_total, :unit => "g" } %>
         </table>
       </ul>

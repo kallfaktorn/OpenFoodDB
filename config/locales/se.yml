@@ -61,6 +61,7 @@ se:
   FoodStuff_Monosaccharides: "Monosackarider"
   FoodStuff_Disaccharides: "Disackarider"
   FoodStuff_Sackaros: "Sackaros"
+  FoodStuff_Lactose: "Laktos"
   FoodStuff_Whole_grain_total: "Fullkorn totalt"
   FoodStuff_Total_saturated_fatty_acids: "Summa mättade fettsyror"
   FoodStuff_Fatty_acid_40_100: "Fettsyra 4:0-10:0"
