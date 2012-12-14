@@ -114,12 +114,12 @@
   <br />
   <br />
   <br />
-
+  
   <table class="nutritionTable">
     <tr>
-      <th class="nutritionTH">Nutrient</th>
-      <th class="nutritionTH">Amount</th>
-      <th class="nutritionTH">Unit</th>
+      <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Nutrient) %></th>
+      <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Amount) %></th>
+      <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Unit) %></th>
     </tr>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Energy_kcal), :amount => @food_stuff.energy_kcal, :unit => "g" } %>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Energy_kj), :amount => @food_stuff.energy_kj, :unit => "g" } %>
