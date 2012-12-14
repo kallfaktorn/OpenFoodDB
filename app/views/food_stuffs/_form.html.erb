@@ -189,7 +189,7 @@
       <table class="expandedTable2">
         <tr>
           <td align="left">
-            <%= f.label "Bar code number" %>
+            <%= f.label t(:FoodStuff_Bar_Code) %>
           </td>
           <td align="middle">
             <%= f.text_field :bar_code_number, :class => "field_width" %>
@@ -197,7 +197,7 @@
         </tr>
         <tr>
           <td align="left">
-            <%= f.label "Vendor" %>
+            <%= f.label t(:FoodStuff_Vendor) %>
           </td>
           <td align="middle">
             <%= f.text_field :vendor, :class => "field_width" %>
@@ -205,7 +205,7 @@
         </tr>
         <tr>
           <td align="left">
-            <%= f.label "Days until expiration when unopened" %>
+            <%= f.label t(:FoodStuff_Expiration_Unopened) %>
           </td>
           <td align="middle">
             <%= f.text_field :expiration_date_unopened, :class => "field_width" %>
@@ -213,7 +213,7 @@
         </tr>
         <tr>
           <td align="left">
-            <%= f.label "Days until expiration when broached" %>
+            <%= f.label t(:FoodStuff_Expiration_Broached) %>
           </td>
           <td align="middle">
             <%= f.text_field :expiration_date_broached, :class => "field_width" %>
@@ -277,18 +277,18 @@
       <% if @ingredients != [] %> 
         <% @ingredients.each do |ing| %>
           <p>
-            <%= label_tag "Ingredient: " %>
+            <%= label_tag t(:FoodStuff_Ingredient) %>
             <%= text_field_tag "ingredient[name][]", ing.name, id:"ingredient#{ing.id}" %>
           </p>
         <% end %>
       <% else %>
-          <label for="food_stuff_ingredient">Ingredient: </label>
+          <label for="food_stuff_ingredient"><%= t(:FoodStuff_Ingredient) + ": " %> </label>
           <input name="ingredient[name][]" size="30" type="text" />
       <% end %>
 
     </div>
 
-    <%= button_tag 'Add ingredient', type:"button", onclick:"javascript:addIngredient();", class:"custom_button" %>
+    <%= button_tag t(:FoodStuff_Button_Add_Ingredient), type:"button", onclick:"javascript:addIngredient();", class:"custom_button" %>
     
     
     <br />
@@ -301,18 +301,18 @@
       <% if @retailers != [] %>
         <% @retailers.each do |ret| %>
           <p>
-            <%= label_tag "Retailer: " %>
+            <%= label_tag t(:FoodStuff_Retailer) %>
             <%= text_field_tag "retailer[name][]", ret.name, id:"retailer#{ret.id}" %>
           </p>
         <% end %>
       <% else %>
-          <label for="food_stuff_retailer">Retailer: </label>
+          <label for="food_stuff_retailer"><%= t(:FoodStuff_Retailer) %> </label>
           <input name="retailer[name][]" size="30" type="text" />
       <% end %>
 
     </div>
 
-    <%= button_tag 'Add retailer', type:"button", onclick:"javascript:addRetailer();", class:"custom_button" %>
+    <%= button_tag t(:FoodStuff_Button_Add_Retailer), type:"button", onclick:"javascript:addRetailer();", class:"custom_button" %>
 
     </br>
     </br>

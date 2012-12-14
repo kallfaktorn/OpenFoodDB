@@ -9,9 +9,11 @@
 <br />
 <br />
 
-<% if @food_stuff.logo.exists? %>
-  <%= image_tag @food_stuff.logo.url(:medium) %>
-<% end %>
+<div align="left" style="margin-left:235px;">
+  <% if @food_stuff.logo.exists? %>
+    <%= image_tag @food_stuff.logo.url(:medium) %>
+  <% end %>
+</div>
 <br />
 
   <div class="hero-unit">
@@ -33,7 +35,7 @@
     <% if @food_stuff.bar_code_number.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= "Bar code number: " %>
+          <%= t(:FoodStuff_Bar_Code) + ": " %>
           <%= @food_stuff.bar_code_number %>
         <% end %>
       <% end %>
@@ -43,7 +45,7 @@
     <% if @food_stuff.ingredients.length > 0 %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= "Ingredients: " %>
+          <%= t(:FoodStuff_Ingredients) + ": " %>
           <% if @food_stuff.ingredients.length == 1 %>
             <%= @food_stuff.ingredients.first.name %>
           <% else %>
@@ -63,7 +65,7 @@
     <% if @food_stuff.retailers.length > 0 %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= "Retailers: " %>
+          <%= t(:FoodStuff_Retailers) + ": " %>
           
           <% if @food_stuff.retailers.length == 1 %>
             <%= @food_stuff.retailers.first.name %>
@@ -84,7 +86,7 @@
     <% if @food_stuff.vendor.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-        <%= "Vendor: " %>
+        <%= t(:FoodStuff_Vendor) + ": " %>
         <%= @food_stuff.vendor %>
         <% end %>
       <% end %>
@@ -93,7 +95,7 @@
     <% if @food_stuff.expiration_date_unopened.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-        <%= "Days until expiration when unopened: " %>
+        <%= t(:FoodStuff_Expiration_Unopened) + ": " %>
         <%= @food_stuff.expiration_date_unopened %>
         <% end %>
       <% end %>
@@ -102,7 +104,7 @@
     <% if @food_stuff.expiration_date_broached.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-        <%= "Days until expiration when broached: " %>
+        <%= t(:FoodStuff_Expiration_Broached) + ": " %>
         <%= @food_stuff.expiration_date_broached %>
         <% end %>
       <% end %>
@@ -183,11 +185,12 @@
   <br />
   
   
-
-  <% if @food_stuff.food_stuff_image.exists? %>
-    <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
-  <% end %>
-
+    <div align="left" style="margin-left:265px;">
+      <% if @food_stuff.food_stuff_image.exists? %>
+        <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
+      <% end %>
+    </div>
+  
 </div>
 
 <br/>
