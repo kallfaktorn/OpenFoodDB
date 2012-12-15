@@ -95,8 +95,9 @@
     <% if @food_stuff.expiration_date_unopened.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-        <%= t(:FoodStuff_Expiration_Unopened) + ": " %>
-        <%= @food_stuff.expiration_date_unopened %>
+          <%= t(:FoodStuff_Expiration_Unopened) + ": " %>
+          <%= @food_stuff.expiration_date_unopened %>
+          <%= " " + t(:FoodStuff_Days) %>
         <% end %>
       <% end %>
     <% end %>
@@ -104,8 +105,9 @@
     <% if @food_stuff.expiration_date_broached.blank? == false %>
       <%= content_tag :tr, :class => "InformationTableRow" do %>
         <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-        <%= t(:FoodStuff_Expiration_Broached) + ": " %>
-        <%= @food_stuff.expiration_date_broached %>
+          <%= t(:FoodStuff_Expiration_Broached) + ": " %>
+          <%= @food_stuff.expiration_date_broached %>
+          <%= " " + t(:FoodStuff_Days) %>
         <% end %>
       <% end %>
     <% end %>

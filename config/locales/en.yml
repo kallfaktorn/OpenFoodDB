@@ -53,6 +53,7 @@ en:
   FoodStuff_Vendor: "Vendor"
   FoodStuff_Expiration_Broached: "Days until expiration when broached"
   FoodStuff_Expiration_Unopened: "Days until expiration when unopened"
+  FoodStuff_Days: "days"
   FoodStuff_Ingredient: "Ingredient"
   FoodStuff_Button_Add_Ingredient: "Add ingredient"
   FoodStuff_Retailer: "Retailer"
