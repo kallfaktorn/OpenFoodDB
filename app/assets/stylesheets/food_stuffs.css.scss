@@ -43,12 +43,14 @@ table.informationTable, td.informationTD, th.informationTH
   width: 550px;
   border-collapse: collapse;
   border: 1px solid #abcc8b;
+  padding-left: 10px;
 }
 th.informationTH
 {
   background-color:#aae277;
   color:white;
 }
+
 tr.e0 td {
   background-color: #f7fcf2; color: black;
 }
