@@ -27,7 +27,7 @@
           <%= label_tag t(:FoodStuff_Energy) %>
         </td>
         <td align="middle">
-           <input id="energy" class="field_width"></input>
+           <%= f.number_field :energy_kcal, :id => "energy", :class => "field_width", :step => "0.01" %>
         </td>
         <td align="right">
           <select id="energy_select", class="custom_button">
