@@ -187,7 +187,7 @@
   <br />
   
   
-    <div align="left" style="margin-left:265px;">
+    <div align="left" style="margin-left:272px;">
       <% if @food_stuff.food_stuff_image.exists? %>
         <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
       <% end %>
@@ -225,7 +225,7 @@
   <% end %>
 <% end %>
 
-<div align="left" style="margin-left:240px;">
+<div align="left" style="margin-left:262px;">
   <%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff) %> |
   <%= link_to t(:Button_Back), home_index_path %>
 </div>
