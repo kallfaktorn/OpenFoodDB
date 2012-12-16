@@ -158,30 +158,31 @@
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_DPA_Fatty_acid_225), :amount => @food_stuff.DPA_fatty_acid_225, :unit => "g" } %>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_DHA_Fatty_acid_226), :amount => @food_stuff.DHA_fatty_acid_226, :unit => "g" } %>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Total_trans_fatty_acids), :amount => @food_stuff.total_trans_fatty_acids, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Cholesterol), :amount => @food_stuff.cholesterol, :unit => "g" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Cholesterol), :amount => @food_stuff.cholesterol, :unit => "mg" } %>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Retinol_equivalents), :amount => @food_stuff.retinol_equivalents, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Retinol), :amount => @food_stuff.retinol, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Beta_Carotene), :amount => @food_stuff.beta_carotene, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_D), :amount => @food_stuff.vitamin_d, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_E), :amount => @food_stuff.vitamin_e, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_K), :amount => @food_stuff.vitamin_k, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Thiamine), :amount => @food_stuff.thiamine, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Riboflavin), :amount => @food_stuff.riboflavin, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_C), :amount => @food_stuff.vitamin_c, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Niacin), :amount => @food_stuff.niacin, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Niacin_equivalents), :amount => @food_stuff.niacin_equivalents, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_B6), :amount => @food_stuff.vitamin_b6, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_B12), :amount => @food_stuff.vitamin_b12, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Folate), :amount => @food_stuff.folate, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Phosphorus), :amount => @food_stuff.phosphorus, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Iodine), :amount => @food_stuff.iodine, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Calcium), :amount => @food_stuff.iron, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Potassium), :amount => @food_stuff.potassium, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Magnesium), :amount => @food_stuff.magnesium, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Sodium), :amount => @food_stuff.sodium, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Selenium), :amount => @food_stuff.selenium, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Zinc), :amount => @food_stuff.zinc, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Waste), :amount => @food_stuff.waste, :unit => "g" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Retinol), :amount => @food_stuff.retinol, :unit => "µg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Beta_Carotene), :amount => @food_stuff.beta_carotene, :unit => "µg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_D), :amount => @food_stuff.vitamin_d, :unit => "µg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_E), :amount => @food_stuff.vitamin_e, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_K), :amount => @food_stuff.vitamin_k, :unit => "µg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Thiamine), :amount => @food_stuff.thiamine, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Riboflavin), :amount => @food_stuff.riboflavin, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_C), :amount => @food_stuff.vitamin_c, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Niacin), :amount => @food_stuff.niacin, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Niacin_equivalents), :amount => @food_stuff.niacin_equivalents, :unit => "" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_B6), :amount => @food_stuff.vitamin_b6, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_B12), :amount => @food_stuff.vitamin_b12, :unit => "µg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Folate), :amount => @food_stuff.folate, :unit => "µg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Phosphorus), :amount => @food_stuff.phosphorus, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Iodine), :amount => @food_stuff.iodine, :unit => "µg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Iron), :amount => @food_stuff.iron, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Calcium), :amount => @food_stuff.calcium, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Potassium), :amount => @food_stuff.potassium, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Magnesium), :amount => @food_stuff.magnesium, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Sodium), :amount => @food_stuff.sodium, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Selenium), :amount => @food_stuff.selenium, :unit => "µg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Zinc), :amount => @food_stuff.zinc, :unit => "mg" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Waste), :amount => @food_stuff.waste, :unit => "" } %>
   </table>
   
   <br />
