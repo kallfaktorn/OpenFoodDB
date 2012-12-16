@@ -123,8 +123,8 @@
       <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Amount) %></th>
       <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Unit) %></th>
     </tr>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Energy_kcal), :amount => @food_stuff.energy_kcal, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Energy_kj), :amount => @food_stuff.energy_kj, :unit => "g" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Energy_kcal), :amount => @food_stuff.energy_kcal, :unit => "kcal" } %>
+    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Energy_kj), :amount => @food_stuff.energy_kj, :unit => "kj" } %>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Protein), :amount => @food_stuff.protein, :unit => "g" } %>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fat), :amount => @food_stuff.fat, :unit => "g" } %>
     <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Carbohydrates), :amount => @food_stuff.carbohydrates, :unit => "g" } %>
