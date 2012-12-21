@@ -9,6 +9,10 @@
   <br />
   <br />
   
+  <div id="history_button" onclick="javascript:history()">History</div>
+  <div id="history_content"></div>
+
+  
   <div align="center" style="margin-left:-445px;">
     <% if @food_stuff.logo.exists? %>
       <%= image_tag @food_stuff.logo.url(:medium) %>
@@ -209,10 +213,7 @@
   <br />
   <br />
 
-  <div id="history_button" onclick="javascript:history()">History</div>
-  <div id="history_content"></div>
-
-
+  
   <br />
   <br />
 
