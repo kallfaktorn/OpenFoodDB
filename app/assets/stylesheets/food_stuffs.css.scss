@@ -79,6 +79,24 @@ table.expandedTable td.right { width: 180px; }
   width:170px;
 }
 
+#history_button {
+  color: #555555;
+  cursor:pointer;
+}
+
+#history_button:hover {
+  color: #666666;
+}
+
+.history {
+  color: #555555;
+  cursor:pointer;
+}
+
+.history:hover {
+  color: #666666;
+}
+
 .comment-body {
   width: 550px;
   border-style:solid;

@@ -67,7 +67,7 @@
       for(i in food_stuffs) {
         var food_stuff_anchor = "<a>" + food_stuffs[i].name + "</a>";
         var url = "/food_stuffs/" + food_stuffs[i].id +
-         window.location.search;
+        window.location.search;
 
         food_stuffs_div.append("<br>");
         food_stuff_anchor = $(food_stuff_anchor).attr("href", url);

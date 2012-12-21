@@ -1,191 +1,192 @@
 
-<br />
-<br />
-<br />
-
-<div class="container">
+  <br />
+  <br />
+  <br />
   
-<br />
-<br />
-<br />
-
-<div align="center" style="margin-left:-445px;">
-  <% if @food_stuff.logo.exists? %>
-    <%= image_tag @food_stuff.logo.url(:medium) %>
-  <% end %>
-</div>
-<br />
+  <div class="container">
+    
+  <br />
+  <br />
+  <br />
+  
+  <div align="center" style="margin-left:-445px;">
+    <% if @food_stuff.logo.exists? %>
+      <%= image_tag @food_stuff.logo.url(:medium) %>
+    <% end %>
+  </div>
+  
+  <br />
 
   <div class="hero-unit">
     
-  <table class="informationTable">
-    <tr>
-      <th class="informationTH">Information </th>
-    </tr>
+    <table class="informationTable">
+      <tr>
+        <th class="informationTH">Information </th>
+      </tr>
+        
+      <% if @food_stuff.name.blank? == false %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+            <%= t(:FoodStuff_Name) + ": " %>
+            <%= @food_stuff.name %>
+          <% end %>
+        <% end %>
+      <% end %>
+  
+      <% if @food_stuff.bar_code_number.blank? == false %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+            <%= t(:FoodStuff_Bar_Code) + ": " %>
+            <%= @food_stuff.bar_code_number %>
+          <% end %>
+        <% end %>
+      <% end %>
       
-    <% if @food_stuff.name.blank? == false %>
-      <%= content_tag :tr, :class => "InformationTableRow" do %>
-        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= t(:FoodStuff_Name) + ": " %>
-          <%= @food_stuff.name %>
-        <% end %>
-      <% end %>
-    <% end %>
-
-    <% if @food_stuff.bar_code_number.blank? == false %>
-      <%= content_tag :tr, :class => "InformationTableRow" do %>
-        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= t(:FoodStuff_Bar_Code) + ": " %>
-          <%= @food_stuff.bar_code_number %>
-        <% end %>
-      <% end %>
-    <% end %>
-    
-    
-    <% if @food_stuff.ingredients.length > 0 %>
-      <%= content_tag :tr, :class => "InformationTableRow" do %>
-        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= t(:FoodStuff_Ingredients) + ": " %>
-          <% if @food_stuff.ingredients.length == 1 %>
-            <%= @food_stuff.ingredients.first.name %>
-          <% else %>
-            <% @food_stuff.ingredients.each_with_index do |ingredient, index| %>
-              <% if index > 0 %>
-                <%= ", " %>
+      
+      <% if @food_stuff.ingredients.length > 0 %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+            <%= t(:FoodStuff_Ingredients) + ": " %>
+            <% if @food_stuff.ingredients.length == 1 %>
+              <%= @food_stuff.ingredients.first.name %>
+            <% else %>
+              <% @food_stuff.ingredients.each_with_index do |ingredient, index| %>
+                <% if index > 0 %>
+                  <%= ", " %>
+                <% end %>
+  
+                <%= ingredient.name %>
+  
               <% end %>
-
-              <%= ingredient.name %>
-
             <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-
-    <% if @food_stuff.retailers.length > 0 %>
-      <%= content_tag :tr, :class => "InformationTableRow" do %>
-        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= t(:FoodStuff_Retailers) + ": " %>
-          
-          <% if @food_stuff.retailers.length == 1 %>
-            <%= @food_stuff.retailers.first.name %>
-          <% else %>
-            <% @food_stuff.retailers.each_with_index do |retailer, index| %>
-              <% if index > 0 %>
-                <%= ", " %>
+  
+      <% if @food_stuff.retailers.length > 0 %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+            <%= t(:FoodStuff_Retailers) + ": " %>
+            
+            <% if @food_stuff.retailers.length == 1 %>
+              <%= @food_stuff.retailers.first.name %>
+            <% else %>
+              <% @food_stuff.retailers.each_with_index do |retailer, index| %>
+                <% if index > 0 %>
+                  <%= ", " %>
+                <% end %>
+  
+                <%= retailer.name %>
+  
               <% end %>
-
-              <%= retailer.name %>
-
             <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-    
-    <% if @food_stuff.vendor.blank? == false %>
-      <%= content_tag :tr, :class => "InformationTableRow" do %>
-        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-        <%= t(:FoodStuff_Vendor) + ": " %>
-        <%= @food_stuff.vendor %>
+      
+      <% if @food_stuff.vendor.blank? == false %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+          <%= t(:FoodStuff_Vendor) + ": " %>
+          <%= @food_stuff.vendor %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-    
-    <% if @food_stuff.expiration_date_unopened.blank? == false %>
-      <%= content_tag :tr, :class => "InformationTableRow" do %>
-        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= t(:FoodStuff_Expiration_Unopened) + ": " %>
-          <%= @food_stuff.expiration_date_unopened %>
-          <%= " " + t(:FoodStuff_Days) %>
+      
+      <% if @food_stuff.expiration_date_unopened.blank? == false %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+            <%= t(:FoodStuff_Expiration_Unopened) + ": " %>
+            <%= @food_stuff.expiration_date_unopened %>
+            <%= " " + t(:FoodStuff_Days) %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-    
-    <% if @food_stuff.expiration_date_broached.blank? == false %>
-      <%= content_tag :tr, :class => "InformationTableRow" do %>
-        <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= t(:FoodStuff_Expiration_Broached) + ": " %>
-          <%= @food_stuff.expiration_date_broached %>
-          <%= " " + t(:FoodStuff_Days) %>
+      
+      <% if @food_stuff.expiration_date_broached.blank? == false %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+            <%= t(:FoodStuff_Expiration_Broached) + ": " %>
+            <%= @food_stuff.expiration_date_broached %>
+            <%= " " + t(:FoodStuff_Days) %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </table>
+    </table>
   
-  <br />
-  <br />
-  <br />
+    <br />
+    <br />
+    <br />
+    
+    <table class="nutritionTable">
+      <tr>
+        <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Nutrient) %></th>
+        <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Amount) %></th>
+        <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Unit) %></th>
+      </tr>
+      <%= render :partial => 'tr', :locals => {:id => "energy_kcal_id", :nutrient => t(:FoodStuff_Energy_kcal), :amount => @food_stuff.energy_kcal, :unit => "kcal" } %>
+      <%= render :partial => 'tr', :locals => {:id => "energy_kj_id", :nutrient => t(:FoodStuff_Energy_kj), :amount => @food_stuff.energy_kj, :unit => "kj" } %>
+      <%= render :partial => 'tr', :locals => {:id => "protein_id", :nutrient => t(:FoodStuff_Protein), :amount => @food_stuff.protein, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fat_id", :nutrient => t(:FoodStuff_Fat), :amount => @food_stuff.fat, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "carbohydrates_id", :nutrient => t(:FoodStuff_Carbohydrates), :amount => @food_stuff.carbohydrates, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fibers_id", :nutrient => t(:FoodStuff_Fibers), :amount => @food_stuff.fibers, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "salt_id", :nutrient => t(:FoodStuff_Salt), :amount => @food_stuff.salt, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "ash_id", :nutrient => t(:FoodStuff_Ash), :amount => @food_stuff.ash, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "water_id", :nutrient => t(:FoodStuff_Water), :amount => @food_stuff.water, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "alcohol_id", :nutrient => t(:FoodStuff_Alcohol), :amount => @food_stuff.alcohol, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "monosaccharides_id", :nutrient => t(:FoodStuff_Monosaccharides), :amount => @food_stuff.monosaccharides, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "disaccharides_id", :nutrient => t(:FoodStuff_Disaccharides), :amount => @food_stuff.disaccharides, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "sackaros_id", :nutrient => t(:FoodStuff_Sackaros), :amount => @food_stuff.sackaros, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "lactose_id", :nutrient => t(:FoodStuff_Lactose), :amount => @food_stuff.lactose, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "whole_grain_total_id", :nutrient => t(:FoodStuff_Whole_grain_total), :amount => @food_stuff.whole_grain_total, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "total_saturated_fatty_acids_id", :nutrient => t(:FoodStuff_Total_saturated_fatty_acids), :amount => @food_stuff.total_saturated_fatty_acids, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_40_100_id", :nutrient => t(:FoodStuff_Fatty_acid_40_100), :amount => @food_stuff.fatty_acid_40_100, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_120_id", :nutrient => t(:FoodStuff_Fatty_acid_120), :amount => @food_stuff.fatty_acid_120, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_140_id", :nutrient => t(:FoodStuff_Fatty_acid_140), :amount => @food_stuff.fatty_acid_140, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_160_id", :nutrient => t(:FoodStuff_Fatty_acid_160), :amount => @food_stuff.fatty_acid_160, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_180_id", :nutrient => t(:FoodStuff_Fatty_acid_180), :amount => @food_stuff.fatty_acid_180, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_200_id", :nutrient => t(:FoodStuff_Fatty_acid_200), :amount => @food_stuff.fatty_acid_200, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "total_monounsaturated_fatty_acids_id", :nutrient => t(:FoodStuff_Total_monounsaturated_fatty_acids), :amount => @food_stuff.total_monounsaturated_fatty_acids, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_161_id", :nutrient => t(:FoodStuff_Fatty_acid_161), :amount => @food_stuff.fatty_acid_161, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_181_id", :nutrient => t(:FoodStuff_Fatty_acid_181), :amount => @food_stuff.fatty_acid_181, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "total_polyunsaturated_fatty_acids_id", :nutrient => t(:FoodStuff_Total_polyunsaturated_fatty_acids), :amount => @food_stuff.total_polyunsaturated_fatty_acids, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "total_n6_fatty_acids_id", :nutrient => t(:FoodStuff_Total_n6_fatty_acids), :amount => @food_stuff.total_n6_fatty_acids, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_182_id", :nutrient => t(:FoodStuff_Fatty_acid_182), :amount => @food_stuff.fatty_acid_182, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_204_id", :nutrient => t(:FoodStuff_Fatty_acid_204), :amount => @food_stuff.fatty_acid_204, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "total_n3_fatty_acids_id", :nutrient => t(:FoodStuff_Total_n3_fatty_acids), :amount => @food_stuff.total_n3_fatty_acids, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "fatty_acid_183_id", :nutrient => t(:FoodStuff_Fatty_acid_183), :amount => @food_stuff.fatty_acid_183, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "EPA_fatty_acid_205_id", :nutrient => t(:FoodStuff_EPA_Fatty_acid_205), :amount => @food_stuff.EPA_fatty_acid_205, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "DPA_fatty_acid_225_id", :nutrient => t(:FoodStuff_DPA_Fatty_acid_225), :amount => @food_stuff.DPA_fatty_acid_225, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "DHA_fatty_acid_226_id", :nutrient => t(:FoodStuff_DHA_Fatty_acid_226), :amount => @food_stuff.DHA_fatty_acid_226, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "total_trans_fatty_acids_id", :nutrient => t(:FoodStuff_Total_trans_fatty_acids), :amount => @food_stuff.total_trans_fatty_acids, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "cholesterol_id", :nutrient => t(:FoodStuff_Cholesterol), :amount => @food_stuff.cholesterol, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "retinol_equivalents_id", :nutrient => t(:FoodStuff_Retinol_equivalents), :amount => @food_stuff.retinol_equivalents, :unit => "g" } %>
+      <%= render :partial => 'tr', :locals => {:id => "retinol_id", :nutrient => t(:FoodStuff_Retinol), :amount => @food_stuff.retinol, :unit => "µg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "beta_carotene_id", :nutrient => t(:FoodStuff_Beta_Carotene), :amount => @food_stuff.beta_carotene, :unit => "µg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "vitamin_d_id", :nutrient => t(:FoodStuff_Vitamin_D), :amount => @food_stuff.vitamin_d, :unit => "µg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "vitamin_e_id", :nutrient => t(:FoodStuff_Vitamin_E), :amount => @food_stuff.vitamin_e, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "vitamin_k_id", :nutrient => t(:FoodStuff_Vitamin_K), :amount => @food_stuff.vitamin_k, :unit => "µg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "thiamine_id", :nutrient => t(:FoodStuff_Thiamine), :amount => @food_stuff.thiamine, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "riboflavin_id", :nutrient => t(:FoodStuff_Riboflavin), :amount => @food_stuff.riboflavin, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "vitamin_c_id", :nutrient => t(:FoodStuff_Vitamin_C), :amount => @food_stuff.vitamin_c, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "niacin_id", :nutrient => t(:FoodStuff_Niacin), :amount => @food_stuff.niacin, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "niacin_equivalents_id", :nutrient => t(:FoodStuff_Niacin_equivalents), :amount => @food_stuff.niacin_equivalents, :unit => "" } %>
+      <%= render :partial => 'tr', :locals => {:id => "vitamin_b6_id", :nutrient => t(:FoodStuff_Vitamin_B6), :amount => @food_stuff.vitamin_b6, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "vitamin_b12_id", :nutrient => t(:FoodStuff_Vitamin_B12), :amount => @food_stuff.vitamin_b12, :unit => "µg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "folate_id", :nutrient => t(:FoodStuff_Folate), :amount => @food_stuff.folate, :unit => "µg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "phosphorus_id", :nutrient => t(:FoodStuff_Phosphorus), :amount => @food_stuff.phosphorus, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "iodine_id", :nutrient => t(:FoodStuff_Iodine), :amount => @food_stuff.iodine, :unit => "µg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "iron_id", :nutrient => t(:FoodStuff_Iron), :amount => @food_stuff.iron, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "calcium_id", :nutrient => t(:FoodStuff_Calcium), :amount => @food_stuff.calcium, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "potassium_id", :nutrient => t(:FoodStuff_Potassium), :amount => @food_stuff.potassium, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "magnesium_id", :nutrient => t(:FoodStuff_Magnesium), :amount => @food_stuff.magnesium, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "sodium_id", :nutrient => t(:FoodStuff_Sodium), :amount => @food_stuff.sodium, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "selenium_id", :nutrient => t(:FoodStuff_Selenium), :amount => @food_stuff.selenium, :unit => "µg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "zinc_id", :nutrient => t(:FoodStuff_Zinc), :amount => @food_stuff.zinc, :unit => "mg" } %>
+      <%= render :partial => 'tr', :locals => {:id => "waste_id", :nutrient => t(:FoodStuff_Waste), :amount => @food_stuff.waste, :unit => "" } %>
+    </table>
   
-  <table class="nutritionTable">
-    <tr>
-      <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Nutrient) %></th>
-      <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Amount) %></th>
-      <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Unit) %></th>
-    </tr>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Energy_kcal), :amount => @food_stuff.energy_kcal, :unit => "kcal" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Energy_kj), :amount => @food_stuff.energy_kj, :unit => "kj" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Protein), :amount => @food_stuff.protein, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fat), :amount => @food_stuff.fat, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Carbohydrates), :amount => @food_stuff.carbohydrates, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fibers), :amount => @food_stuff.fibers, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Salt), :amount => @food_stuff.salt, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Ash), :amount => @food_stuff.ash, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Water), :amount => @food_stuff.water, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Alcohol), :amount => @food_stuff.alcohol, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Monosaccharides), :amount => @food_stuff.monosaccharides, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Disaccharides), :amount => @food_stuff.disaccharides, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Sackaros), :amount => @food_stuff.sackaros, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Lactose), :amount => @food_stuff.lactose, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Whole_grain_total), :amount => @food_stuff.whole_grain_total, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Total_saturated_fatty_acids), :amount => @food_stuff.total_saturated_fatty_acids, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_40_100), :amount => @food_stuff.fatty_acid_40_100, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_120), :amount => @food_stuff.fatty_acid_120, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_140), :amount => @food_stuff.fatty_acid_140, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_160), :amount => @food_stuff.fatty_acid_160, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_180), :amount => @food_stuff.fatty_acid_180, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_200), :amount => @food_stuff.fatty_acid_200, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Total_monounsaturated_fatty_acids), :amount => @food_stuff.total_monounsaturated_fatty_acids, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_161), :amount => @food_stuff.fatty_acid_161, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_181), :amount => @food_stuff.fatty_acid_181, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Total_polyunsaturated_fatty_acids), :amount => @food_stuff.total_polyunsaturated_fatty_acids, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Total_n6_fatty_acids), :amount => @food_stuff.total_n6_fatty_acids, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_182), :amount => @food_stuff.fatty_acid_182, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_204), :amount => @food_stuff.fatty_acid_204, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Total_n3_fatty_acids), :amount => @food_stuff.total_n3_fatty_acids, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Fatty_acid_183), :amount => @food_stuff.fatty_acid_183, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_EPA_Fatty_acid_205), :amount => @food_stuff.EPA_fatty_acid_205, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_DPA_Fatty_acid_225), :amount => @food_stuff.DPA_fatty_acid_225, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_DHA_Fatty_acid_226), :amount => @food_stuff.DHA_fatty_acid_226, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Total_trans_fatty_acids), :amount => @food_stuff.total_trans_fatty_acids, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Cholesterol), :amount => @food_stuff.cholesterol, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Retinol_equivalents), :amount => @food_stuff.retinol_equivalents, :unit => "g" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Retinol), :amount => @food_stuff.retinol, :unit => "µg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Beta_Carotene), :amount => @food_stuff.beta_carotene, :unit => "µg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_D), :amount => @food_stuff.vitamin_d, :unit => "µg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_E), :amount => @food_stuff.vitamin_e, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_K), :amount => @food_stuff.vitamin_k, :unit => "µg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Thiamine), :amount => @food_stuff.thiamine, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Riboflavin), :amount => @food_stuff.riboflavin, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_C), :amount => @food_stuff.vitamin_c, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Niacin), :amount => @food_stuff.niacin, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Niacin_equivalents), :amount => @food_stuff.niacin_equivalents, :unit => "" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_B6), :amount => @food_stuff.vitamin_b6, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Vitamin_B12), :amount => @food_stuff.vitamin_b12, :unit => "µg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Folate), :amount => @food_stuff.folate, :unit => "µg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Phosphorus), :amount => @food_stuff.phosphorus, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Iodine), :amount => @food_stuff.iodine, :unit => "µg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Iron), :amount => @food_stuff.iron, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Calcium), :amount => @food_stuff.calcium, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Potassium), :amount => @food_stuff.potassium, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Magnesium), :amount => @food_stuff.magnesium, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Sodium), :amount => @food_stuff.sodium, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Selenium), :amount => @food_stuff.selenium, :unit => "µg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Zinc), :amount => @food_stuff.zinc, :unit => "mg" } %>
-    <%= render :partial => 'tr', :locals => {:nutrient => t(:FoodStuff_Waste), :amount => @food_stuff.waste, :unit => "" } %>
-  </table>
-  
-  <br />
+    <br />
   
   
     <div align="left" style="margin-left:252px;">
@@ -193,53 +194,79 @@
         <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
       <% end %>
     </div>
-  
-</div>
+    
+  </div>
 
-<br/>
-<br/>
+  <br />
+  <br />
 
-<% @food_stuff_marks.each do |mark| %>
-  <% if mark_in_foodstuff(mark.name, @food_stuff.mark_names) %>
-    <%= image_tag mark.food_stuff_mark_image.url(:thumb) %>
+  <% @food_stuff_marks.each do |mark| %>
+    <% if mark_in_foodstuff(mark.name, @food_stuff.mark_names) %>
+      <%= image_tag mark.food_stuff_mark_image.url(:thumb) %>
+    <% end %>
   <% end %>
-<% end %>
 
-<br />
-<br />
+  <br />
+  <br />
+
+  <div id="history_button" onclick="javascript:history()">History</div>
+  <div id="history_content"></div>
 
 
-<%= render :partial => 'comment', :collection => @food_stuff.comments %>
+  <br />
+  <br />
 
-<% if current_user != nil %>
-  <%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
-    <%= f.hidden_field :food_stuff_id %>
 
-    <div class="field">
-      <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
-      <%= f.text_area :body, :style => "width:550px"%>
-    </div>
-  
-    <div class="actions">
-      <%= f.submit t(:FoodStuff_Show_Button_Post_Comment), :class => 'custom_button' %>
-    </div>
+  <%= render :partial => 'comment', :collection => @food_stuff.comments %>
+
+  <% if current_user != nil %>
+    <%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
+      <%= f.hidden_field :food_stuff_id %>
+
+      <div class="field">
+        <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
+        <%= f.text_area :body, :style => "width:550px"%>
+      </div>
+
+      <div class="actions">
+        <%= f.submit t(:FoodStuff_Show_Button_Post_Comment), :class => 'custom_button' %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<div align="left" style="margin-left:242px;">
-  <%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff) %> |
-  <%= link_to t(:Button_Back), home_index_path %>
-</div>
+  <div align="left" style="margin-left:242px;">
+    <%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff) %> |
+    <%= link_to t(:Button_Back), home_index_path %>
+  </div>
 
 </div>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="javascripts/bootstrap.min.js"></script>
 
+<script id="food_stuff_json" type="text/json">
+  <%= raw @food_stuff.to_json %>
+</script>
+
+<script id="audits_json" type="text/json">
+  <%= raw @audits.to_json %>
+</script>
+
+
+
 <script type="text/javascript">
+
+  var history_hidden = true;
+
   $('#thumbs_up').bind('ajax:success', function(evt, data) {
   	$('#votes_id').text(data);
   });
+
+  var foodStuffJSON = $("#food_stuff_json").html();
+  var foodStuff     = $.parseJSON(foodStuffJSON);
+
+  var auditsJSON = $("#audits_json").html();
+  var audits     = $.parseJSON(auditsJSON);
 
   $(document).ready(function() {
 
@@ -249,14 +276,95 @@
       i = (i + 1) % 2;
       var d = 'd' + i;
       var e = 'e' + i;
-      
+
       if($(this).attr('class') == "NutritionTableRow")
         $(this).attr('class', "NutritionTableRow " + d);
-        
+
       if($(this).attr('class') == "InformationTableRow")
         $(this).attr('class', "InformationTableRow " + e);
     });
+
+
+    var history_div = $('#history_content');
+
+    for(var i in audits) {
+      
+      var id = "_" + audits[i].id;
+      var history_anchor = "<pre><div class='history' id='history" + id + "'" + "onclick='javascript:history_click(" + audits[i].id + ")'" + ">" + audits[i].created_at + "</div></pre>";
+      history_div.append(history_anchor.replace("T", " ").replace("Z", ""));
+
+      var history_data = "<div hidden='hidden' id='history" + id + "_d" + "'" + ">" + audits[i].id + "</div>";
+      history_div.append(history_data);
+    }
     
-   
+    var history_anchor_latest = "<pre><div class='history' " + "onclick='javascript:history_reset()'" + ">" + "Latest" + "</div></pre>";
+    history_div.append(history_anchor_latest);
+      
+    $('.history').hide();
+
   });
+
+  function history() 
+  {
+    if( history_hidden == false )
+    {
+      $('.history').hide();
+      history_hidden = true;
+    }
+    else
+    {
+      $('.history').show();
+      history_hidden = false;
+    }
+  }
+  
+  function history_reset()
+  {
+    var audit = "none";
+
+    // Reset all changes to latest
+    for(var i in audits) 
+    {
+      audit = audits[i];
+
+      for(var j in audit.audited_changes)
+      {
+        var change = audit.audited_changes[j];
+        var td_id = "#" + j + "_id";
+        $(td_id).text(change[1]);
+      }
+    }
+  }
+
+  function history_click(id)
+  {
+    var audit = "none";
+
+    history_reset();
+
+    var ok_to_change = false;
+
+    // Redo changes from selected to latest
+    for(var i in audits) 
+    {
+      if(audits[i].id == id)
+      {
+        ok_to_change = true;
+      }
+
+      if(ok_to_change == true) {
+
+        audit = audits[i];
+
+        for(var j in audit.audited_changes)
+        {
+          var change = audit.audited_changes[j];
+          var id = "#" + j + "_id";
+
+          $(id).text(change[0]);
+        }
+      }
+    }
+  }
+
 </script>

@@ -16,6 +16,13 @@ class FoodStuffsController < ApplicationController
     @food_stuff_marks = FoodStuffMark.all
 
     @comment = Comment.new(:food_stuff => @food_stuff)
+    
+    @audits = @food_stuff.audits
+    print "yoyoyoyoyoy"
+    print "yoyoyoyoyoy"
+    print "yoyoyoyoyoy"
+    print "yoyoyoyoyoy"
+    print @food_stuff.audits
 
     respond_to do |format|
       format.html # show.html.erb
@@ -101,9 +108,9 @@ class FoodStuffsController < ApplicationController
         @food_stuff.retailers.create(name: n)
       end
     end
-
+    
     respond_to do |format|
-      if @food_stuff.update_attributes(params[:food_stuff])
+      if @food_stuff.update_attributes!(params[:food_stuff], :audit_comment => "Changing name, just because")
         format.html { redirect_to @food_stuff, notice: 'Food stuff was successfully updated.' }
         format.json { head :no_content }
       else

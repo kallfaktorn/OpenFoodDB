@@ -18,8 +18,6 @@ Openfooddb::Application.routes.draw do
   get "home/index"
   post "home/index"
 
-
-  
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
