@@ -16,13 +16,13 @@ class FoodStuffsController < ApplicationController
     @food_stuff_marks = FoodStuffMark.all
 
     @comment = Comment.new(:food_stuff => @food_stuff)
-    
     @audits = @food_stuff.audits
-    print "yoyoyoyoyoy"
-    print "yoyoyoyoyoy"
-    print "yoyoyoyoyoy"
-    print "yoyoyoyoyoy"
-    print @food_stuff.audits
+
+    @ids = []
+    @audits.each do |audit| @ids << audit.id end
+      
+    @audit_thumbs_up = []
+    @ids.each do |id| @audit_thumbs_up << AuditThumbsUp.find_by_audit_id(id) end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -59,7 +59,11 @@ class FoodStuffsController < ApplicationController
   # POST /food_stuffs
   # POST /food_stuffs.json
   def create
-    @food_stuff = current_user.food_stuffs.create(params[:food_stuff])
+    @food_stuff = FoodStuff.create(params[:food_stuff])
+    @food_stuff_marks = FoodStuffMark.find(:all)
+    
+    @ingredients = []
+    @retailers = []
 
     for n in params[:ingredient][:name] do
       unless n.blank?
@@ -75,6 +79,7 @@ class FoodStuffsController < ApplicationController
 
     respond_to do |format|
       if @food_stuff.save
+        @audit_thumbs_up = AuditThumbsUp.create(:audit_id => @food_stuff.audits.last.id)
         format.html { redirect_to @food_stuff, notice: 'Food stuff was successfully created.' }
         format.json { render json: @food_stuff, status: :created, location: @food_stuff }
       else
@@ -111,6 +116,9 @@ class FoodStuffsController < ApplicationController
     
     respond_to do |format|
       if @food_stuff.update_attributes!(params[:food_stuff], :audit_comment => "Changing name, just because")
+        
+        @audit_thumbs_up = AuditThumbsUp.create(:audit_id => @food_stuff.audits.last.id)
+        
         format.html { redirect_to @food_stuff, notice: 'Food stuff was successfully updated.' }
         format.json { head :no_content }
       else
@@ -132,15 +140,36 @@ class FoodStuffsController < ApplicationController
     end
   end
 
+  #def vote_up
+  #  current_user.vote_for(@food_stuff = FoodStuff.find(params[:id]))
+  #  @count = @food_stuff.votes_for
+
+    #respond_to do |format|
+    #  format.json { render :json => @count }
+    #end
+  #end
+  
   def vote_up
-    current_user.vote_for(@food_stuff = FoodStuff.find(params[:id]))
-    @count = @food_stuff.votes_for
+    audit_id = params[:id]
+    
+    current_user.vote_for(@audit = AuditThumbsUp.find_by_audit_id(audit_id))
+    @count = @audit.votes_for
 
     respond_to do |format|
       format.json { render :json => @count }
     end
   end
   
+  def votes
+    audit_id = params[:id]
+    
+    @audit = AuditThumbsUp.find_by_audit_id(audit_id)
+    @count = @audit.votes_for
+
+    respond_to do |format|
+      format.json { render :json => @count }
+    end
+  end
   
   class Node
     attr_accessor :children, :sid

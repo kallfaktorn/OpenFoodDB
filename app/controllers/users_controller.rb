@@ -19,7 +19,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @food_stuffs = FoodStuff.find_all_by_user_id(@user.id)
+    @audits = Audit.find_all_by_user_id(@user.id)
+    
+    foodStuffIds = @audits.collect! do |a|
+      a.auditable_id
+    end
+   
+    @food_stuffs = foodStuffIds.uniq.collect! do |i|
+      FoodStuff.find(i)
+    end
   end
 
   def index

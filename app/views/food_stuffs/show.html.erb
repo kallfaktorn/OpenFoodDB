@@ -20,6 +20,7 @@
   </div>
   
   <br />
+  
 
   <div class="hero-unit">
     
@@ -27,9 +28,17 @@
       <tr>
         <th class="informationTH">Information </th>
       </tr>
-        
+      
+      
+      <% @audit_thumbs_up.each do |a| %>
+        <%= link_to image_tag('thumb_up_green.jpg', :border => 0), vote_up_food_stuff_path( :id => a.audit_id), :remote => true, :id => "thumbs_up" + a.audit_id.to_s, :class => "thumbs_up" %>
+        <%= label_tag 'votes_id', AuditThumbsUp.find_by_audit_id(a.audit_id).votes_for, :id => 'votes_id' + a.audit_id.to_s, :class => "thumbs_up" %>         
+      <% end %>
+      
+      
       <% if @food_stuff.name.blank? == false %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
+  
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
             <%= t(:FoodStuff_Name) + ": " %>
             <%= @food_stuff.name %>
@@ -200,6 +209,10 @@
     </div>
     
   </div>
+  
+  <br />
+  <br />
+
 
   <br />
   <br />
@@ -242,8 +255,6 @@
 
 </div>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="javascripts/bootstrap.min.js"></script>
 
 <script id="food_stuff_json" type="text/json">
   <%= raw @food_stuff.to_json %>
@@ -253,23 +264,41 @@
   <%= raw @audits.to_json %>
 </script>
 
+<script id="audit_thumbs_up_json" type="text/json">
+  <%= raw @audit_thumbs_up.to_json %>
+</script>
 
 
 <script type="text/javascript">
-
-  var history_hidden = true;
-
-  $('#thumbs_up').bind('ajax:success', function(evt, data) {
-  	$('#votes_id').text(data);
-  });
 
   var foodStuffJSON = $("#food_stuff_json").html();
   var foodStuff     = $.parseJSON(foodStuffJSON);
 
   var auditsJSON = $("#audits_json").html();
   var audits     = $.parseJSON(auditsJSON);
-
+  
+  var history_hidden = true;
+  
+  var thumb_up_ids = new Array();
+  var votes_ids = new Array();
+  
+  for(i in audits) {
+    
+    var id = audits[i].id;
+    
+    (function() {
+      var thumb_up_id = "#thumbs_up" + id;
+      var votes_id = "#votes_id" + id;
+    
+      $(thumb_up_id).bind('ajax:success', function(evt, data) {
+        $(votes_id).text(data);
+      });  
+    }());
+  }
+  
   $(document).ready(function() {
+    
+    $('#votes_id').text(audits[i]);
 
     var i = 0;
     $("tr").each(function( j ) {
@@ -332,7 +361,10 @@
       {
         var change = audit.audited_changes[j];
         var td_id = "#" + j + "_id";
-        $(td_id).text(change[1]);
+        
+        if(change != null) {
+          $(td_id).text(change[1]);  
+        }
       }
     }
   }
@@ -342,6 +374,8 @@
     var audit = "none";
 
     history_reset();
+    
+    $(".thumbs_up").hide();
 
     var ok_to_change = false;
 
@@ -360,12 +394,21 @@
         for(var j in audit.audited_changes)
         {
           var change = audit.audited_changes[j];
-          var id = "#" + j + "_id";
+          var column_id = "#" + j + "_id";
 
-          $(id).text(change[0]);
+          if(change != null) {
+            $(column_id).text(change[0]);
+          }
         }
       }
     }
+
+    var thumb_up_id = "#thumbs_up" + id;
+    $(thumb_up_id).show();
+
+    var votes_id = "#votes_id" + id;
+    $(votes_id).show();
+
   }
 
 </script>
