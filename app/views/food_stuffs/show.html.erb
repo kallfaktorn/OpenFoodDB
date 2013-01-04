@@ -32,30 +32,27 @@
       
       <% @audit_thumbs_up.each do |a| %>
         <%= link_to image_tag('thumb_up_green.jpg', :border => 0), vote_up_food_stuff_path( :id => a.audit_id), :remote => true, :id => "thumbs_up" + a.audit_id.to_s, :class => "thumbs_up" %>
-        <%= label_tag 'votes_id', AuditThumbsUp.find_by_audit_id(a.audit_id).votes_for, :id => 'votes_id' + a.audit_id.to_s, :class => "thumbs_up" %>         
+        <%= label_tag 'votes_id', AuditThumbsUp.find_by_audit_id(a.audit_id).votes_for, :id => 'votes_id' + a.audit_id.to_s, :class => "thumbs_up" %>
       <% end %>
-      
-      
+
       <% if @food_stuff.name.blank? == false %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
-  
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
             <%= t(:FoodStuff_Name) + ": " %>
-            <%= @food_stuff.name %>
+            <%= label_tag 'name', @food_stuff.name, :id => "name_id", :class => "auditable" %>
           <% end %>
         <% end %>
       <% end %>
-  
+
       <% if @food_stuff.bar_code_number.blank? == false %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
             <%= t(:FoodStuff_Bar_Code) + ": " %>
-            <%= @food_stuff.bar_code_number %>
+            <%= label_tag 'bar_code_number', @food_stuff.bar_code_number, :id => "bar_code_number_id", :class => "auditable" %>
           <% end %>
         <% end %>
       <% end %>
-      
-      
+
       <% if @food_stuff.ingredients.length > 0 %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
@@ -101,7 +98,7 @@
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
           <%= t(:FoodStuff_Vendor) + ": " %>
-          <%= @food_stuff.vendor %>
+          <%= label_tag 'vendor', @food_stuff.vendor, :id => "vendor_id", :class => "auditable" %>
           <% end %>
         <% end %>
       <% end %>
@@ -110,7 +107,7 @@
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
             <%= t(:FoodStuff_Expiration_Unopened) + ": " %>
-            <%= @food_stuff.expiration_date_unopened %>
+            <%= label_tag 'expiration_date_unopened', @food_stuff.expiration_date_unopened, :id => "expiration_date_unopened_id", :class => "auditable" %>
             <%= " " + t(:FoodStuff_Days) %>
           <% end %>
         <% end %>
@@ -120,7 +117,7 @@
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
             <%= t(:FoodStuff_Expiration_Broached) + ": " %>
-            <%= @food_stuff.expiration_date_broached %>
+            <%= label_tag 'expiration_date_broached', @food_stuff.expiration_date_broached, :id => "expiration_date_broached_id", :class => "auditable" %>
             <%= " " + t(:FoodStuff_Days) %>
           <% end %>
         <% end %>
@@ -298,6 +295,17 @@
   
   $(document).ready(function() {
     
+    $(".thumbs_up").hide();
+    
+    var last_id = audits[audits.length - 1].id;
+    
+    var thumb_up_id = "#thumbs_up" + last_id;
+    $(thumb_up_id).show();
+
+    var votes_id = "#votes_id" + last_id;
+    $(votes_id).show();
+    
+    
     $('#votes_id').text(audits[i]);
 
     var i = 0;
@@ -314,11 +322,10 @@
         $(this).attr('class', "InformationTableRow " + e);
     });
 
-
     var history_div = $('#history_content');
 
     for(var i in audits) {
-      
+
       var id = "_" + audits[i].id;
       var history_anchor = "<pre><div class='history' id='history" + id + "'" + "onclick='javascript:history_click(" + audits[i].id + ")'" + ">" + audits[i].created_at + "</div></pre>";
       history_div.append(history_anchor.replace("T", " ").replace("Z", ""));
@@ -326,10 +333,7 @@
       var history_data = "<div hidden='hidden' id='history" + id + "_d" + "'" + ">" + audits[i].id + "</div>";
       history_div.append(history_data);
     }
-    
-    var history_anchor_latest = "<pre><div class='history' " + "onclick='javascript:history_reset()'" + ">" + "Latest" + "</div></pre>";
-    history_div.append(history_anchor_latest);
-      
+
     $('.history').hide();
 
   });
@@ -350,56 +354,38 @@
   
   function history_reset()
   {
-    var audit = "none";
+    $(".auditable").text(null);
+  }
+  
+  function history_click(id)
+  {
+    history_reset();
 
-    // Reset all changes to latest
+    $(".thumbs_up").hide();
+
     for(var i in audits) 
     {
-      audit = audits[i];
+      var audit = audits[i];
 
       for(var j in audit.audited_changes)
       {
         var change = audit.audited_changes[j];
-        var td_id = "#" + j + "_id";
-        
+        var column_id = "#" + j + "_id";
+
         if(change != null) {
-          $(td_id).text(change[1]);  
-        }
-      }
-    }
-  }
-
-  function history_click(id)
-  {
-    var audit = "none";
-
-    history_reset();
-    
-    $(".thumbs_up").hide();
-
-    var ok_to_change = false;
-
-    // Redo changes from selected to latest
-    for(var i in audits) 
-    {
-      if(audits[i].id == id)
-      {
-        ok_to_change = true;
-      }
-
-      if(ok_to_change == true) {
-
-        audit = audits[i];
-
-        for(var j in audit.audited_changes)
-        {
-          var change = audit.audited_changes[j];
-          var column_id = "#" + j + "_id";
-
-          if(change != null) {
-            $(column_id).text(change[0]);
+ 
+          if(typeof change === 'string' || typeof change === 'number') {
+             $(column_id).text(change);  
+          }
+          else {
+            $(column_id).text(change[1]);  
           }
         }
+      }
+
+      if(audits[i].id == id)
+      {
+        break;
       }
     }
 
@@ -408,7 +394,6 @@
 
     var votes_id = "#votes_id" + id;
     $(votes_id).show();
-
   }
 
 </script>

@@ -3,7 +3,7 @@
 <% if amount.blank? == false %>
   <%= content_tag :tr, :class => "NutritionTableRow" do %>
     <%= content_tag :td, nutrient, :class => "nutritionTD" %>
-    <%= content_tag :td, amount, :class => "nutritionTD", :id => id %>
+    <%= content_tag :td, amount, :class => "nutritionTD auditable", :id => id %>
     <%= content_tag :td, unit, :class => "nutritionTD" %>
   <% end %>
 <% end %>
