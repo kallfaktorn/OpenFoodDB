@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.edit_points = Settings.new_user_edit_points
+    @user.progress_to_edit_point = 0
+    
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the Sample App!"
@@ -62,7 +65,7 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed."
     redirect_to users_url
   end
-
+  
   private
 
     def signed_in_user

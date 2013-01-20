@@ -29,7 +29,6 @@
         <th class="informationTH">Information </th>
       </tr>
       
-      
       <% @audit_thumbs_up.each do |a| %>
         <%= link_to image_tag('thumb_up_green.jpg', :border => 0), vote_up_food_stuff_path( :id => a.audit_id), :remote => true, :id => "thumbs_up" + a.audit_id.to_s, :class => "thumbs_up" %>
         <%= label_tag 'votes_id', AuditThumbsUp.find_by_audit_id(a.audit_id).votes_for, :id => 'votes_id' + a.audit_id.to_s, :class => "thumbs_up" %>
@@ -304,7 +303,6 @@
 
     var votes_id = "#votes_id" + last_id;
     $(votes_id).show();
-    
     
     $('#votes_id').text(audits[i]);
 

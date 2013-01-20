@@ -28,6 +28,22 @@ class User < ActiveRecord::Base
     return user if user.has_password?(submitted_password)
   end
   
+  def self.add_edit_point_to_all_users
+    @users = User.all
+    
+    @users.each do |user| 
+      
+      # TODO Remove this inconvenient code later
+      if user.edit_points == nil
+        user.edit_points = 0
+      end
+      
+      user.edit_points += 1
+      user.save(:validate => false)
+      
+      print user.edit_points
+    end
+  end
 
   private
 

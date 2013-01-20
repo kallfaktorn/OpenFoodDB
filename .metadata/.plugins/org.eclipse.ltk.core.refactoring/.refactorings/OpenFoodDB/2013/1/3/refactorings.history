@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;OpenFoodDB/lib/tasks/resque-scheduler.rake&apos; to &apos;resque.rake&apos;" description="Rename resource &apos;resque-scheduler.rake&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="lib/tasks/resque-scheduler.rake" name="resque.rake" stamp="1358638492101" updateReferences="true"/>
+</session>
