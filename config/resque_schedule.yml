@@ -1,5 +1,5 @@
 add_edit_point_to_all_users:
-  every: ["10s"]
+  every: ["3days"]
   class: EditPointThirdDay
   queue: high
-  description: "This job will check Daemon every 30 seconds"
+  description: "This job will add one edit point to each user every 3:rd day."

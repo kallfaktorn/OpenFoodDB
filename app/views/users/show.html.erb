@@ -16,6 +16,19 @@
     </tr>
   </table>
   
+  <%= image_tag('thumb_up_green.jpg', :border => 0) %>
+  <%= earned_thumbs_up %>
+  
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  
+  <%= image_tag('pencil.png', :border => 0) %>
+  <%= current_user.edit_points %>
+
+  <br />
+  <br />
+  
   <p class="alignleft"><%= link_to t(:User_Show_Link_Add_foodstuff), new_food_stuff_path %></p>
 
   <br />
@@ -23,10 +36,7 @@
 
   <p><%= label_tag t(:User_Show_Label_FoodStuffs_added_by) %><strong><%= @user.name %></strong></p>
   
-  
-  <%= @user.edit_points == nil %>
-  <br />
-  <%= @user.edit_points %>
+    
   
   <% @food_stuffs.each do |f| %>
     <%= link_to f.name, f %> <%= link_to t(:Button_Edit), edit_food_stuff_path(f) %>
