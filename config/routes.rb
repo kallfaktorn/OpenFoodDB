@@ -1,5 +1,10 @@
+
+  
+
 Openfooddb::Application.routes.draw do
 
+  
+  
   resources :food_stuffs do 
     resources :comments
     resources :ingredients
@@ -8,6 +13,8 @@ Openfooddb::Application.routes.draw do
       get :vote_up
     end
   end
+  
+  
 
   resources :users
 
@@ -32,7 +39,8 @@ Openfooddb::Application.routes.draw do
   match 'food_stuffs/:id/edit' => 'food_stuffs#edit'
 
   match 'food_stuff_marks/new' => 'food_stuff_marks#new'
-
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -82,7 +90,11 @@ Openfooddb::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+
+
   root :to => 'home#index'
+
+  mount OpenFoodDB::API => "/"
 
   # See how all your routes lay out with "rake routes"
 
