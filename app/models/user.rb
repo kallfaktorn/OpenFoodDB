@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :edit_points
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -43,6 +43,13 @@ class User < ActiveRecord::Base
       
       print user.edit_points
     end
+  end
+  
+  def decrease_edit_points
+    
+    self.edit_points -= 1
+    self.save(:validate => false)
+    #self.save
   end
 
   private

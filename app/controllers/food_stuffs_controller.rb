@@ -119,6 +119,16 @@ class FoodStuffsController < ApplicationController
         
         @audit_thumbs_up = AuditThumbsUp.create(:audit_id => @food_stuff.audits.last.id)
         
+        #current_user.decrease_edit_points()
+        
+        id = current_user.id
+        @user = User.find_by_id(current_user.id)
+        @user.edit_points -= 1
+        @user.save(:validate => false)
+        
+        user = User.find_by_id(id)
+        sign_in user
+        
         format.html { redirect_to @food_stuff, notice: 'Food stuff was successfully updated.' }
         format.json { head :no_content }
       else

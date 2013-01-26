@@ -7,7 +7,7 @@ module OpenFoodDB
     resources :food_stuffs do
     
       get '/show/:id' do
-        FoodStuff.find_by_id(params[:id])
+        FoodStuff.find_by_id(params[:id]).to_json
       end
     end
   end

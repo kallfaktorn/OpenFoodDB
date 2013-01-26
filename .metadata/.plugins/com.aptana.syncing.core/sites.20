@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sites>
-<site>
-<name>New Connection</name>
-<source>file:/home/kallfaktorn/Projects/OpenFoodDB</source>
-<destination>workspace:/OpenFoodDB</destination>
-</site>
-</sites>
