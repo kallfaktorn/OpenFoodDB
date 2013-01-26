@@ -296,15 +296,18 @@
     
     $(".thumbs_up").hide();
     
-    var last_id = audits[audits.length - 1].id;
-    
-    var thumb_up_id = "#thumbs_up" + last_id;
-    $(thumb_up_id).show();
-
-    var votes_id = "#votes_id" + last_id;
-    $(votes_id).show();
-    
-    $('#votes_id').text(audits[i]);
+    if(audits[audits.length - 1] != null)
+    {
+      var last_id = audits[audits.length - 1].id;
+      
+      var thumb_up_id = "#thumbs_up" + last_id;
+      $(thumb_up_id).show();
+  
+      var votes_id = "#votes_id" + last_id;
+      $(votes_id).show();
+      
+      $('#votes_id').text(audits[i]);
+    }
 
     var i = 0;
     $("tr").each(function( j ) {
