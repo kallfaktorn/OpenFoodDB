@@ -5,6 +5,9 @@
 .container {
   margin-left: 290px;
   margin-right: 290px;
+  
+  min-height:100%;
+  position:relative;
 }
 
 .hero-unit {
@@ -95,6 +98,7 @@ table.expandedTable td.right { width: 180px; }
 
 .history:hover {
   color: #666666;
+  cursor: pointer;
 }
 
 .comment-body {
@@ -154,3 +158,48 @@ table.expandedTable td.right { width: 180px; }
   padding-right: 1em;
   word-wrap: break-word;
 }
+
+#slideout {
+  bottom:0;
+  position: fixed;
+  right: 0;
+}
+#slideout_inner {
+  float:right;
+  bottom:0;
+  width:90px;
+  position: fixed;
+  right: -150px;
+}
+
+#footer
+{
+  position: fixed;
+  bottom: 0px;
+}
+
+.more_anchors {
+  color: #555;
+}
+
+.more_anchors:hover {
+  cursor: pointer;
+  color: #777;
+  text-decoration:underline;
+}
+
+#tags_anchor {
+  cursor: pointer;
+}
+
+.history
+{
+  position: fixed;
+  bottom: 20px;
+  right: 6px;
+  width: 180px;
+  height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+

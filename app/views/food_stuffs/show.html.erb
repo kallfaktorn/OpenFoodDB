@@ -2,16 +2,12 @@
   <br />
   <br />
   <br />
-  
-  <div class="container">
-    
-  <br />
-  <br />
-  <br />
-  
-  <div id="history_button" onclick="javascript:history()">History</div>
-  <div id="history_content"></div>
 
+  <div class="container">
+
+  <br />
+  <br />
+  <br />
   
   <div align="center" style="margin-left:-445px;">
     <% if @food_stuff.logo.exists? %>
@@ -23,7 +19,7 @@
   
 
   <div class="hero-unit">
-    
+
     <table class="informationTable">
       <tr>
         <th class="informationTH">Information </th>
@@ -203,7 +199,9 @@
         <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
       <% end %>
     </div>
-    
+  
+  
+
   </div>
   
   <br />
@@ -248,8 +246,29 @@
     <%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff) %> |
     <%= link_to t(:Button_Back), home_index_path %>
   </div>
+  
+  
+
+<div id="footer">
+  <div id="slideout">
+    <%= image_tag "slider_more.png", :id => "slideout_image_more", :class => "more_anchors", :hidden => "hidden" %>
+    <%= image_tag "slider_less.png", :id => "slideout_image_less", :class => "more_anchors", :hidden => "hidden" %>
+    
+    
+    <div class="history"></div>  
+    
+    <div id="slideout_inner">
+       
+      <a id="history_anchor" class="more_anchors" onclick="javascript:history()">History</a>
+      <a class="more_anchors">Tags</a>
+    </div>
+  </div>
+</div>
+  
 
 </div>
+
+
 
 
 <script id="food_stuff_json" type="text/json">
@@ -265,6 +284,7 @@
 </script>
 
 
+
 <script type="text/javascript">
 
   var foodStuffJSON = $("#food_stuff_json").html();
@@ -277,6 +297,9 @@
   
   var thumb_up_ids = new Array();
   var votes_ids = new Array();
+  
+  var slideIsOut = false;
+  var animationTime = 100;
   
   for(i in audits) {
     
@@ -291,7 +314,7 @@
       });  
     }());
   }
-  
+
   $(document).ready(function() {
     
     $(".thumbs_up").hide();
@@ -323,12 +346,14 @@
         $(this).attr('class', "InformationTableRow " + e);
     });
 
-    var history_div = $('#history_content');
+    //var history_div = $('#history_content');
+    var history_div = $('.history');
+    
 
     for(var i in audits) {
 
       var id = "_" + audits[i].id;
-      var history_anchor = "<pre><div class='history' id='history" + id + "'" + "onclick='javascript:history_click(" + audits[i].id + ")'" + ">" + audits[i].created_at + "</div></pre>";
+      var history_anchor = "<pre><div class='history_item' id='history" + id + "'" + "onclick='javascript:history_click(" + audits[i].id + ")'" + ">" + audits[i].created_at + "</div></pre>";
       history_div.append(history_anchor.replace("T", " ").replace("Z", ""));
 
       var history_data = "<div hidden='hidden' id='history" + id + "_d" + "'" + ">" + audits[i].id + "</div>";
@@ -336,8 +361,59 @@
     }
 
     $('.history').hide();
+    
+    $('#slideout_image_more').show();
+    $('#slideout_image_less').hide();
 
   });
+  
+  $('#slideout_image_more').click(function() {
+    //if(slideIsOut === false)
+   // {
+      $('#slideout').animate({right: '90'}, animationTime, function() {});
+
+      $('#slideout_inner').animate({
+        right: '0'
+      }, animationTime, function() {
+      // Animation complete.
+        $('#slideout_image_more').hide();
+        $('#slideout_image_less').show();
+      });
+      //slideIsOut = true;
+   // }
+  });
+  
+  $('#slideout_image_less').click(function() {
+    //else
+    //{
+      
+      $('.history').hide();
+      history_hidden = true;
+
+      $('#slideout').animate({right: '0'}, animationTime, function() {});
+
+      $('#slideout_inner').animate({
+        right: '-150'
+      }, animationTime, function() {
+      // Animation complete.
+
+        $('#slideout_image_more').show();
+        $('#slideout_image_less').hide();
+      });
+     // slideIsOut = false;
+    //}
+  });
+
+//  $('#history_anchor').click(function() {
+//    if($('.history').attr('hidden') === 'hidden')
+//    { 
+//      $('.history').attr('hidden',false);
+//    }
+//    else
+//    {
+//      $('.history').attr('hidden','hidden');
+//    }
+//  });
 
   function history() 
   {

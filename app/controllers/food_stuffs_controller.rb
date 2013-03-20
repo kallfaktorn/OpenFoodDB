@@ -113,22 +113,22 @@ class FoodStuffsController < ApplicationController
         @food_stuff.retailers.create(name: n)
       end
     end
-    
+
     respond_to do |format|
       if @food_stuff.update_attributes!(params[:food_stuff], :audit_comment => "Changing name, just because")
-        
+
         @audit_thumbs_up = AuditThumbsUp.create(:audit_id => @food_stuff.audits.last.id)
-        
+
         #current_user.decrease_edit_points()
         
         id = current_user.id
         @user = User.find_by_id(current_user.id)
         @user.edit_points -= 1
         @user.save(:validate => false)
-        
+
         user = User.find_by_id(id)
         sign_in user
-        
+
         format.html { redirect_to @food_stuff, notice: 'Food stuff was successfully updated.' }
         format.json { head :no_content }
       else

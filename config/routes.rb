@@ -2,8 +2,6 @@
   
 
 Openfooddb::Application.routes.draw do
-
-  
   
   resources :food_stuffs do 
     resources :comments
@@ -30,7 +28,7 @@ Openfooddb::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   match 'sessions/new', to: 'sessions#new'
-  
+
   match '/users/new/' => 'users#new'
   match '/users/:id/' => 'users#show'
 
