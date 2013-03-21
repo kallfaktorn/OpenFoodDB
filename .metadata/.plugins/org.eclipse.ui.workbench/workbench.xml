@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="22" version="2.0">
+<workbenchAdvisor/>
+<window height="875" width="1288" x="0" y="0">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout>
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="136" y="34"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="144" y="34"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="86" y="34"/>
+<coolItem id="com.aptana.ui.globalActionSet" itemType="typeToolBarContribution" x="192" y="34"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="100" y="34"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="88" y="34"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="com.aptana.editor.erb.html" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="com.aptana.editor.ruby" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page aggregateWorkingSetId="Aggregate for window 1359092700139" focus="true" label="Workspace - Web">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor activePart="true" focus="true" id="com.aptana.editor.ruby" name="food_stuffs_controller.rb" partName="food_stuffs_controller.rb" title="food_stuffs_controller.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/food_stuffs_controller.rb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/food_stuffs_controller.rb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2960" selectionTopPixel="1746"/>
+</editor>
+<editor id="com.aptana.editor.ruby" name="sessions_helper.rb" partName="sessions_helper.rb" title="sessions_helper.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/helpers/sessions_helper.rb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/helpers/sessions_helper.rb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="244" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.ruby" name="user.rb" partName="user.rb" title="user.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/models/user.rb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/models/user.rb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1540" selectionTopPixel="469"/>
+</editor>
+<editor id="com.aptana.editor.erb.html" name="_user.html.erb" partName="_user.html.erb" title="_user.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/_user.html.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/_user.html.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.erb.html" name="show.html.erb" partName="show.html.erb" title="show.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/show.html.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/show.html.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="401"/>
+</editor>
+<editor id="com.aptana.editor.erb.html" name="edit.html.erb" partName="edit.html.erb" title="edit.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/edit.html.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/edit.html.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.erb.html" name="index.html.erb" partName="index.html.erb" title="index.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/index.html.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/index.html.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.erb.html" name="new.html.erb" partName="new.html.erb" title="new.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/sessions/new.html.erb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/sessions/new.html.erb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="11" selectionOffset="921" selectionTopPixel="282"/>
+</editor>
+<editor id="com.aptana.editor.ruby" name="sessions_controller.rb" partName="sessions_controller.rb" title="sessions_controller.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/sessions_controller.rb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/sessions_controller.rb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="213" selectionTopPixel="0"/>
+</editor>
+<editor id="com.aptana.editor.ruby" name="users_controller.rb" partName="users_controller.rb" title="users_controller.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/users_controller.rb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/users_controller.rb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="860"/>
+</editor>
+<editor id="com.aptana.editor.ruby" name="food_stuff.rb" partName="food_stuff.rb" title="food_stuff.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/models/food_stuff.rb" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/models/food_stuff.rb"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="44"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="com.aptana.snippets.ui.views.SnippetsView" partName="Snippets"/>
+<view id="com.aptana.terminal.views.terminal" partName="Terminal"/>
+<view id="com.aptana.samples.ui.SamplesView" partName="Samples"/>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="com.aptana.explorer.view" partName="App Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" GitChangedFilesFilterEnabled="" activeProject="OpenFoodDB">
+<project name="OpenFoodDB">
+<selection>
+<element path="/OpenFoodDB"/>
+</selection>
+</project>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="com.aptana.editor.ruby" activePerspective="com.aptana.ui.WebPerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="com.aptana.ui.internal.WebPerspectiveFactory" id="com.aptana.ui.WebPerspective" label="Web"/>
+<alwaysOnActionSet id="com.aptana.browser.actionSet"/>
+<alwaysOnActionSet id="com.aptana.ruby.debug.ui.RubyDebugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="com.aptana.editor.common.presentation"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="com.aptana.js.debug.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.presentation"/>
+<alwaysOnActionSet id="com.aptana.ui.globalActionSet"/>
+<alwaysOnActionSet id="com.aptana.terminal.actionSet"/>
+<show_view_action id="com.aptana.browser.views.webbrowser"/>
+<show_view_action id="com.aptana.explorer.view"/>
+<show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<show_view_action id="com.aptana.ui.io.remoteview"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="com.aptana.samples.ui.SamplesView"/>
+<show_view_action id="com.aptana.snippets.ui.views.SnippetsView"/>
+<show_view_action id="com.aptana.terminal.views.terminal"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="com.aptana.webserver.ui.view"/>
+<new_wizard_action id="com.aptana.editor.php.NewPHPProjectWizard"/>
+<new_wizard_action id="com.aptana.ui.wizards.NewWebProject"/>
+<new_wizard_action id="com.aptana.ruby.core.ui.rubyProjectWizard"/>
+<new_wizard_action id="com.aptana.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<new_wizard_action id="org.radrails.rails.ui.projectWizard"/>
+<perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="com.aptana.explorer.view"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="com.aptana.terminal.views.terminal"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="com.aptana.samples.ui.SamplesView"/>
+<view id="com.aptana.snippets.ui.views.SnippetsView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="left">
+<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
+<page content="com.aptana.explorer.view" label="App Explorer"/>
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<page content="com.aptana.ui.io.remoteview" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.7495784" ratioLeft="889" ratioRight="297" relationship="2" relative="left">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.19983137" ratioLeft="237" ratioRight="949" relationship="2" relative="left"/>
+<info folder="true" part="terminalArea" ratio="0.7496791" ratioLeft="584" ratioRight="195" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="com.aptana.terminal.views.terminal" label="Terminal"/>
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.pde.runtime.LogView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.TaskList" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@66201d6d" ratio="0.7496791" ratioLeft="584" ratioRight="195" relationship="4" relative="left">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="com.aptana.samples.ui.SamplesView" label="Samples"/>
+<page content="com.aptana.snippets.ui.views.SnippetsView" label="Snippets"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/food_stuffs_controller.rb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/helpers/sessions_helper.rb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/models/user.rb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/_user.html.erb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/show.html.erb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/edit.html.erb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/index.html.erb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/sessions/new.html.erb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/sessions_controller.rb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/users_controller.rb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/models/food_stuff.rb"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/helpers/users_helper.rb"/>
+</editors>
+<item historyLabel="food_stuffs_controller.rb" index="0">
+<position info="not_deleted" x="2914" y="0"/>
+</item>
+<item historyLabel="sessions_helper.rb" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="food_stuffs_controller.rb" index="0">
+<position/>
+</item>
+<item historyLabel="user.rb" index="2">
+<position info="not_deleted" x="1369" y="20"/>
+</item>
+<item historyLabel="food_stuffs_controller.rb" index="0">
+<position info="not_deleted" x="2905" y="0"/>
+</item>
+<item historyLabel="user.rb" index="2">
+<position info="not_deleted" x="1456" y="0"/>
+</item>
+<item historyLabel="_user.html.erb" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="show.html.erb" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="edit.html.erb" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="_user.html.erb" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="show.html.erb" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="index.html.erb" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="_user.html.erb" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="edit.html.erb" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="new.html.erb" index="7">
+<position info="not_deleted" x="921" y="11"/>
+</item>
+<item historyLabel="sessions_controller.rb" index="8">
+<position info="not_deleted" x="213" y="12"/>
+</item>
+<item historyLabel="users_controller.rb" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="food_stuff.rb" index="10">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="user.rb" index="2">
+<position info="not_deleted" x="1456" y="0"/>
+</item>
+<item historyLabel="users_controller.rb" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="user.rb" index="2">
+<position info="not_deleted" x="1505" y="0"/>
+</item>
+<item historyLabel="users_controller.rb" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="user.rb" index="2">
+<position info="not_deleted" x="1505" y="0"/>
+</item>
+<item historyLabel="users_controller.rb" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="user.rb" index="2">
+<position info="not_deleted" x="1505" y="0"/>
+</item>
+<item historyLabel="users_helper.rb" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="sessions_helper.rb" index="1">
+<position info="not_deleted" x="7" y="14"/>
+</item>
+<item historyLabel="user.rb" index="2">
+<position info="not_deleted" x="1540" y="0"/>
+</item>
+<item historyLabel="sessions_helper.rb" index="1">
+<position info="not_deleted" x="7" y="14"/>
+</item>
+<item historyLabel="users_helper.rb" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="sessions_helper.rb" index="1">
+<position info="not_deleted" x="244" y="0"/>
+</item>
+<item active="true" historyLabel="food_stuffs_controller.rb" index="0">
+<position info="not_deleted" x="2905" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" name="users_helper.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/helpers/users_helper.rb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/helpers/users_helper.rb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" name="food_stuff.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/models/food_stuff.rb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/models/food_stuff.rb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" name="users_controller.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/users_controller.rb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/users_controller.rb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" name="sessions_controller.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/sessions_controller.rb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/sessions_controller.rb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" name="new.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/sessions/new.html.erb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/sessions/new.html.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" name="index.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/index.html.erb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/index.html.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" name="edit.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/edit.html.erb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/edit.html.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" name="show.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/show.html.erb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/show.html.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.erb.html" name="_user.html.erb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/_user.html.erb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/views/users/_user.html.erb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" name="user.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/models/user.rb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/models/user.rb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" name="sessions_helper.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/helpers/sessions_helper.rb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/helpers/sessions_helper.rb"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.ruby" name="food_stuffs_controller.rb" tooltip="/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/food_stuffs_controller.rb">
+<persistable uri="file:/home/kallfaktorn/Projects/OpenFoodDB/app/controllers/food_stuffs_controller.rb"/>
+</file>
+</mruList>
+</workbench>
