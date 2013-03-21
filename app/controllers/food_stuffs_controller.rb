@@ -116,6 +116,7 @@ class FoodStuffsController < ApplicationController
 
     respond_to do |format|
       if @food_stuff.update_attributes!(params[:food_stuff], :audit_comment => "Changing name, just because")
+      #if @food_stuff.update_attributes!(params[:retailer], :audit_comment => "Changing name, just because")
 
         @audit_thumbs_up = AuditThumbsUp.create(:audit_id => @food_stuff.audits.last.id)
 

@@ -24,7 +24,7 @@
       <tr>
         <th class="informationTH">Information </th>
       </tr>
-      
+
       <% @audit_thumbs_up.each do |a| %>
         <%= link_to image_tag('thumb_up_green.jpg', :border => 0), vote_up_food_stuff_path( :id => a.audit_id), :remote => true, :id => "thumbs_up" + a.audit_id.to_s, :class => "thumbs_up" %>
         <%= label_tag 'votes_id', AuditThumbsUp.find_by_audit_id(a.audit_id).votes_for, :id => 'votes_id' + a.audit_id.to_s, :class => "thumbs_up" %>
@@ -59,36 +59,24 @@
                 <% if index > 0 %>
                   <%= ", " %>
                 <% end %>
-  
+
                 <%= ingredient.name %>
-  
+
               <% end %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
-  
+
       <% if @food_stuff.retailers.length > 0 %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-            <%= t(:FoodStuff_Retailers) + ": " %>
-            
-            <% if @food_stuff.retailers.length == 1 %>
-              <%= @food_stuff.retailers.first.name %>
-            <% else %>
-              <% @food_stuff.retailers.each_with_index do |retailer, index| %>
-                <% if index > 0 %>
-                  <%= ", " %>
-                <% end %>
-  
-                <%= retailer.name %>
-  
-              <% end %>
-            <% end %>
+          <%= "Retailers: " %>
+          <%= label_tag 'retailers', @food_stuff.retailers_field, :id => "retailers_field_id", :class => "auditable" %>
           <% end %>
         <% end %>
       <% end %>
-      
+
       <% if @food_stuff.vendor.blank? == false %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
@@ -249,22 +237,21 @@
   
   
 
-<div id="footer">
-  <div id="slideout">
-    <%= image_tag "slider_more.png", :id => "slideout_image_more", :class => "more_anchors", :hidden => "hidden" %>
-    <%= image_tag "slider_less.png", :id => "slideout_image_less", :class => "more_anchors", :hidden => "hidden" %>
+  <div id="footer">
+    <div id="slideout">
+      <%= image_tag "slider_more.png", :id => "slideout_image_more", :class => "more_anchors", :hidden => "hidden" %>
+      <%= image_tag "slider_less.png", :id => "slideout_image_less", :class => "more_anchors", :hidden => "hidden" %>
     
-    
-    <div class="history"></div>  
-    
-    <div id="slideout_inner">
-       
-      <a id="history_anchor" class="more_anchors" onclick="javascript:history()">History</a>
-      <a class="more_anchors">Tags</a>
+      <div class="history"></div>
+
+      <div id="slideout_inner">
+
+        <a id="history_anchor" class="more_anchors" onclick="javascript:history()">History</a>
+        <a class="more_anchors">Tags</a>
+      </div>
     </div>
   </div>
-</div>
-  
+
 
 </div>
 
@@ -282,6 +269,9 @@
 <script id="audit_thumbs_up_json" type="text/json">
   <%= raw @audit_thumbs_up.to_json %>
 </script>
+
+<%= @audits %>
+
 
 
 
@@ -316,19 +306,19 @@
   }
 
   $(document).ready(function() {
-    
+
     $(".thumbs_up").hide();
-    
+
     if(audits[audits.length - 1] != null)
     {
       var last_id = audits[audits.length - 1].id;
-      
+
       var thumb_up_id = "#thumbs_up" + last_id;
       $(thumb_up_id).show();
-  
+
       var votes_id = "#votes_id" + last_id;
       $(votes_id).show();
-      
+
       $('#votes_id').text(audits[i]);
     }
 
@@ -346,9 +336,7 @@
         $(this).attr('class', "InformationTableRow " + e);
     });
 
-    //var history_div = $('#history_content');
     var history_div = $('.history');
-    
 
     for(var i in audits) {
 
@@ -368,25 +356,20 @@
   });
   
   $('#slideout_image_more').click(function() {
-    //if(slideIsOut === false)
-   // {
+
       $('#slideout').animate({right: '90'}, animationTime, function() {});
 
       $('#slideout_inner').animate({
         right: '0'
       }, animationTime, function() {
-      // Animation complete.
+
         $('#slideout_image_more').hide();
         $('#slideout_image_less').show();
       });
-      //slideIsOut = true;
-   // }
   });
-  
+
   $('#slideout_image_less').click(function() {
-    //else
-    //{
-      
+
       $('.history').hide();
       history_hidden = true;
 
@@ -395,25 +378,11 @@
       $('#slideout_inner').animate({
         right: '-150'
       }, animationTime, function() {
-      // Animation complete.
-
+      
         $('#slideout_image_more').show();
         $('#slideout_image_less').hide();
       });
-     // slideIsOut = false;
-    //}
   });
-
-//  $('#history_anchor').click(function() {
-//    if($('.history').attr('hidden') === 'hidden')
-//    { 
-//      $('.history').attr('hidden',false);
-//    }
-//    else
-//    {
-//      $('.history').attr('hidden','hidden');
-//    }
-//  });
 
   function history() 
   {
@@ -428,34 +397,37 @@
       history_hidden = false;
     }
   }
-  
+
   function history_reset()
   {
     $(".auditable").text(null);
   }
-  
+
   function history_click(id)
   {
     history_reset();
 
     $(".thumbs_up").hide();
 
-    for(var i in audits) 
+    for(var i in audits)
     {
       var audit = audits[i];
 
       for(var j in audit.audited_changes)
       {
         var change = audit.audited_changes[j];
+        
         var column_id = "#" + j + "_id";
 
+        console.log(j);
+
         if(change != null) {
- 
+
           if(typeof change === 'string' || typeof change === 'number') {
-             $(column_id).text(change);  
+            $(column_id).text(change);
           }
           else {
-            $(column_id).text(change[1]);  
+            $(column_id).text(change[1]);
           }
         }
       }

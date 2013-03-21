@@ -185,7 +185,7 @@
       
       <br />
       <br />
-      
+
       <table class="expandedTable2">
         <tr>
           <td align="left">
@@ -251,7 +251,7 @@
         </td>
       </tr>
     </table>
-    
+
     <br />
     <br />
 
@@ -302,12 +302,12 @@
         <% @retailers.each do |ret| %>
           <p>
             <%= label_tag t(:FoodStuff_Retailer) %>
-            <%= text_field_tag "retailer[name][]", ret.name, id:"retailer#{ret.id}" %>
+            <%= text_field_tag "retailer[name][]", ret.name, id:"retailer#{ret.id}", class:"retailers" %>
           </p>
         <% end %>
       <% else %>
           <label for="food_stuff_retailer"><%= t(:FoodStuff_Retailer) %> </label>
-          <input name="retailer[name][]" size="30" type="text" />
+          <input class="retailers" name="retailer[name][]" size="30" type="text" />
       <% end %>
 
     </div>
@@ -322,37 +322,38 @@
     <%= f.hidden_field :energy_kcal %>
     <%= f.hidden_field :energy_kj %>
     <%= f.hidden_field :mark_names %>
-    
-    
-    
-    <%= label_tag "Update note" %>
-    <%= f.text_field :audit_comment %>
 
+    
+    <%= f.hidden_field :retailers_field %>
+    
+  <!--   <%= label_tag "Update note" %>
+    <%= f.text_field :audit_comment %>
+  -->
 
     <div class="actions">
       <%= f.submit t(:FoodStuff_Edit_Button_Update_FoodStuff), class:"custom_button" %>
       <% end %>
     </div>
-
     
-</div>
-
   </div>
+</div>
 
 
 <script type="text/javascript">
 
   var listOfMarkNames = [];
 
-  $(document).ready( function() {
+  $(document).ready(function() {
     $("#my_tree").treeview();
     
     $(".folder").click();
-  } );
+  });
 
   var form = $('form').submit(function () {
     fill_form_with_energy_data();
     fill_form_with_mark_names();
+    
+    fill_form_with_retailers_field();
   });
   
   $('#food_stuff_logo').change(function() {
@@ -408,10 +409,34 @@
     }
   }
 
+  function fill_form_with_retailers_field() {
+
+    var retailers = $('.retailers');
+    var retailers_field = "";
+
+    if(retailers.length > 0)
+    {
+      retailers_field = retailers[0].value;
+
+      if(retailers.length > 1)
+      {
+        for(var i = 1; i < retailers.length; i++)
+        {
+          if(retailers[i].value !== "")
+          {
+            retailers_field += ", " + retailers[i].value;
+          }
+        }
+      }
+    }
+
+    $('#food_stuff_retailers_field').attr('value', retailers_field);    
+  }
+
   function addIngredient() {
     var ingredientDiv = $('#ingredients');
 
-    var ingredientLabel = "</br>" + "</br>" + "<label>" + "Ingredient: " + "</label>";
+    var ingredientLabel = "<br />" + "<br />" + "<label>" + "Ingredient: " + "</label>";
     ingredientLabel = $(ingredientLabel).attr("id", "ing");
     ingredientDiv.append(ingredientLabel);
 
@@ -426,7 +451,7 @@
     retailerLabel = $(retailerLabel).attr("id", "ret");
     retailerDiv.append(retailerLabel);
 
-    var retailerInput = "<input name='retailer[name][]' size='30' type='text' />";
+    var retailerInput = "<input class='retailers' name='retailer[name][]' size='30' type='text' />";
     retailerDiv.append(retailerInput);
   }
 
