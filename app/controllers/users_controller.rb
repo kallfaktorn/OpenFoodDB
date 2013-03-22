@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     end
    
     @food_stuffs = foodStuffIds.uniq.collect! do |i|
-      FoodStuff.find(i)
+      FoodStuff.find_by_id(i)
     end
   end
 

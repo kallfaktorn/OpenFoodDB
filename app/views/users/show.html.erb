@@ -39,7 +39,9 @@
     
   
   <% @food_stuffs.each do |f| %>
-    <%= link_to f.name, f %> <%= link_to t(:Button_Edit), edit_food_stuff_path(f) %>
+    <% if f != nil %>
+      <%= link_to f.name, f %> <%= link_to t(:Button_Edit), edit_food_stuff_path(f) %>
+    <% end %>
     <br />
   <% end %>
   
