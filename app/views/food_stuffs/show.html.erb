@@ -52,18 +52,7 @@
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
             <%= t(:FoodStuff_Ingredients) + ": " %>
-            <% if @food_stuff.ingredients.length == 1 %>
-              <%= @food_stuff.ingredients.first.name %>
-            <% else %>
-              <% @food_stuff.ingredients.each_with_index do |ingredient, index| %>
-                <% if index > 0 %>
-                  <%= ", " %>
-                <% end %>
-
-                <%= ingredient.name %>
-
-              <% end %>
-            <% end %>
+            <%= label_tag 'ingredients', @food_stuff.ingredients_field, :id => "ingredients_field_id", :class => "auditable" %>
           <% end %>
         <% end %>
       <% end %>
@@ -208,7 +197,7 @@
   <br />
   <br />
 
-  
+
   <br />
   <br />
 
@@ -234,14 +223,14 @@
     <%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff) %> |
     <%= link_to t(:Button_Back), home_index_path %>
   </div>
-  
-  
+
+
 
   <div id="footer">
     <div id="slideout">
       <%= image_tag "slider_more.png", :id => "slideout_image_more", :class => "more_anchors", :hidden => "hidden" %>
       <%= image_tag "slider_less.png", :id => "slideout_image_less", :class => "more_anchors", :hidden => "hidden" %>
-    
+
       <div class="history"></div>
 
       <div id="slideout_inner">
@@ -270,9 +259,6 @@
   <%= raw @audit_thumbs_up.to_json %>
 </script>
 
-<%= @audits %>
-
-
 
 
 <script type="text/javascript">
@@ -282,9 +268,9 @@
 
   var auditsJSON = $("#audits_json").html();
   var audits     = $.parseJSON(auditsJSON);
-  
+
   var history_hidden = true;
-  
+
   var thumb_up_ids = new Array();
   var votes_ids = new Array();
   
@@ -418,8 +404,6 @@
         var change = audit.audited_changes[j];
         
         var column_id = "#" + j + "_id";
-
-        console.log(j);
 
         if(change != null) {
 

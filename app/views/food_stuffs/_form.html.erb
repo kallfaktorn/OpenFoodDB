@@ -278,19 +278,19 @@
         <% @ingredients.each do |ing| %>
           <p>
             <%= label_tag t(:FoodStuff_Ingredient) %>
-            <%= text_field_tag "ingredient[name][]", ing.name, id:"ingredient#{ing.id}" %>
+            <%= text_field_tag "ingredient[name][]", ing.name, id:"ingredient#{ing.id}", class:"ingredients" %>
           </p>
         <% end %>
       <% else %>
           <label for="food_stuff_ingredient"><%= t(:FoodStuff_Ingredient) + ": " %></label>
-          <input name="ingredient[name][]" size="30" type="text" />
+          <input class="ingredients" name="ingredient[name][]" size="30" type="text" />
       <% end %>
 
     </div>
 
     <%= button_tag t(:FoodStuff_Button_Add_Ingredient), type:"button", onclick:"javascript:addIngredient();", class:"custom_button" %>
-    
-    
+
+
     <br />
     <br />
     <br />
@@ -325,6 +325,7 @@
 
     
     <%= f.hidden_field :retailers_field %>
+    <%= f.hidden_field :ingredients_field %>
     
   <!--   <%= label_tag "Update note" %>
     <%= f.text_field :audit_comment %>
@@ -354,6 +355,7 @@
     fill_form_with_mark_names();
     
     fill_form_with_retailers_field();
+    fill_form_with_ingredients_field();
   });
   
   $('#food_stuff_logo').change(function() {
@@ -432,6 +434,30 @@
 
     $('#food_stuff_retailers_field').attr('value', retailers_field);    
   }
+  
+  function fill_form_with_ingredients_field() {
+
+    var ingredients = $('.ingredients');
+    var ingredients_field = "";
+
+    if(ingredients.length > 0)
+    {
+      ingredients_field = ingredients[0].value;
+
+      if(ingredients.length > 1)
+      {
+        for(var i = 1; i < ingredients.length; i++)
+        {
+          if(ingredients[i].value !== "")
+          {
+            ingredients_field += ", " + ingredients[i].value;
+          }
+        }
+      }
+    }
+
+    $('#food_stuff_ingredients_field').attr('value', ingredients_field);    
+  }
 
   function addIngredient() {
     var ingredientDiv = $('#ingredients');
@@ -440,7 +466,7 @@
     ingredientLabel = $(ingredientLabel).attr("id", "ing");
     ingredientDiv.append(ingredientLabel);
 
-    var ingredientInput = "<input name='ingredient[name][]' size='30' type='text' />";
+    var ingredientInput = "<input class='ingredients' name='ingredient[name][]' size='30' type='text' />";
     ingredientDiv.append(ingredientInput);
   }
 
