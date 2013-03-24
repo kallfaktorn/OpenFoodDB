@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     
     if @user.save
       sign_in @user
+      print "bla3bla3bla3bla3bla3bla3bla3bla3bla3bla3bla3bla3"
+      print @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else

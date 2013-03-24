@@ -19,7 +19,8 @@ class FoodStuff < ActiveRecord::Base
   acts_as_voteable
 
   #audited
-  audited :protect => false
+  audited :protect => false, :allow_mass_assignment => true
+  #audited :protect => false
 
   def self.search(search)
     if search

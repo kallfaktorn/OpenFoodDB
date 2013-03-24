@@ -6,8 +6,15 @@
   margin-left: 290px;
   margin-right: 290px;
   
-  min-height:100%;
-  position:relative;
+  min-height: 100%;
+  
+}
+
+.logo_and_food_stuff_images
+{
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .hero-unit {
@@ -202,4 +209,3 @@ table.expandedTable td.right { width: 180px; }
   overflow-y: scroll;
   overflow-x: hidden;
 }
-

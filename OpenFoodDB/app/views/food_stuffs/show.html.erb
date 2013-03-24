@@ -1,4 +1,6 @@
 
+
+
 <br />
 <br />
 <br />
@@ -10,8 +12,9 @@
 <br />
 
 <% if @food_stuff.logo.exists? %>
-  <%= image_tag @food_stuff.logo.url(:medium) %>
+    <%= image_tag @food_stuff.logo.url(:medium), :class => "logo_and_food_stuff_images" %>
 <% end %>
+
 <br />
 
   <div class="hero-unit">

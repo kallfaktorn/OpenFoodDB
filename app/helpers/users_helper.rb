@@ -1,8 +1,14 @@
 module UsersHelper
   
   def earned_thumbs_up()
-    @user = User.find(current_user.id);
+    
     @audits = Audit.all
+    
+    
+    print "blalalalalalala"
+    print "blalalalalalala"
+    print "blalalalalalala"
+    print current_user
     
     @audits_by_user = []
     @audits.each do |audit| 
