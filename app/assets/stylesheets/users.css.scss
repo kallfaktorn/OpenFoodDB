@@ -1,3 +1,37 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#error_text
+{
+  position:absolute;
+  color: #EB7900;
+}
+
+.green_input
+{
+  border-left-style: outset; 
+  border-left-width: 2px; 
+  border-left-color: #aae277;
+  border-right-width: 2px;
+  border-right-color: #e3f5d2;
+  border-bottom-color: #e3f5d2;
+  border-bottom-width: 2px;
+  border-top-style: outset; 
+  border-top-width: 2px;
+  border-top-color: #aae277;  
+}
+
+.orange_input
+{
+  border-left-style: outset; 
+  border-left-width: 2px; 
+  border-left-color: #FFB86A;
+  border-right-width: 2px;
+  border-right-color: #ffe1c4;
+  border-bottom-color: #ffe1c4;
+  border-bottom-width: 2px;
+  border-top-style: outset; 
+  border-top-width: 2px;
+  border-top-color: #FFB86A; 
+}

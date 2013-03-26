@@ -7,6 +7,13 @@
       <br/>
       <br/>
       <br/>
+      
+      <pre id="error_text" hidden=hidden></pre>
+      
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <br/>
       <br/>
       
@@ -56,7 +63,7 @@
   
         <tr>
           <td>
-            <%= f.submit t(:Sign_up_Button_Create_my_account), class: "custom_button" %>
+            <%= f.button t(:Sign_up_Button_Create_my_account), type: "button", id: "new_user", onclick: "javascript:evaluate_fields();", class: "custom_button" %>
           </td>
         </tr>
       </table>
@@ -65,3 +72,225 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  var error_text = "";
+  var error_field_found = false;
+
+  var shift_color = true;
+  var myInterval;
+  var flashing = false;
+
+  function perform_flash(tag)
+  {
+    flashing = true;
+    myInterval = setInterval(function() {
+      flash(tag);
+    }, 60);
+      
+    setTimeout(function() {
+      clearInterval(myInterval);
+      flashing = false;    
+    }, 500);
+  }
+  
+  function flash(tag)
+  {
+    if(shift_color === true)
+    {
+      $(tag).attr('class', 'orange_input');
+    }
+    else
+    {
+      $(tag).attr('class', '');
+    }
+    
+    shift_color = !shift_color;
+  }
+  
+  function reset_fields()
+  {
+    error_text = "";
+    $('#error_text').hide();
+    
+    $('#user_name').attr('class', '');
+    $('#user_email').attr('class', '');
+    $('#user_password').attr('class', '');
+    $('#user_password_confirmation').attr('class', '');
+    
+    error_field_found = false;
+  }
+  
+  function evaluate_fields()
+  {
+    reset_fields();
+  
+    
+    flash_or_green_field(evaluate_name_field(), "#user_name");
+    
+    flash_or_green_field(evaluate_email_field(), "#user_email");
+    
+    flash_or_green_field(evaluate_password_field(), "#user_password");
+    
+    flash_or_green_field(evaluate_confirm_password_field(), "#user_password_confirmation");
+    
+    
+    if(error_field_found === true)
+    {
+      $('#error_text').html(error_text);
+      $('#error_text').show();
+    }
+    
+    
+    if(error_field_found === false)
+    {
+      $('#new_user').submit();
+    }
+  }
+  
+  function flash_or_green_field(validField, tag)
+  {
+    if(validField === true)
+    {
+      $(tag).attr('class', 'green_input');
+    }
+    else
+    {
+      if(error_field_found !== true)
+      {
+        if(flashing === false)
+        {
+          perform_flash(tag);
+        }
+        
+        error_field_found = true;
+      }
+    }
+  }
+  
+  function evaluate_name_field()
+  {
+    var name_field = $('#user_name').val();
+    
+    if(name_field.length === 0)
+    {
+      error_text += "Name is missing.\n";
+      return false;
+    }
+    else if(name_field.length > 50)
+    {
+      error_text += "Name is too long.\n";
+      return false;
+    }
+    
+    return true;
+  }
+  
+  function evaluate_password_field()
+  {
+    var password_field = $('#user_password').val();
+    
+    if(password_field.length < 6)
+    {
+      error_text += "Password length is too short.\n";
+      return false;
+    }
+    
+    else if(password_field > 40)
+    {
+      error_text += "Password length is too long.\n";
+      return false;
+    }
+    
+    return true;
+  }
+
+  function evaluate_confirm_password_field()
+  {
+    var password_field = $('#user_password').val();
+    var confirm_password_field = $('#user_password_confirmation').val();
+    
+    if(password_field.length === 0)
+    {
+      return false;
+    }
+    else if(password_field !== confirm_password_field)
+    {
+      error_text += "Password does not match the confirm password.\n";
+      return false;
+    }
+    
+    return true;
+  }
+    
+  // email should contain @
+  // something before @
+  // something should be a-z or .
+  // something after @
+  // something should be a-z
+  // something after .
+  function evaluate_email_field()
+  {
+    var email_input = $("#user_email").val();
+    var at = email_input.indexOf("@");
+    
+    if(at === -1)
+    {
+      error_text += "Email is missing an @.\n";
+      
+      return false;
+    }
+    else if(at === 0)
+    {
+      error_text += "No valid email begins with @.\n";
+      
+      return false;
+    }
+  
+    var email_before_at = email_input.substr(0, at);
+    var email_before_at_match = email_before_at.match(/[a-z].*/);
+    
+    if(email_before_at_match === null || email_before_at_match[0] != email_before_at)
+    {
+      error_text += "Left side of @ has erroneous characters.\n";
+      
+      return false;
+    }
+    
+    var email_after_at = email_input.substr(at + 1);
+    var dot = email_after_at.indexOf(".");
+    
+    if(dot === -1)
+    {
+      error_text += "Missing dot between email service and top-level domain.\n";
+      
+      return false;
+    }
+    
+    var email_after_at_before_dot = email_after_at.substr(0, dot);
+    
+    var email_after_at_before_dot_match = email_after_at_before_dot.match(/[a-z]*/)[0];
+  
+    if(email_after_at_before_dot_match !== email_after_at_before_dot)
+    {
+      error_text += "Invalid email service.\n";
+      
+      return false;
+    }
+  
+    var email_top_level_domain = email_after_at.substr(dot + 1);
+    
+    var email_top_level_domain_match = email_top_level_domain.match(/[a-z]*/)[0];
+    
+    if(email_top_level_domain_match !== email_top_level_domain)
+    {
+      error_text += "The entered email has an invalid top-level domain.\n";
+  
+      return false;
+    }
+    
+    return true;
+  }
+
+</script>
