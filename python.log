@@ -1,0 +1,7 @@
+
+/------------------------------------------------------------------------------\
+BigWorld Release Client (compiled at 12:50:55 Feb 20 2013) starting on Tue Mar 26 21:46:17 2013
+The BigWorld Client has encountered an unhandled exception and must close (EXCEPTION_ACCESS_VIOLATION : 0xC0000005 @ 0xF72D6CC6) (Read @ 0x0000019C)
+/------------------------------------------------------------------------------\
+BigWorld Release Client (compiled at 12:50:55 Feb 20 2013) starting on Tue Mar 26 21:50:36 2013
+The BigWorld Client has encountered an unhandled exception and must close (EXCEPTION_ACCESS_VIOLATION : 0xC0000005 @ 0xF72F5CC6) (Read @ 0x0000019C)
