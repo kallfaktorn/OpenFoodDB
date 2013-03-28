@@ -5,22 +5,21 @@
 .container {
   margin-left: 290px;
   margin-right: 290px;
-  
   min-height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.logo_and_food_stuff_images
-{
+.logo_and_food_stuff_images {
   display: block;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-unit {
   color: inherit;
   background-color: #FFFFFF;
   font-size: 12px;
-  text-align:center;
+  text-align: center;
   font-weight: 200;
   line-height: 30px;
   -webkit-border-radius: 25px;
