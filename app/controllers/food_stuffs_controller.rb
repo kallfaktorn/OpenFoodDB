@@ -154,32 +154,39 @@ class FoodStuffsController < ApplicationController
   def vote_up
     audit_id = params[:id]
     
-    current_user.vote_for(@audit_thumb_up = AuditThumbsUp.find_by_audit_id(audit_id))
-    @count = @audit_thumb_up.votes_for
-    
+    @audit_thumb_up = AuditThumbsUp.find_by_audit_id(audit_id)
     @audit = Audit.find(@audit_thumb_up.audit_id)
-    @user = User.find(@audit.user_id)
+    
+    if @audit.user_id != current_user.id
+      
+      current_user.vote_for(@audit_thumb_up)
+      
+      @user = User.find(@audit.user_id)
     
     
-    # TODO Remove this inconvenient code later
-    if @user.edit_points == nil
-      @user.edit_points = 0
+      # TODO Remove this inconvenient code later
+      if @user.edit_points == nil
+        @user.edit_points = 0
+      end
+    
+      # TODO Remove this inconvenient code later
+      if @user.progress_to_edit_point == nil
+        @user.progress_to_edit_point = 0
+      end
+    
+      steps = @user.progress_to_edit_point
+      steps += 1
+    
+      if steps == Settings.thumbs_up_per_edit_point
+        @user.edit_points += 1
+        steps = 0
+      end
+    
+      @user.progress_to_edit_point = steps
+    
     end
     
-    # TODO Remove this inconvenient code later
-    if @user.progress_to_edit_point == nil
-      @user.progress_to_edit_point = 0
-    end
-    
-    steps = @user.progress_to_edit_point
-    steps += 1
-    
-    if steps == Settings.thumbs_up_per_edit_point
-      @user.edit_points += 1
-      steps = 0
-    end
-    
-    @user.progress_to_edit_point = steps
+    @count = @audit_thumb_up.votes_for
     
     respond_to do |format|
       format.json { render :json => @count }
