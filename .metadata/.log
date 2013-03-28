@@ -3040,3 +3040,12 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.core.resources 4 566 2013-03-26 21:37:25.206
 !MESSAGE Workspace was not properly initialized or has already shutdown.
+!SESSION 2013-03-28 22:54:55.428 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_38
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2013-03-28 22:54:56.701
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
