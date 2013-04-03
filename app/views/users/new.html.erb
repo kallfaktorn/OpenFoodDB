@@ -32,7 +32,7 @@
           </td>
         </tr>
      
-  
+
         <tr>
           <td>
             <%= f.label t(:Sign_up_Label_Email) %>
@@ -88,13 +88,13 @@
     myInterval = setInterval(function() {
       flash(tag);
     }, 60);
-      
+
     setTimeout(function() {
       clearInterval(myInterval);
       flashing = false;    
     }, 500);
   }
-  
+
   function flash(tag)
   {
     if(shift_color === true)
@@ -105,7 +105,7 @@
     {
       $(tag).attr('class', '');
     }
-    
+
     shift_color = !shift_color;
   }
   
@@ -118,24 +118,24 @@
     $('#user_email').attr('class', '');
     $('#user_password').attr('class', '');
     $('#user_password_confirmation').attr('class', '');
-    
+
     error_field_found = false;
   }
-  
+
   function evaluate_fields()
   {
     reset_fields();
-  
-    
+
+
     flash_or_green_field(evaluate_name_field(), "#user_name");
-    
+
     flash_or_green_field(evaluate_email_field(), "#user_email");
-    
+
     flash_or_green_field(evaluate_password_field(), "#user_password");
-    
+
     flash_or_green_field(evaluate_confirm_password_field(), "#user_password_confirmation");
-    
-    
+
+
     if(error_field_found === true)
     {
       $('#error_text').html(error_text);

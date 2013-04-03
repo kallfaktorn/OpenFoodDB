@@ -20,10 +20,10 @@ class FoodStuffsController < ApplicationController
 
     @ids = []
     @audits.each do |audit| @ids << audit.id end
-      
+
     @audit_thumbs_up = []
     @ids.each do |id| @audit_thumbs_up << AuditThumbsUp.find_by_audit_id(id) end
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @food_stuff }
@@ -54,6 +54,7 @@ class FoodStuffsController < ApplicationController
     @food_stuff_marks = FoodStuffMark.find(:all)
     @ingredients = @food_stuff.ingredients
     @retailers = @food_stuff.retailers
+    @tags = Tags.all
   end
 
   # POST /food_stuffs
@@ -116,10 +117,10 @@ class FoodStuffsController < ApplicationController
 
     respond_to do |format|
       if @food_stuff.update_attributes!(params[:food_stuff], :audit_comment => "Changing name, just because")
-      #if @food_stuff.update_attributes!(params[:retailer], :audit_comment => "Changing name, just because")
 
         @audit_thumbs_up = AuditThumbsUp.create(:audit_id => @food_stuff.audits.last.id)
 
+        # Let stay!
         #current_user.decrease_edit_points()
         
         id = current_user.id

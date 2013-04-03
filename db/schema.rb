@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322013955) do
+ActiveRecord::Schema.define(:version => 20130402194529) do
 
   create_table "audit_thumbs_ups", :force => true do |t|
     t.integer  "audit_id"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20130322013955) do
     t.float    "lactose"
     t.string   "retailers_field"
     t.string   "ingredients_field"
+    t.text     "tags"
   end
 
   create_table "ingredients", :force => true do |t|
@@ -157,6 +158,13 @@ ActiveRecord::Schema.define(:version => 20130322013955) do
   end
 
   add_index "retailers", ["food_stuff_id"], :name => "index_retailers_on_food_stuff_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "en"
+    t.string   "se"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -256,6 +256,12 @@
     <br />
 
 
+    <div style="float:left;">
+      <label>Foodstuff marks</label>
+    </div>
+    
+    <br />
+    
     <div style="float:left; width:150px; height:50px; overflow:auto; white-space:nowrap;">
       <% @food_stuff_marks.each do |mark| %>
         <%= content_tag :div, :id => "mark#{mark.id}", :style => 'width:25px; float:left;' do %>
@@ -263,6 +269,23 @@
         <% end %>
       <% end %>
     </div>
+    
+    <!-- <select id="tags_id" multiple="multiple"></select> -->
+    
+    <br />
+    <br />
+    <br />
+    <br />
+    
+    <label>Tags</label>
+    <div class="field" type="hidden">
+    <%= content_tag :select, :multiple => "multiple", :class => "custom_select", :id => "tags_id" do %>
+      <% @tags.each do |tag| %>
+        <%= content_tag :option, :id => "tag#{tag.id}" do %>
+          <%= tag.se %>
+        <% end %>
+      <% end %>
+    <% end %>
 
 
     <br />
@@ -309,9 +332,9 @@
           <label for="food_stuff_retailer"><%= t(:FoodStuff_Retailer) %> </label>
           <input class="retailers" name="retailer[name][]" size="30" type="text" />
       <% end %>
-
     </div>
-
+    
+    
     <%= button_tag t(:FoodStuff_Button_Add_Retailer), type:"button", onclick:"javascript:addRetailer();", class:"custom_button" %>
 
     </br>
@@ -322,12 +345,14 @@
     <%= f.hidden_field :energy_kcal %>
     <%= f.hidden_field :energy_kj %>
     <%= f.hidden_field :mark_names %>
-
     
+    <%= f.hidden_field :tags %>
+
+
     <%= f.hidden_field :retailers_field %>
     <%= f.hidden_field :ingredients_field %>
     
-  <!--   <%= label_tag "Update note" %>
+    <!--   <%= label_tag "Update note" %>
     <%= f.text_field :audit_comment %>
   -->
 
@@ -337,27 +362,39 @@
     </div>
     
   </div>
+
+  
 </div>
 
+
+<script id="tags_json" type="text/json">
+  <%= raw @tags.to_json %>
+</script>
 
 <script type="text/javascript">
 
   var listOfMarkNames = [];
+  var listOfTags = [];
 
   $(document).ready(function() {
     $("#my_tree").treeview();
-    
+
     $(".folder").click();
+
+    var tagsJSON = $("#tags_json").html();
+    var tags     = $.parseJSON(tagsJSON);
   });
 
   var form = $('form').submit(function () {
     fill_form_with_energy_data();
     fill_form_with_mark_names();
-    
+
     fill_form_with_retailers_field();
     fill_form_with_ingredients_field();
+    
+    fill_form_with_tags();
   });
-  
+
   $('#food_stuff_logo').change(function() {
 
     $('#food_stuff_logo_label_fake').text(this.value.substring(12));
@@ -432,9 +469,9 @@
       }
     }
 
-    $('#food_stuff_retailers_field').attr('value', retailers_field);    
+    $('#food_stuff_retailers_field').attr('value', retailers_field);
   }
-  
+
   function fill_form_with_ingredients_field() {
 
     var ingredients = $('.ingredients');
@@ -457,6 +494,20 @@
     }
 
     $('#food_stuff_ingredients_field').attr('value', ingredients_field);    
+  }
+  
+  function fill_form_with_tags()
+  {
+    var options = $('#tags_id option:selected');
+    var tags = "";
+
+    options.each(function() {
+
+      tags += $(this).attr('value') + ", ";
+    });
+
+    tags = tags.substring(0, tags.length - 2);
+    $('#food_stuff_tags').attr('value', tags);
   }
 
   function addIngredient() {
