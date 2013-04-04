@@ -34,6 +34,7 @@ en:
   User_Show_Label_Sign_out: "Sign out"
   FoodStuff_Show_Button_Post_Comment: "Post Comment"
   FoodStuff_Edit_Button_Update_FoodStuff: "Update FoodStuff"
+  FoodStuff_Per_Hundred_Grams: "Per 100 grams"
   FoodStuff_Category_Carbohydrates: "Carbohydrates"
   FoodStuff_Category_Saturated_fatty_acids: "Saturated fatty acids"
   FoodStuff_Category_Monounsaturated_fatty_acids: "Monounsaturated fatty acids"

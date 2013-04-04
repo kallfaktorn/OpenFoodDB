@@ -34,6 +34,7 @@ se:
   User_Show_Label_Sign_out: "Logga ut"
   FoodStuff_Show_Button_Post_Comment: "Posta kommentar"
   FoodStuff_Edit_Button_Update_FoodStuff: "Uppdatera livsmedel"
+  FoodStuff_Per_Hundred_Grams: "Per 100 gram"
   FoodStuff_Category_Carbohydrates: "Kolhydrater"
   FoodStuff_Category_Saturated_fatty_acids: "Mättade fettsyror"
   FoodStuff_Category_Monounsaturated_fatty_acids: "Enkelomättade fettsyror"

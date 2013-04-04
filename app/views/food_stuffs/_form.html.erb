@@ -12,8 +12,17 @@
   <% end %>
 
   <div class="container">
-
     <table class="expandedTable2">
+      <tr>
+        <td align="left">
+        </td>
+        <td align="middle">
+        </td>
+        <td align="right">
+          <%= label_tag "", :class => "field_width" do %>
+            <%= content_tag :b, t(:FoodStuff_Per_Hundred_Grams) %>
+          <% end %>  
+        </td>
       <tr>
         <td align="left">
           <%= f.label t(:FoodStuff_Name) %>
@@ -425,7 +434,7 @@
   $('#food_stuff_logo').change(function() {
 
     $('#food_stuff_logo_label_fake').text(this.value.substring(12));
-  }); 
+  });
 
   $('#food_stuff_food_stuff_image').change(function() {
 
