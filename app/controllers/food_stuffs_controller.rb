@@ -2,7 +2,7 @@ class FoodStuffsController < ApplicationController
 
   def index
     search_string = "%" + params[:search] + "%"
-    @food_stuffs = FoodStuff.find(:all, :conditions => ['name LIKE ?', search_string])
+    @food_stuffs = FoodStuff.find(:all, :conditions => ['name ILIKE ?', search_string])
 
     respond_to do |format|
       format.json { render :json => @food_stuffs }
