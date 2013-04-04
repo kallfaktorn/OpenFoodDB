@@ -94,6 +94,16 @@
         <% end %>
       <% end %>
       
+      <% if @food_stuff.weight.blank? == false %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+            <%= t(:FoodStuff_Weight) + ": " %>
+            <%= label_tag 'weight', @food_stuff.weight, :id => "weight_id", :class => "auditable" %>
+            <%= "g" %>
+          <% end %>
+        <% end %>
+      <% end %>
+      
       <% if @food_stuff.tags.blank? == false %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>

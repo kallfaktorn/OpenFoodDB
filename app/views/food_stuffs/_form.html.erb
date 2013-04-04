@@ -219,6 +219,7 @@
             <%= f.text_field :expiration_date_broached, :class => "field_width" %>
           </td>
         </tr>
+        <%= render :partial => 'item2', :locals => {:f => f, :label => t(:FoodStuff_Weight), :number =>  :weight, :unit => "g" } %>
       </table>
      
       

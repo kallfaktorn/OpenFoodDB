@@ -53,6 +53,7 @@ se:
   FoodStuff_Vendor: "Leverantör"
   FoodStuff_Expiration_Broached: "Antal dagars hållbarhet när förpackningen är bruten"
   FoodStuff_Expiration_Unopened: "Antal dagars hållbarhet när förpackningen är oöppnad"
+  FoodStuff_Weight: "Vikt"
   FoodStuff_Days: "dagar"
   FoodStuff_Ingredient: "Ingrediens"
   FoodStuff_Button_Add_Ingredient: "Lägg till ingrediens"
