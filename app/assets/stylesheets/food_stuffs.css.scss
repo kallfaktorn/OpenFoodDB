@@ -209,26 +209,30 @@ table.expandedTable td.right { width: 180px; }
 }
 
 .custom_select {
-  color:#707070;
   border-radius: 7px;
   border-style:solid;
   border-color:#d0cfcf;
+  background-color:#F3F3F3;
   
+
   float:left; 
   width:150px; 
   height:50px;
-  
-  background-image: linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
-  background-image: -o-linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
-  background-image: -moz-linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
-  background-image: -webkit-linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
-  background-image: -ms-linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
-  
-  background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0.37, rgb(242,242,242)),
-    color-stop(1, rgb(253,253,253))
-  );
+}
+
+.details {
+  width: 550px;
+  color: #000000;
+}
+
+.details:hover {
+  text-decoration:underline;
+}
+
+.text_field {
+   width: 90px; 
+   height: 390px; 
+   border: 1px;
+   solid: #999999; 
+   padding: 5px; 
 }

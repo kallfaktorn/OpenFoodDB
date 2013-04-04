@@ -15,7 +15,6 @@
     <% end %>
   </div>
   
-  <br />
   
 
   <div class="hero-unit">
@@ -192,7 +191,6 @@
 
 
   <br />
-  <br />
 
   <% @food_stuff_marks.each do |mark| %>
     <% if mark_in_foodstuff(mark.name, @food_stuff.mark_names) %>
@@ -204,9 +202,21 @@
   <br />
 
 
-  <br />
+  
+  
+  <% if @food_stuff.details.blank? == false %>
+    <%= label_tag "details", "Details", :class => "details", :onclick => "javascript:details()"%><br />
+    <%= content_tag :div, "", :id => "details", :hidden => "hidden" do %>
+      <%= @food_stuff.details %>
+    <% end %>
+  <% end %>
+    
+  
   <br />
 
+
+  <br />
+  <br />
 
   <%= render :partial => 'comment', :collection => @food_stuff.comments %>
 
@@ -372,6 +382,18 @@
         $('#slideout_image_less').hide();
       });
   });
+  
+  function details()
+  {
+    if($('#details').is(":visible"))
+    {
+      $('#details').hide();
+    }
+    else
+    {
+      $('#details').show();
+    }
+  }
 
   function history() 
   {
