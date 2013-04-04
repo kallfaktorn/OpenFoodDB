@@ -104,6 +104,15 @@
         <% end %>
       <% end %>
       
+      <% if @food_stuff.storage.blank? == false %>
+        <%= content_tag :tr, :class => "InformationTableRow" do %>
+          <%= content_tag :td, :class => "informationTD", :align => "left" do %>
+            <%= t(:FoodStuff_Storage) + ": " %>
+            <%= label_tag 'storage', @food_stuff.storage, :id => "storage_id", :class => "auditable" %>
+          <% end %>
+        <% end %>
+      <% end %>
+      
       <% if @food_stuff.tags.blank? == false %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>

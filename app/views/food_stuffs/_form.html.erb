@@ -280,7 +280,7 @@
     
     <label>Tags</label>
     <div class="field" type="hidden">
-    <%= content_tag :select, :multiple => "multiple", :class => "custom_select", :id => "tags_id" do %>
+    <%= content_tag :select, :multiple => "multiple", :class => "custom_select_multiple", :id => "tags_id" do %>
       <% @tags.each do |tag| %>
         <%= content_tag :option, :id => "tag#{tag.id}" do %>
           <%= tag.se %>
@@ -288,6 +288,26 @@
       <% end %>
     <% end %>
 
+    <br />
+    <br />
+    <br />
+    <br />
+    
+    <%= content_tag :label, t(:FoodStuff_Storage) %>
+    <br />
+    <%= content_tag :select, :class => "custom_select", :id => "storage_id" do %>
+      <%= content_tag :option do %>
+      <% end %>
+      <%= content_tag :option do %>
+        <%= t(:FoodStuff_Storage_Fridge) %>
+      <% end %>
+      <%= content_tag :option do %>
+        <%= t(:FoodStuff_Storage_Freezer) %>
+      <% end %>
+      <%= content_tag :option do %>
+        <%= t(:FoodStuff_Storage_Cupboard) %>
+      <% end %>
+    <% end %>
 
     <br />
     <br />
@@ -353,7 +373,7 @@
     <%= f.hidden_field :mark_names %>
     
     <%= f.hidden_field :tags %>
-
+    <%= f.hidden_field :storage %>
 
     <%= f.hidden_field :retailers_field %>
     <%= f.hidden_field :ingredients_field %>
@@ -399,6 +419,7 @@
     fill_form_with_ingredients_field();
     
     fill_form_with_tags();
+    fill_form_with_storage();
   });
 
   $('#food_stuff_logo').change(function() {
@@ -514,6 +535,13 @@
 
     tags = tags.substring(0, tags.length - 2);
     $('#food_stuff_tags').attr('value', tags);
+  }
+  
+  function fill_form_with_storage()
+  {
+    var option = $('#storage_id option:selected').attr('value');
+    
+    $('#food_stuff_storage').attr('value', option);
   }
 
   function addIngredient() {

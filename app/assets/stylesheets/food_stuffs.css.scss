@@ -214,7 +214,16 @@ table.expandedTable td.right { width: 180px; }
   border-color:#d0cfcf;
   background-color:#F3F3F3;
   
+  float:left; 
+  width:150px; 
+}
 
+.custom_select_multiple {
+  border-radius: 7px;
+  border-style:solid;
+  border-color:#d0cfcf;
+  background-color:#F3F3F3;
+  
   float:left; 
   width:150px; 
   height:50px;
