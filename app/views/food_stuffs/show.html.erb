@@ -226,7 +226,7 @@
   
   
   <% if @food_stuff.details.blank? == false %>
-    <%= label_tag "details", "Details", :class => "details", :onclick => "javascript:details()"%><br />
+    <%= label_tag "details", t(:FoodStuff_Details), :class => "details", :onclick => "javascript:details()"%><br />
     <%= content_tag :div, "", :id => "details", :hidden => "hidden" do %>
       <%= @food_stuff.details %>
     <% end %>
