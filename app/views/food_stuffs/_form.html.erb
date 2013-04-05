@@ -287,7 +287,7 @@
     <br />
     <br />
     
-    <label>Tags</label>
+    <%= label_tag t(:FoodStuff_Tags) %>
     <div class="field" type="hidden">
     <%= content_tag :select, :multiple => "multiple", :class => "custom_select_multiple", :id => "tags_id" do %>
       <% @tags.each do |tag| %>

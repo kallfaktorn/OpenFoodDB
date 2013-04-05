@@ -118,7 +118,7 @@
       <% if @food_stuff.tags.blank? == false %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-            <%= "Tags: " %>
+            <%= t(:FoodStuff_Tags) + ": " %>
             <%= label_tag 'tags', @food_stuff.tags, :id => "tags_id", :class => "auditable" %>
           <% end %>
         <% end %>
