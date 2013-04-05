@@ -9,7 +9,7 @@
   <br />
   <br />
   
-  <div align="center" style="margin-left:-445px;">
+  <div align="center">
     <% if @food_stuff.logo.exists? %>
       <%= image_tag @food_stuff.logo.url(:medium) %>
     <% end %>
@@ -25,8 +25,10 @@
       </tr>
 
       <% @audit_thumbs_up.each do |a| %>
-        <%= link_to image_tag('thumb_up_green.jpg', :border => 0), vote_up_food_stuff_path( :id => a.audit_id), :remote => true, :id => "thumbs_up" + a.audit_id.to_s, :class => "thumbs_up" %>
-        <%= label_tag 'votes_id', AuditThumbsUp.find_by_audit_id(a.audit_id).votes_for, :id => 'votes_id' + a.audit_id.to_s, :class => "thumbs_up" %>
+        <%= content_tag :div, :class => "thumbs_up_div" do %>
+          <%= link_to image_tag('thumb_up_green.jpg', :border => 0), vote_up_food_stuff_path( :id => a.audit_id), :remote => true, :id => "thumbs_up" + a.audit_id.to_s, :class => "thumbs_up" %>
+          <%= label_tag 'votes_id', AuditThumbsUp.find_by_audit_id(a.audit_id).votes_for, :id => 'votes_id' + a.audit_id.to_s, :class => "thumbs_up" %>      
+        <% end %>
       <% end %>
 
       <% if @food_stuff.name.blank? == false %>

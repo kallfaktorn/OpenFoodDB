@@ -3,10 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .container {
-  margin-left: 290px;
-  margin-right: 290px;
+  width:43em;
+  margin-left: auto;
+  margin-right: auto;
   min-height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.thumbs_up_div {
+  padding-left: 450px;
 }
 
 .logo_and_food_stuff_images {
