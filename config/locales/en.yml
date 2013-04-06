@@ -128,10 +128,11 @@ en:
   FoodStuff_Selenium: "Selenium"
   FoodStuff_Zinc: "Zinc"
   FoodStuff_Waste: "Waste"
+  FoodStuff_Marks: "Foodstuff marks"
   FoodStuff_Tags: "Tags"
   FoodStuff_Details: "Details"
   FoodStuff_Logo: "Logo"
-  FoodStuff_Image: "FoodStuff image"
+  FoodStuff_Image: "Foodstuff image"
 
   activerecord:
     attributes:

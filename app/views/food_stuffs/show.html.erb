@@ -61,7 +61,7 @@
       <% if @food_stuff.retailers.length > 0 %>
         <%= content_tag :tr, :class => "InformationTableRow" do %>
           <%= content_tag :td, :class => "informationTD", :align => "left" do %>
-          <%= "Retailers: " %>
+          <%= t(:FoodStuff_Retailers) + ": " %>
           <%= label_tag 'retailers', @food_stuff.retailers_field, :id => "retailers_field_id", :class => "auditable" %>
           <% end %>
         <% end %>

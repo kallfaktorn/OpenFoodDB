@@ -267,7 +267,7 @@
 
 
     <div style="float:left;">
-      <label>Foodstuff marks</label>
+      <%= label_tag t(:FoodStuff_Marks) %>
     </div>
     
     <br />
@@ -447,7 +447,7 @@
 
     if(index == -1) {
       listOfMarkNames.push(dbName);
-      htmlId.style.backgroundColor = "#959595";
+      htmlId.style.backgroundColor = "#d0cfcf";
     }
     else {
       listOfMarkNames.splice(index, 1);
