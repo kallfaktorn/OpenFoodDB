@@ -39,7 +39,12 @@ class FoodStuffsController < ApplicationController
     if @food_stuff_marks == nil
       @food_stuff_marks = []
     end
-
+    
+    @tags = Tags.find(:all)
+    if @tags == nil
+      @tags = []
+    end
+    
     @ingredients = []
     @retailers = []
 
