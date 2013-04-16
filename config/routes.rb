@@ -35,6 +35,7 @@ Openfooddb::Application.routes.draw do
 
   match 'food_stuffs/new' => 'food_stuffs#new'
   match 'food_stuffs/:id/' => 'food_stuffs#show'
+  match 'food_stuffs/:id/audit/:bla' => 'food_stuffs#show'
   match 'food_stuffs/:id/edit' => 'food_stuffs#edit'
 
   match 'food_stuff_marks/new' => 'food_stuff_marks#new'

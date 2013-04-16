@@ -370,12 +370,34 @@
 
       var history_data = "<div hidden='hidden' id='history" + id + "_d" + "'" + ">" + audits[i].id + "</div>";
       history_div.append(history_data);
+      
+      console.log(audits[i].id);
     }
 
     $('.history').hide();
     
     $('#slideout_image_more').show();
     $('#slideout_image_less').hide();
+    
+    
+    var url = window.location.href;
+    var audit_str = "/audit/";
+    
+    var history_id_start = url.indexOf("/audit/") + audit_str.length;
+    
+    if(history_id_start !== -1)
+    {
+      var history_id_end = url.indexOf("?");
+      if(history_id_end === -1)
+      {
+        history_id_end = url.length;
+      }
+      var audit_id = url.substring(history_id_start, history_id_end);
+      
+      audit_id = parseInt(audit_id);
+
+      history_click(audits[audit_id].id);
+    }
   });
   
   $('#slideout_image_more').click(function() {
