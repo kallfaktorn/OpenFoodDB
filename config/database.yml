@@ -20,4 +20,4 @@ production:
   database: db/openfooddb_production
   pool: 5
   username: postgres
-  password:
+  password: captive
