@@ -4,7 +4,7 @@ OpenFoodDB is a project intended to make information about food accessible.
 It is accomplished by a webpage where every one can sign up and fill in what
 information is written on foodstuff packages. This information is then presented
 on the webpage in a summary and forseeable way. Pictures as logos, marks and the
-foodstuff intself are also presented for easier identification.
+foodstuff itself are also presented for easier identification.
 
 For each foodstuff published on the webpage there is also history. If there has
 been changes in the recipe or if there are spelling errors and there has been 
