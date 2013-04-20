@@ -19,5 +19,4 @@ production:
   encoding: utf8
   database: db/openfooddb_production
   pool: 5
-  username: postgres
-  password: captive
+  username: root

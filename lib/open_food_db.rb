@@ -1,4 +1,3 @@
-
 module OpenFoodDB
   class API < Grape::API
     default_format :json
