@@ -12,7 +12,7 @@ a change in the table. All changes are recorded and easily looked up on the
 webpage.
 
 There is also an API so that the information in the database can be accessed
-externaly. The information can then be used in for example Android apps and
+externaly. The information can then be used in example in Android apps and
 other webpages.
 
 OpenFoodDB is up and running on http://www.openfooddb.com 
