@@ -16,3 +16,7 @@ externaly. The information can then be used for example in Android apps and
 other webpages.
 
 OpenFoodDB is up and running on http://www.openfooddb.com 
+
+== Contact
+
+mattias_pettersson@mail.com
