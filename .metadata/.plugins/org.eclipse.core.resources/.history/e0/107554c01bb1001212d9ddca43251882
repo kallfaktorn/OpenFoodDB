@@ -292,11 +292,6 @@
       <%end%>
     <%end%>
   </div>
-  
-  <%= "blalalala" %>
-  <%= @food_stuff_marks %>
-  <label> blalalla</label>
-
 
   </br>
   </br>
@@ -333,16 +328,15 @@
     <%end%>
   </div>
 
-
-  
   </div>
 
 <script id="food_stuff_marks_json" type="text/json">
   <%= raw @food_stuff_marks.to_json %>
 </script>
 
+<%= @food_stuff_marks %>
 
-
+<%= "blalalala" %>
 
 <script type="text/javascript">
 

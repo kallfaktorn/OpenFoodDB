@@ -293,9 +293,8 @@
     <%end%>
   </div>
   
-  <%= "blalalala" %>
-  <%= @food_stuff_marks %>
-  <label> blalalla</label>
+    <%= "blalalala" %>
+    <%= @food_stuff_marks %>
 
 
   </br>

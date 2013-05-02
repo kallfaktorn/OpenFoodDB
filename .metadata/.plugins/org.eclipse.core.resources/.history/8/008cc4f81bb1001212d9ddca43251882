@@ -292,11 +292,6 @@
       <%end%>
     <%end%>
   </div>
-  
-  <%= "blalalala" %>
-  <%= @food_stuff_marks %>
-  <label> blalalla</label>
-
 
   </br>
   </br>
@@ -333,6 +328,8 @@
     <%end%>
   </div>
 
+  <%= "blalalala" %>
+  <%= @food_stuff_marks %>
 
   
   </div>
