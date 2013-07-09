@@ -106,3 +106,42 @@ body {
     color-stop(1, rgb(242,242,242))
   );
 }
+
+.green_index
+{
+  color:#aae277;
+  cursor:pointer;
+}
+
+a.green_index:hover
+{
+  text-decoration: underline;
+}
+
+.gray_index
+{
+  color:#CCCCCC;
+}
+
+.orange_index
+{
+  color:#ffb86a;
+  cursor:pointer;
+}
+
+a.orange_index:hover
+{
+  text-decoration: underline;
+}
+
+.arrow
+{
+  font-weight:bold;
+  cursor:pointer;
+}
+
+a.arrow:hover
+{
+  color:#AAAAAA;
+}
+

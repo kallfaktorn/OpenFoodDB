@@ -37,21 +37,33 @@
     </td>
   </tr>
 </table>
-  <div id="food_stuffs", class="food_stuff_links">
-  </div>
+
+<div id="food_stuffs", class="food_stuff_links">
+</div>
+  
+<div id="indexer" align="center">
+</div>
+   
+</br>
+  
 
 <script type="text/javascript">
+
+  var current_index = 1;
+  var food_stuffs = null;
+  var nr_of_results_per_index = 10;
+
   $(document).ready(function() {
     $('#no_results_header').hide();
-  }); 
-  
+  });
+
   $('#food_stuffs_form').bind('ajax:success', function(evt, data) {
 
     var food_stuffs_div = $('#food_stuffs');
     food_stuffs_div.empty();
 
-    var food_stuffs = data;
-    
+    food_stuffs = data;
+
     $('#no_results_header').hide();
 
     if(food_stuffs.length == 0) {
@@ -62,16 +74,97 @@
       window.location.href = "/food_stuffs/" + 
       food_stuffs[0].id + window.location.search;
     }
+
     else {
-      for(i in food_stuffs) {
+      changeIndex(1);
+    }
+  });
+  
+  function redrawIndexer(gray_index)
+  {
+    var food_stuffs_div = $('#indexer');
+    
+    food_stuffs_div.append("<br>");
+    food_stuffs_div.append("<br>");
+
+    if(gray_index > 1)
+    {
+      var left_sign = "<a class='arrow' onclick='javascript:changeIndex(" + (gray_index - 1) + ")'>&lt;</a>";
+    }
+    else
+    {
+      var left_sign = "<a class='arrow'>&lt;</a>";
+    }
+    
+    food_stuffs_div.append(left_sign);
+    
+    var food_stuffs_length = (food_stuffs.length / nr_of_results_per_index) + 1;
+    
+    for(var i = 1; ((i < food_stuffs_length) && (i < 10)); i++)
+    {
+      var anchor = "";
+
+      if(gray_index === i)
+      {
+        anchor = "<a class='gray_index'>" + i + "</a> ";
+      }
+      else
+      {
+        anchor = "<a class='green_index' onclick='javascript:changeIndex(" + i + ")'>" + i + "</a> ";
+      }
+      
+      food_stuffs_div.append(anchor);
+    }
+
+    for(var i = 10; (i < food_stuffs_length) && (i < 17); i++)
+    {
+      var anchor = "";
+      
+      if(gray_index === i)
+      {
+        anchor = "<a class='gray_index'>" + i + "</a> ";
+      }
+      else
+      {
+        anchor = "<a class='orange_index' onclick='javascript:changeIndex(" + i + ")'>" + i + "</a> ";
+      }
+      food_stuffs_div.append(anchor);
+    }
+
+    if(gray_index < (food_stuffs_length - 1))
+    {
+      var right_sign = "<a class='arrow' onclick='javascript:changeIndex(" + (gray_index + 1) + ")'>&gt;</a>";
+    }
+    else
+    {
+      var right_sign = "<a class='arrow'>&gt;</a>";
+    }
+
+    food_stuffs_div.append(right_sign);
+  }
+
+  function changeIndex(gray_index)
+  {
+    $('#indexer').empty();
+    
+    var food_stuffs_div = $('#indexer');
+    
+    var start_index = (gray_index - 1) * nr_of_results_per_index;
+    
+    for(var i = start_index; i < (start_index + nr_of_results_per_index); i++)
+    {
+      if(food_stuffs[i] != null)
+      {
         var food_stuff_anchor = "<a>" + food_stuffs[i].name + "</a>";
         var url = "/food_stuffs/" + food_stuffs[i].id +
         window.location.search;
-
+      
         food_stuffs_div.append("<br>");
         food_stuff_anchor = $(food_stuff_anchor).attr("href", url);
         food_stuffs_div.append(food_stuff_anchor);
       }
     }
-  });
+   
+    redrawIndexer(gray_index);
+  }
 </script>
