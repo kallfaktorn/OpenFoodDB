@@ -67,6 +67,7 @@ class FoodStuffsController < ApplicationController
     @retailers = @food_stuff.retailers
     @tags = Tags.all
     @food_stuff_tags = @food_stuff.tags
+    @food_stuff_storage = @food_stuff.storage
     @categories = Categories.all
   end
 
