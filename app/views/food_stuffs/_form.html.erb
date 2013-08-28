@@ -440,6 +440,10 @@
   <%= raw @tags.to_json %>
 </script>
 
+<script id="food_stuff_tags_json" type="text/json">
+  <%= raw @food_stuff_tags.to_json %>
+</script>
+
 <script id="food_stuff_marks_json" type="text/json">
   <%= raw @food_stuff_marks.to_json %>
 </script>
@@ -459,6 +463,7 @@
   var listOfMarkNames = [];
   var listOfTags = [];
   var global_tree = null;
+  var global_tags = null;
 
   $(document).ready(function() {
     $("#my_tree").treeview();
@@ -466,7 +471,7 @@
     $(".folder").click();
 
     var tagsJSON = $("#tags_json").html();
-    var tags     = $.parseJSON(tagsJSON);
+    global_tags     = $.parseJSON(tagsJSON);
 
     var food_stuff_marksJSON = $("#food_stuff_marks_json").html();
     var food_stuff_marks     = $.parseJSON(food_stuff_marksJSON);
@@ -476,8 +481,13 @@
 
     var food_stuff_mark_namesJSON = $("#food_stuff_mark_names_json").html();
     var food_stuff_mark_names     = $.parseJSON(food_stuff_mark_namesJSON);
+    
+    var food_stuff_tagsJSON = $("#food_stuff_tags_json").html();
+    food_stuff_tags  = $.parseJSON(food_stuff_tagsJSON);
+    
 
     fill_in_saved_food_stuff_marks(food_stuff_marks, food_stuff_mark_names);
+    fill_in_saved_food_stuff_tags(food_stuff_tags);
     
     global_tree = categories_json_to_tree(categories);
     
@@ -709,8 +719,29 @@
       }
     }
   }
+  
+  function find_tag_name_by_id(tag_name) {
+    
+    for(var i = 0; i < global_tags.length; i++)
+    {
+      if(global_tags[i].se === tag_name || global_tags[i].en === tag_name)
+      {
+        return global_tags[i].id;
+      }
+    }
+    
+    return null;
+  }
+  
+  function fill_in_saved_food_stuff_tags(food_stuff_tags) {
 
-  function find_food_stuff_mark_id_by_name(food_stuff_mark_name) {
+    var tags = food_stuff_tags.split(",");
+    
+    for(var i = 0; i < tags.length; i++)
+    {
+      tag_id = find_tag_name_by_id(tags[i])
+      $('#tag' + tag_id).attr('selected', 'selected');
+    }
   }
 
   function mark(htmlId, dbName) {
