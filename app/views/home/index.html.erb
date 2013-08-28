@@ -1,5 +1,6 @@
 
-
+<%= stylesheet_link_tag "shared" %>
+<%= stylesheet_link_tag "home" %>
 
     <br>
     <br>
@@ -22,41 +23,86 @@
     <br>
     <br>
 
-<table align="center">
-  <tr>
-    <td>
-      <%= form_tag food_stuffs_path, :id => 'food_stuffs_form', :method => 'get', :remote => true do %>
-        <%= text_field_tag :search, params[:search], :id => 'search_field' %>
-        <%= submit_tag t(:Home_Index_Button_Search), :id => 'search_button', :class => 'custom_button', :name => nil %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <%= label_tag t(:Home_Index_No_Results_Header), nil, :id => 'no_results_header' %>
-    </td>
-  </tr>
-</table>
-
-<div id="food_stuffs", class="food_stuff_links">
-</div>
+<div id="normal_search">
+  <table align="center">
+    <tr>
+      <td>
+        <%= form_tag food_stuffs_path, :id => 'food_stuffs_form', :method => 'get', :remote => true do %>
+          <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+          <%= submit_tag t(:Home_Index_Button_Search), :id => 'search_button', :class => 'custom_button', :name => nil %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= label_tag t(:Home_Index_No_Results_Header), nil, :id => 'no_results_header' %>
+      </td>
+    </tr>
+  </table>
   
-<div id="indexer" align="center">
+  <div class="center_left" onclick="javascript:search_by_categories()"><a>Search by categories</a></div>
+  
+  <div id="food_stuffs", class="food_stuff_links">
+  </div>
+    
+  <div id="indexer" align="center">
+  </div>
 </div>
-   
+
+<div id="categories_search">
+  <div style="padding-right:60px;" id="categories"></div>
+  <div class="center" onclick="javascript:normal_search()"><a>Normal search</a></div>
+</div>
+
+
 </br>
   
+
+<script id="categories_json" type="text/json">
+  <%= raw @categories.to_json %>
+</script>
+
+<script id="foodStuffsCategories_json" type="text/json">
+  <%= raw @foodStuffsCategories.to_json %>
+</script>
+
+<script id="foodStuffNamesAndIds_json" type="text/json">
+  <%= raw @foodStuffNamesAndIds %>
+</script>
 
 <script type="text/javascript">
 
   var current_index = 1;
   var food_stuffs = null;
   var nr_of_results_per_index = 10;
+  var global_tree = null;
+  var global_clicked = false;
+  var global_click_neutralized = true;
+  var global_categories = null;
+  var foodStuffsCategories = null;
+  var global_foodStuffsNamesAndIds = null;
 
   $(document).ready(function() {
     $('#no_results_header').hide();
-  });
+    $('#categories_search').hide();
+    
+    var categoriesJSON = $("#categories_json").html();
+    categories         = $.parseJSON(categoriesJSON);
+    global_categories  = categories.slice();
+    
+    var foodStuffsCategoriesJSON = $("#foodStuffsCategories_json").html();
+    foodStuffsCategories         = $.parseJSON(foodStuffsCategoriesJSON);
+    
+    var foodStuffNamesAndIdsJSON = $("#foodStuffNamesAndIds_json").html();
+    global_foodStuffsNamesAndIds         = $.parseJSON(foodStuffNamesAndIdsJSON);
 
+    global_tree = categories_json_to_tree(categories);
+    
+    var html_tree = tree_to_html(global_tree);
+    
+    $('#categories').append(html_tree);
+  });
+  
   $('#food_stuffs_form').bind('ajax:success', function(evt, data) {
 
     var food_stuffs_div = $('#food_stuffs');
@@ -80,6 +126,312 @@
     }
   });
   
+  function findFoodStuffsWithCategoryId(category_id)
+  {
+    var foodStuff_ids = [];
+    for(var i = 0; i < foodStuffsCategories.length; i++)
+    {
+      if(foodStuffsCategories[i].categories_id === category_id)
+      {
+        foodStuff_ids.push(foodStuffsCategories[i].food_stuff_id);
+      }
+    }
+    
+    var foodStuffsNamesAndIds = [];
+    
+    for(var i = 0; i < global_foodStuffsNamesAndIds.length; i++)
+    {
+      for(var j = 0; j < foodStuff_ids.length; j++)
+      {
+        if(global_foodStuffsNamesAndIds[i][1] === foodStuff_ids[j])
+        {
+          foodStuffsNamesAndIds.push(global_foodStuffsNamesAndIds[i]);
+        }
+      }
+    }
+    
+    return foodStuffsNamesAndIds;
+  }
+  
+  function find_categories_with_foodstuff_id(food_stuff_id)
+  {
+    var category_ids = [];
+    for(var i = 0; i < foodStuffsCategories.length; i++)
+    {
+      if(foodStuffsCategories[i].food_stuff_id === food_stuff_id)
+      {
+        category_ids.push(foodStuffsCategories[i].categories_id);
+      }
+    }
+    
+    return category_ids;
+  }
+  
+  function find_category_by_id(category_id)
+  {
+    for(var i = 0; i < global_categories.length; i++)
+    {
+      if(global_categories[i].id === category_id)
+      {
+        return global_categories[i];
+      }
+    }
+    
+    return null;
+  }
+  
+  
+  
+  function search_by_categories()
+  {
+    $('#normal_search').hide();
+    $('#categories_search').show();
+    
+    for(var i = 0; i < global_categories.length; i++)
+    {
+      if(global_categories[i].parent !== "null")
+      {
+        $('#' + global_categories[i].name).hide();
+      }
+    }
+    
+    $('li ul').each(function(index) {
+      $(this).hide();
+    });
+    
+    
+    $('.green_category').each(function(index) {
+      $(this).attr('class', 'category orange_category');
+    });
+  }
+  
+  function normal_search()
+  {
+    $('#categories_search').hide();
+    $('#normal_search').show();
+  }
+  
+  function lookup_category_id(category_name)
+  {
+    for(var i = 0; i < global_categories.length; i++)
+    {
+      if(global_categories[i].name === category_name)
+      {
+        return global_categories[i].id;
+      }
+    }
+    
+    return null;
+  }
+  
+  function nr_of_food_stuffs_using_category(category_name)
+  {
+    var category_id = lookup_category_id(category_name);
+    
+    var counter = 0;
+    
+    for(var i = 0; i < foodStuffsCategories.length; i++)
+    {
+      if(foodStuffsCategories[i].categories_id === category_id)
+      {
+        counter++;
+      }
+    }
+
+    return counter;
+  }
+
+  function show_hide_children(category_id)
+  {
+    if(category_id === "foodStuff")
+    {
+      global_clicked = true;
+      return;
+    }
+    
+    var node = global_tree.find(category_id);
+    
+    if(global_clicked === false)
+    {
+      global_clicked = true;
+      
+      if(node.hasChildren() === false)
+      {
+        var bla = $('#' + node.value);
+        $('#' + node.value + " ul").each(function() {
+            if($(this).is(':visible'))
+            {
+              $(this).hide();
+              
+              $('#' + node.value + ' > .category').attr('class', 'category orange_category');
+            }
+            else
+            {
+              var category_count = nr_of_food_stuffs_using_category(node.value);
+              
+              if(category_count > 0)
+              {
+                $(this).show();
+              
+                $('#' + node.value + ' > .category').attr('class', 'category green_category');
+              }
+            }
+          });
+      }
+      else
+      {
+        if($('#' + node.children[0].value).is(':visible'))
+        {
+          hide_children(category_id);
+          
+          $('#' + node.value + " ul").each(function() {
+            $(this).hide();
+          });
+          
+          $('#' + node.value + ' .category').attr('class', 'category orange_category');
+        }
+        else
+        {
+          show_children(category_id);
+          
+          $('#' + node.value + " > ul").each(function() {
+            $(this).show();
+          });
+          
+          $('#' + node.value + ' > .category').attr('class', 'category green_category');
+        }
+      }
+    }
+    if(node.parent.value === "Categories")
+    {
+      global_clicked = false;
+    }
+  }
+  
+  function show_children(category_id)
+  {
+    var node = global_tree.find(category_id);
+    
+    for(var i = 0; i < node.children.length; i++)
+    {
+      $('#' + node.children[i].value).show();
+    }
+  }
+
+  function hide_children(category_id)
+  {
+    var node = global_tree.find(category_id);
+
+    for(var i = 0; i < node.children.length; i++)
+    {
+      var id = "#" + node.children[i].value;
+
+      $(id).hide();
+      
+      hide_children(node.children[i].value);
+    }
+
+    global_category_selected = true;
+
+    if(node.parent.value === "Categories")
+    {
+      global_category_selected = false;
+      return;
+    }
+  }
+
+  function tree_to_html(tree)
+  {
+    var html_tree = "<nav style='text-align: center'><ul>";
+    
+    for(var i = 0; i < tree.children.length; i++)
+    {
+      html_tree = tree_to_html_children(tree.children[i], html_tree);
+    }
+    
+    html_tree += "</ul></nav>";
+    
+    return html_tree;
+  }
+  
+  function find_category_id_by_name(category_name)
+  {
+    for(var i = 0; i < global_categories.length; i++)
+    {
+      if(global_categories[i].name === category_name)
+      {
+        return global_categories[i].id;
+      }
+    }
+    
+    return null;
+  }
+  
+  function find_food_stuffs_by_top_category(category_name)
+  {
+    var tags = "";
+    
+    var category_id = find_category_id_by_name(category_name);
+    
+    var foodStuffs = findFoodStuffsWithCategoryId(category_id);
+    
+    for(var i = 0; i < foodStuffs.length; i++)
+    {
+      var categories = find_categories_with_foodstuff_id(foodStuffs[i][1]);
+      var no_parent = true;
+        
+      for(var j = 0; j < categories.length; j++)
+      {
+        var category = find_category_by_id(categories[j]);
+        
+        if(category_name === category.parent)
+        {
+          no_parent = false;
+        }
+      }
+      
+      if(no_parent === true)
+      {
+        var url = "/food_stuffs/" + foodStuffs[i][1] + window.location.search;
+        tags += "<li class='gray'" + " onclick=\"" + "show_hide_children(\'" + "foodStuff" + "\')\"" + ">" + "<a " + "class='gray'" + " href=\'" + url +  "\'>" + foodStuffs[i][0] + "</a></li>";
+      }
+    }
+    
+    return tags;
+  }
+  
+  function tree_to_html_children(tree, html_tree)
+  {
+    var category_count = nr_of_food_stuffs_using_category(tree.value);
+    
+    var html_foodStuffs_by_category = find_food_stuffs_by_top_category(tree.value);
+    
+    html_tree += "<li " + "id=\"" + tree.value + "\" " + "onclick=\"" + "show_hide_children(\'" + tree.value + "\')\"" + ">" + "<a class='category orange_category'>" + tree.value + "</a>" + "<a class='black'> (" + category_count + ")";
+
+    if(tree.children.length > 0)
+    {
+      html_tree += "<ul>";
+      html_tree += html_foodStuffs_by_category;
+
+      for(var i = 0; i < tree.children.length; i++)
+      {
+        html_tree = tree_to_html_children(tree.children[i], html_tree);
+      }
+
+      html_tree += "</ul>";
+    }
+    else if(html_tree !== "")
+    {
+      html_tree += "<ul>";
+      html_tree += html_foodStuffs_by_category;
+      html_tree += "</ul>";
+    }
+
+    html_tree += "</a></li>";
+
+    return html_tree;
+  }
+
   function redrawIndexer(gray_index)
   {
     var food_stuffs_div = $('#indexer');
@@ -155,7 +507,7 @@
     {
       if(food_stuffs[i] != null)
       {
-        var food_stuff_anchor = "<a>" + food_stuffs[i].name + "</a>";
+        var food_stuff_anchor = "<a class='foodstuff_link'>" + food_stuffs[i].name + "</a>";
         var url = "/food_stuffs/" + food_stuffs[i].id +
         window.location.search;
       

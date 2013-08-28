@@ -2,7 +2,7 @@
   
 
 Openfooddb::Application.routes.draw do
-  
+
   resources :food_stuffs do 
     resources :comments
     resources :ingredients
@@ -18,6 +18,8 @@ Openfooddb::Application.routes.draw do
   resources :users
 
   resources :food_stuff_marks
+  
+  resources :food_stuffs_categories
 
   resources :sessions, only: [:new, :create, :destroy]
 

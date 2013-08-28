@@ -2,8 +2,11 @@ class FoodStuffsController < ApplicationController
 
   def index
     search_string = "%" + params[:search] + "%"
+    
     @food_stuffs = FoodStuff.find(:all, :conditions => ['name ILIKE ?', search_string])
-
+    
+    #@foodStuffsCategories = FoodStuffsCategories.find(:all, :conditions => { :categories_id => @category.id })
+    
     respond_to do |format|
       format.json { render :json => @food_stuffs }
     end
@@ -47,6 +50,8 @@ class FoodStuffsController < ApplicationController
     
     @ingredients = []
     @retailers = []
+    
+    @categories = Categories.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,9 +62,11 @@ class FoodStuffsController < ApplicationController
   def edit
     @food_stuff = FoodStuff.find(params[:id])
     @food_stuff_marks = FoodStuffMark.find(:all)
+    @food_stuff_mark_names = @food_stuff.mark_names
     @ingredients = @food_stuff.ingredients
     @retailers = @food_stuff.retailers
     @tags = Tags.all
+    @categories = Categories.all
   end
 
   # POST /food_stuffs
@@ -117,6 +124,26 @@ class FoodStuffsController < ApplicationController
     for n in params[:retailer][:name] do
       unless n.blank?
         @food_stuff.retailers.create(name: n)
+      end
+    end
+    
+    
+    @food_stuffs_categories = FoodStuffsCategories.find(:all, :conditions => ['food_stuff_id = ?', @food_stuff.id])
+    
+    for n in @food_stuffs_categories
+      FoodStuffsCategories.delete_all(:food_stuff_id => n.food_stuff_id, :categories_id => n.categories_id)
+    end
+    
+    if params[:category] != nil
+      if params[:category][:name] != []
+        for n in params[:category][:name] do
+          unless n.blank?
+            @category = Categories.find_by_name(n)
+            print "category_id" + @category.name
+          
+            FoodStuffsCategories.create(food_stuff_id: @food_stuff.id, categories_id: @category.id)
+          end
+        end
       end
     end
 

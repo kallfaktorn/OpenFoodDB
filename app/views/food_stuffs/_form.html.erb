@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag "shared" %>
+<%= stylesheet_link_tag "categories_edit" %>
+<%= stylesheet_link_tag "food_stuffs" %>
+
 <%= form_for(@food_stuff, :html => { :multipart => true }) do |f| %>
   <% if @food_stuff.errors.any? %>
     <div id="error_explanation">
@@ -264,8 +268,7 @@
 
     <br />
     <br />
-
-
+    
     <div style="float:left;">
       <%= label_tag t(:FoodStuff_Marks) %>
     </div>
@@ -286,13 +289,15 @@
     <br />
     <br />
     <br />
-    
+
     <%= label_tag t(:FoodStuff_Tags) %>
     <div class="field" type="hidden">
     <%= content_tag :select, :multiple => "multiple", :class => "custom_select_multiple", :id => "tags_id" do %>
-      <% @tags.each do |tag| %>
-        <%= content_tag :option, :id => "tag#{tag.id}" do %>
-          <%= tag.se %>
+      <% if @tags != nil %>
+        <% @tags.each do |tag| %>
+          <%= content_tag :option, :id => "tag#{tag.id}" do %>
+            <%= tag.se %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
@@ -317,7 +322,7 @@
         <%= t(:FoodStuff_Storage_Cupboard) %>
       <% end %>
     <% end %>
-
+    
     <br />
     <br />
     <br />
@@ -348,7 +353,6 @@
     <br />
     <br />
 
-
     <div class="field" id="retailers" type="hidden">
 
       <% if @retailers != [] %>
@@ -363,30 +367,62 @@
           <input class="retailers" name="retailer[name][]" size="30" type="text" />
       <% end %>
     </div>
-    
-    
+
     <%= button_tag t(:FoodStuff_Button_Add_Retailer), type:"button", onclick:"javascript:addRetailer();", class:"custom_button" %>
 
     </br>
     </br>
     </br>
-    
+
+<!--
+    <nav>
+      <ul>
+        <li><a href="##">a1</a>
+          <ul>
+            <li id="cat_b1" class="confirm" onclick="select_category('#cat_b1')"><a href="##">b1</a></li>
+            <li id="cat_b2" class="noconfirm" onclick="select_category('#cat_b2')"><a href="##">b2</a></li>
+            <li id="cat_c1" class="confirm" onclick="select_category('#cat_c1')"><a href="##">c1</a>
+              <ul>
+                <li id="cat_d1" class="noconfirm" onclick="select_category('#cat_d1')"><a href="##">d1</a></li>
+                <li id="cat_d2" class="confirm" onclick="select_category('#cat_d2')"><a href="##">d2</a>
+                  <ul>
+                    <li id="cat_e1" class="noconfirm" onclick="select_category('#cat_e1')"><a href="##">e1</a></li>
+                    <li id="cat_e2" class="confirm" onclick="select_category('#cat_e2')"><a href="##">e2</a></li>
+                  </ul>
+                </li>
+                <li id="cat_f1" class="noconfirm" onclick="select_category('#cat_f1')"><a href="##">f1</a>
+                  <ul>
+                    <li id="cat_g1" class="confirm" onclick="select_category('#cat_g1')"><a href="##">g1</a></li>
+                    <li id="cat_g2" class="noconfirm" onclick="select_category('#cat_g2')"><a href="##">g2</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+-->
+    <nav id="categories">
+    </nav>
+
     <div class="field">
       <%= f.label t(:FoodStuff_Details) %><br />
       <%= f.text_area :details, :style => "width:550px"%>
     </div>
 
-
     <%= f.hidden_field :energy_kcal %>
     <%= f.hidden_field :energy_kj %>
     <%= f.hidden_field :mark_names %>
-    
+
     <%= f.hidden_field :tags %>
     <%= f.hidden_field :storage %>
 
     <%= f.hidden_field :retailers_field %>
-    <%= f.hidden_field :ingredients_field %>
-
+    
+    <div id="categories_field">
+    </div>
+    
     <!--   <%= label_tag "Update note" %>
     <%= f.text_field :audit_comment %>
     -->
@@ -399,6 +435,7 @@
   </div>
 </div>
 
+
 <script id="tags_json" type="text/json">
   <%= raw @tags.to_json %>
 </script>
@@ -407,15 +444,21 @@
   <%= raw @food_stuff_marks.to_json %>
 </script>
 
-<script id="food_stuff_marks_names_json" type="text/json">
-  <%= raw @food_stuff.mark_names.to_json %>
+<script id="categories_json" type="text/json">
+  <%= raw @categories.to_json %>
 </script>
+
+<script id="food_stuff_mark_names_json" type="text/json">
+  <%= raw @food_stuff_mark_names.to_json %>
+</script>
+
 
 
 <script type="text/javascript">
 
   var listOfMarkNames = [];
   var listOfTags = [];
+  var global_tree = null;
 
   $(document).ready(function() {
     $("#my_tree").treeview();
@@ -424,26 +467,36 @@
 
     var tagsJSON = $("#tags_json").html();
     var tags     = $.parseJSON(tagsJSON);
-    
-    var food_stuff_marksJSON = $("#tags_json").html();
+
+    var food_stuff_marksJSON = $("#food_stuff_marks_json").html();
     var food_stuff_marks     = $.parseJSON(food_stuff_marksJSON);
     
-    var food_stuff_mark_namesJSON = $("#tags_json").html();
+    var categoriesJSON = $("#categories_json").html();
+    var categories     = $.parseJSON(categoriesJSON);
+
+    var food_stuff_mark_namesJSON = $("#food_stuff_mark_names_json").html();
     var food_stuff_mark_names     = $.parseJSON(food_stuff_mark_namesJSON);
 
     fill_in_saved_food_stuff_marks();
+    
+    global_tree = categories_json_to_tree(categories);
+    
+    treeToHTML(global_tree);
   });
 
   var form = $('form').submit(function () {
     fill_form_with_energy_data();
-    
+
     fill_form_with_mark_names();
-    
+
     fill_form_with_retailers_field();
     fill_form_with_ingredients_field();
     
     fill_form_with_tags();
     fill_form_with_storage();
+    
+    fill_form_with_categories();
+    
   });
 
   $('#food_stuff_logo').change(function() {
@@ -456,12 +509,194 @@
     $('#food_stuff_image_label_fake').text(this.value.substring(12));
   });
   
-  function fill_in_saved_food_stuff_marks() {
+  
+  function buildTree(categories_json)
+  {
+    var rootNode = new Node("Categories", null);
+
+    var node1 = new Node("Meat", rootNode);
+    var node2 = new Node("Fish", rootNode);
+
+    var node3 = new Node("Pork", node1);
+    var node4 = new Node("Lamb", node1);
     
+    var node5 = new Node("Meatballs", node4);
+    var node6 = new Node("Steak", node4);
+    var node7 = new Node("Sausage", node4);
+
+    //rootNode.printTree();
+    return rootNode;
+  }
+
+  function treeToHTMLHelper(tree)
+  {
+    var listElements = [];
+    
+    var id = "#cat_" + tree.value;
+    
+    var class_ = "noconfirm";
+    
+    if(tree.value === "Categories")
+    {
+      class_ = "##";
+    }
+    
+    listElements += "<li" + " id=cat_" + tree.value + " class=" + class_ + " onclick=\"select_category(\'" + id + "\')\"" + "><a href='##'>" + tree.value + "</a>";
+
+    if(tree.hasChildren() === true)
+    {
+      listElements += "<ul>";
+
+      for(var i = 0; i < tree.children.length; i++)
+      {
+        listElements += treeToHTMLHelper(tree.children[i]);
+      }
+      
+      listElements += "</ul>";
+    }
+    
+    listElements += "</li>";
+    
+    return listElements;
   }
   
-  function find_food_stuff_mark_id_by_name(food_stuff_mark_name) {
+
+  function treeToHTML(tree)
+  {
+    var nav = $("#categories");
     
+    var treeToHTML = "<ul>";
+    treeToHTML += treeToHTMLHelper(tree);
+    treeToHTML += "</ul>";
+
+    nav.append(treeToHTML);
+  }
+
+  var global_category_selected = false;
+
+  function select_category(category_id) {
+
+    if(category_id === "#cat_Categories")
+    {
+      global_category_selected = false;
+      return;
+    }
+    if(global_category_selected === false)
+    {
+      //confirm_node_and_parents(global_tree.lookup(category_id));
+
+      var is_confirm = $(category_id).attr("class");
+
+      var node = global_tree.lookup(category_id);
+
+      if(is_confirm === "confirm")
+      {
+        noconfirm_node_and_maybe_parents(node);
+      }
+      else if(is_confirm === "noconfirm")
+      {
+        confirm_node_and_parents(node);
+      }
+
+      global_category_selected = true;
+    }
+  }
+
+  function is_any_children_confirmed(node)
+  {
+    if((node.children === null) || (node.children.length === 0))
+    {
+      return false;
+    }
+
+    for(var i = 0; i < node.children.length; i++)
+    {
+      var id = "#cat_" + node.children[i].value;
+      var is_confirmed = $(id).attr("class");
+      
+      if(is_confirmed === "confirm")
+      {
+        return true;
+      }
+    }
+
+    return false;
+  }
+  
+  function is_relatives_confirmed(node)
+  {
+    var parent = node.parent;
+
+    for(var i = 0; i < parent.children.length; i++)
+    {
+      var id = "#cat_" + parent.children[i].value;
+      var is_confirmed = $(id).attr("class");
+
+      if(is_confirmed === "noconfirm")
+      {
+        return false;
+      }
+    }
+    
+    return true;
+  }
+  
+  function is_relatives_noconfirmed(node)
+  {
+    var parent = node.parent;
+
+    for(var i = 0; i < parent.children.length; i++)
+    {
+      var id = "#cat_" + parent.children[i].value;
+      var is_confirmed = $(id).attr("class");
+
+      if((is_confirmed === "confirm") && (parent.children[i].value !== node.value))
+      {
+        return false;
+      }
+    }
+    
+    return true;
+  }
+
+  function noconfirm_node_and_maybe_parents(node)
+  {
+    if(is_any_children_confirmed(node))
+    {
+      return;
+    }
+
+    var id = "#cat_" + node.value;
+    $(id).attr("class", "noconfirm");
+
+    var parent = node.parent;
+
+    if((parent !== null) && (is_relatives_noconfirmed(node)))
+    {
+      confirm_or_noconfirm_node_and_parents(node, "noconfirm");
+    }
+  }
+
+  function confirm_node_and_parents(node)
+  {
+    confirm_or_noconfirm_node_and_parents(node, "confirm");
+  }
+
+  function confirm_or_noconfirm_node_and_parents(node, confirm_or_noconfirm)
+  {
+    if(node.parent !== null)
+    {
+      id = "#cat_" + node.value;
+      $(id).attr("class", confirm_or_noconfirm);
+    
+      confirm_or_noconfirm_node_and_parents(node.parent, confirm_or_noconfirm);
+    }
+  }
+
+  function fill_in_saved_food_stuff_marks() {
+  }
+
+  function find_food_stuff_mark_id_by_name(food_stuff_mark_name) {
   }
 
   function mark(htmlId, dbName) {
@@ -530,7 +765,7 @@
 
     $('#food_stuff_retailers_field').attr('value', retailers_field);
   }
-
+  
   function fill_form_with_ingredients_field() {
 
     var ingredients = $('.ingredients');
@@ -552,9 +787,36 @@
       }
     }
 
-    $('#food_stuff_ingredients_field').attr('value', ingredients_field);    
+    $('#food_stuff_ingredients_field').attr('value', ingredients_field);
   }
-  
+
+  function fill_form_with_categories()
+  {
+    var categories_field = "";
+    var confirm = $('.confirm');
+    
+    var categoriesDiv = $('#categories_field');
+    
+    var categoryInputBegin = "<input class='categories' name='category[name][]' size='30' type='text' hidden='true'";
+    var categoryInputEnd = "</input>";
+    
+    if(confirm.length > 0)
+    {
+      
+      categories_field = categoryInputBegin + "value=" + "'" + confirm[0].id.slice(4) + "'" + ">" + categoryInputEnd;
+      categoriesDiv.append(categories_field);
+
+      if(confirm.length > 1)
+      {
+        for(var i = 1; i < confirm.length; i++)
+        {
+          categories_field = categoryInputBegin + "value=" + "'" + confirm[i].id.slice(4) + "'" + ">" + categoryInputEnd;
+          categoriesDiv.append(categories_field);
+        }
+      }
+    }
+  }
+
   function fill_form_with_tags()
   {
     var options = $('#tags_id option:selected');

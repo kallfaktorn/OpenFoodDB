@@ -1,0 +1,89 @@
+nav ul:hover {
+  border-color:#aaa;
+  border-width:2px;
+}
+
+nav ul {
+  background-color:#F3F3F3;
+  padding: 0 0px;
+  position: relative;
+  display: inline-table;
+  border-radius: 7px;
+  border-width:2px;
+  border-style:solid;
+  border-color:#d0cfcf;
+  list-style: none;
+
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.37, rgb(242,242,242)),
+    color-stop(1, rgb(253,253,253))
+  );
+}
+
+nav ul:after {
+  content: ""; clear: both; display: block;
+}
+
+
+nav ul ul {
+  display: none;
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+nav ul li > ul li:hover {
+  background: #ffffff;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li:hover a {
+}
+
+nav ul li a:hover {
+}
+
+nav ul li a {
+  display: block;
+  color: #cccccc; text-decoration: none;
+}
+
+nav ul ul {
+  background: #F3F3F3; border-radius: 7px;  padding: 0;
+  position: absolute; top: 100%;
+}
+
+nav ul ul li {
+  float: none;
+  position: relative;
+}
+    
+nav ul ul li a {
+  color: #F3F3F3;
+}
+
+nav ul ul li a:hover {
+  background: #ffffff;
+}
+
+nav ul ul ul {
+  position: absolute; left: 100%; top:0;
+}
+
+nav ul ul ul li a {
+}
+
+nav ul ul ul li a:hover {
+  background: #fff;
+}
+
+nav ul ul ul ul {
+  position: absolute; left: 100%; top:0;
+}

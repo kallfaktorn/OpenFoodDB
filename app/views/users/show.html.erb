@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "shared" %>
 
 <div class="container">
   
@@ -31,7 +32,7 @@
   <br />
   <br />
   
-  <%= link_to t(:User_Show_Link_Add_foodstuff), new_food_stuff_path %>
+  <%= link_to t(:User_Show_Link_Add_foodstuff), new_food_stuff_path, :class => 'account' %>
 
   <br />
   <br />
@@ -42,15 +43,15 @@
   
   <% @food_stuffs.each do |f| %>
     <% if f != nil %>
-      <%= link_to f.name, f %> <%= link_to t(:Button_Edit), edit_food_stuff_path(f) %>
+      <%= link_to f.name, f, :class => 'account' %> <%= link_to t(:Button_Edit), edit_food_stuff_path(f), :class => 'account' %>
     <% end %>
     <br />
   <% end %>
   
   <br />
   <br />
-  <%= link_to t(:User_Show_Label_Sign_out), signout_path, method: "delete" %>
+  <%= link_to t(:User_Show_Label_Sign_out), signout_path, method: "delete", :class => 'account' %>
   <br />
-  <%= link_to t(:Button_Home), home_index_path %>
+  <%= link_to t(:Button_Home), home_index_path, :class => 'account' %>
 
 </div>

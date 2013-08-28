@@ -26,6 +26,22 @@ module FoodStuffsHelper
 
     return false
   end
+  
+  def category_count( category_name )
+    
+    @category = Categories.find_by_name(category_name)
+    
+    foodStuffsCategories = FoodStuffsCategories.find(:all, :conditions => { :categories_id => @category.id })
+    
+    return foodStuffsCategories.length
+  end
+  
+  def expand_category ( parent )
+    
+    categories = Categories.find(:all, :conditions => { :parent => parent })
+    
+    return categories
+  end
 
   def display_segment( node )
 

@@ -2,13 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container {
-  width:43em;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-}
+
 
 .thumbs_up_div {
   padding-left: 450px;
@@ -249,4 +243,54 @@ table.expandedTable td.right { width: 180px; }
    border: 1px;
    solid: #999999; 
    padding: 5px; 
+}
+
+.custom_button {
+  color:#707070;
+  border-radius: 7px;
+  border-style:solid;
+  border-color:#d0cfcf;
+  
+  background-image: linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
+  background-image: -o-linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
+  background-image: -moz-linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
+  background-image: -ms-linear-gradient(bottom, rgb(242,242,242) 37%, rgb(253,253,253) 100%);
+  
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.37, rgb(242,242,242)),
+    color-stop(1, rgb(253,253,253))
+  );
+}
+
+.confirm {
+  background-image:url(confirm.png);
+  background-repeat:no-repeat;
+  background-position:right; 
+  padding-right:24px;
+}
+
+li.confirm:hover {
+  background: #fff;
+  background-image:url(confirm.png);
+  background-repeat:no-repeat;
+  background-position:right; 
+  padding-right:24px;
+}
+
+.noconfirm
+{
+  background-image:url(confirm.png);
+  background-repeat:no-repeat;
+  background-position:-9999px;
+  padding-right:24px;
+}
+
+li.noconfirm:hover
+{
+  background-position:-9999px;
+  background: #fff;
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404194038) do
+ActiveRecord::Schema.define(:version => 20130819162006) do
 
   create_table "audit_thumbs_ups", :force => true do |t|
     t.integer  "audit_id"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(:version => 20130404194038) do
   add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
   add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
   add_index "audits", ["user_id", "user_type"], :name => "user_index"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "parent"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -144,6 +151,11 @@ ActiveRecord::Schema.define(:version => 20130404194038) do
     t.text     "details"
     t.integer  "weight"
     t.string   "storage"
+  end
+
+  create_table "food_stuffs_categories", :id => false, :force => true do |t|
+    t.integer "food_stuff_id"
+    t.integer "categories_id"
   end
 
   create_table "ingredients", :force => true do |t|

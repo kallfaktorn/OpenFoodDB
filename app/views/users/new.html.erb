@@ -1,28 +1,30 @@
+<%= stylesheet_link_tag "shared" %>
+
 <% provide(:title, t(:Sign_up_Tab_title_Sign_up)) %>
 
 <div class="container" >
   <div class="row">
     <div class="span6 offset3">
       
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
       
       <pre id="error_text" hidden=hidden></pre>
       
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      
-      
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+
       <%= form_for(@user) do |f| %>
 
 
       <table>
-  
+
         <tr>
           <td>
             <%= f.label t(:Sign_up_Label_Name) %>
@@ -31,7 +33,7 @@
             <%= f.text_field :name %>
           </td>
         </tr>
-     
+
 
         <tr>
           <td>
@@ -94,7 +96,7 @@
     }, 500);
   }
 
-  function flash(tag) {    
+  function flash(tag) {
     if (shift_color === true) {
       $(tag).attr('class', 'orange_input');
     }
@@ -132,12 +134,12 @@
       $('#error_text').html(error_text);
       $('#error_text').show();
     }
-    
+
     if (error_field_found === false) {
       $('#new_user').submit();
     }
   }
-  
+
   function flash_or_green_field(valid_field, tag) {
     if (valid_field === true) {
       $(tag).attr('class', 'green_input');
@@ -147,7 +149,7 @@
         if (flashing === false) {
           perform_flash(tag);
         }
-        
+
         error_field_found = true;
       }
     }
@@ -257,7 +259,7 @@
   
       return false;
     }
-    
+
     return true;
   }
 

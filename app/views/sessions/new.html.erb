@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "shared" %>
 
 <div class="container">
   <div class="row">
@@ -39,7 +40,7 @@
         </table>
       <% end %>
   
-      <p><%= t(:Sign_in_Text_New_user) %> <%= link_to t(:Sign_in_Link_Sign_up_now), signup_path %></p>
+      <p><%= t(:Sign_in_Text_New_user) %> <%= link_to t(:Sign_in_Link_Sign_up_now), signup_path, :class => 'account' %></p>
     </div>
   </div>
 </div>

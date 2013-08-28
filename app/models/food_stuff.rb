@@ -4,6 +4,7 @@ class FoodStuff < ActiveRecord::Base
   has_many :comments
   has_many :ingredients
   has_many :retailers
+  has_and_belongs_to_many :categories
   
   validates :name, presence: true, length: { minimum: 1 }, :uniqueness => true
 

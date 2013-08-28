@@ -1,0 +1,2 @@
+module FoodStuffsCategoriesHelper
+end

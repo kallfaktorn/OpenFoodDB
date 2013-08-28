@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag "shared" %>
+<%= stylesheet_link_tag "food_stuffs" %>
+
 
   <br />
   <br />
@@ -257,12 +260,12 @@
   <% end %>
 
   <div align="left" style="margin-left:242px;">
-    <%= link_to "Home", home_index_path %> |
+    <%= link_to "Home", home_index_path, :class => 'account' %> |
     
     <% if current_user != nil %>
-      <%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff) %> |
+      <%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff), :class => 'account' %> |
     <% end %>
-    <%= link_to t(:Button_Back), :back %>
+    <%= link_to t(:Button_Back), :back, :class => 'account' %>
   </div>
 
 
