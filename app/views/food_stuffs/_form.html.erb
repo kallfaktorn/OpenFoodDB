@@ -419,8 +419,10 @@
     <%= f.hidden_field :storage %>
 
     <%= f.hidden_field :retailers_field %>
+    <%= f.hidden_field :categories_field %>
+
     
-    <div id="categories_field">
+    <div id="categories_input_field">
     </div>
     
     <!--   <%= label_tag "Update note" %>
@@ -471,6 +473,8 @@
   var listOfTags = [];
   var global_tree = null;
   var global_tags = null;
+  var global_categories = null;
+  var global_food_stuff_categories = null;
 
   $(document).ready(function() {
     $("#my_tree").treeview();
@@ -485,10 +489,10 @@
     
     var categoriesJSON = $("#categories_json").html();
     var categories     = $.parseJSON(categoriesJSON);
-    var categories_clone = categories.slice();
+    global_categories = categories.slice();
     
     var food_stuff_categoriesJSON = $("#food_stuff_categories_json").html();
-    var food_stuff_categories     = $.parseJSON(food_stuff_categoriesJSON);
+    global_food_stuff_categories  = $.parseJSON(food_stuff_categoriesJSON);
 
     var food_stuff_mark_namesJSON = $("#food_stuff_mark_names_json").html();
     var food_stuff_mark_names     = $.parseJSON(food_stuff_mark_namesJSON);
@@ -508,7 +512,7 @@
     
     treeToHTML(global_tree);
 
-    fill_in_saved_food_stuff_categories(food_stuff_categories, categories_clone);
+    fill_in_saved_food_stuff_categories();
   });
 
   var form = $('form').submit(function () {
@@ -523,6 +527,7 @@
     fill_form_with_storage();
     
     fill_form_with_categories();
+    fill_form_with_categories_field();
     
   });
 
@@ -779,11 +784,11 @@
     return null;
   }
   
-  function fill_in_saved_food_stuff_categories(food_stuff_categories, categories)
+  function fill_in_saved_food_stuff_categories()
   {
-    for(var i = 0; i < food_stuff_categories.length; i++)
+    for(var i = 0; i < global_food_stuff_categories.length; i++)
     {
-      var category_name = find_category_name_by_id(categories, food_stuff_categories[i].categories_id);
+      var category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[i].categories_id);
       $('#cat_' + category_name).attr('class', 'confirm');
     }
   }
@@ -855,6 +860,31 @@
     $('#food_stuff_retailers_field').attr('value', retailers_field);
   }
   
+  function fill_form_with_categories_field() 
+  {
+    var categories_field = "";
+    
+    if(global_food_stuff_categories.length > 1)
+    {
+      var category_name = null;
+      
+      for(var i = 0; i < global_food_stuff_categories.length - 1; i++)
+      {
+        category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[i].categories_id);
+        categories_field += category_name + ", ";
+      }
+      
+      category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[global_food_stuff_categories.length - 1].categories_id);
+      categories_field += category_name;
+    }
+    else if(global_food_stuff_categories.length === 1)
+    {
+      categories_field += category_name;
+    }
+    
+    $('#food_stuff_categories_field').attr('value', categories_field);
+  }
+
   function fill_form_with_ingredients_field() {
 
     var ingredients = $('.ingredients');
@@ -884,7 +914,7 @@
     var categories_field = "";
     var confirm = $('.confirm');
     
-    var categoriesDiv = $('#categories_field');
+    var categoriesDiv = $('#categories_input_field');
     
     var categoryInputBegin = "<input class='categories' name='category[name][]' size='30' type='text' hidden='true'";
     var categoryInputEnd = "</input>";

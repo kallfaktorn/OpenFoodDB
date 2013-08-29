@@ -26,7 +26,15 @@ class FoodStuffsController < ApplicationController
 
     @audit_thumbs_up = []
     @ids.each do |id| @audit_thumbs_up << AuditThumbsUp.find_by_audit_id(id) end
-
+      
+    food_stuffs_categories = FoodStuffsCategories.find(:all, :conditions => ['food_stuff_id = ?', @food_stuff.id])
+    
+    @categories = []
+    for c in food_stuffs_categories
+      category = Categories.find(c.categories_id)
+      @categories << category.name
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @food_stuff }
@@ -142,8 +150,7 @@ class FoodStuffsController < ApplicationController
         for n in params[:category][:name] do
           unless n.blank?
             @category = Categories.find_by_name(n)
-            print "category_id" + @category.name
-          
+            
             FoodStuffsCategories.create(food_stuff_id: @food_stuff.id, categories_id: @category.id)
           end
         end

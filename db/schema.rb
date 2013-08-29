@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819162006) do
+ActiveRecord::Schema.define(:version => 20130829170228) do
 
   create_table "audit_thumbs_ups", :force => true do |t|
     t.integer  "audit_id"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(:version => 20130819162006) do
     t.text     "details"
     t.integer  "weight"
     t.string   "storage"
+    t.string   "categories_field"
   end
 
   create_table "food_stuffs_categories", :id => false, :force => true do |t|

@@ -130,6 +130,7 @@ se:
   FoodStuff_Waste: "Avfall"
   FoodStuff_Marks: "Livsmedelsmärken"
   FoodStuff_Tags: "Taggar"
+  FoodStuff_Categories: "Kategorier"
   FoodStuff_Details: "Detaljer"
   FoodStuff_Logo: "Logotyp"
   FoodStuff_Image: "Bild på livsmedel"
