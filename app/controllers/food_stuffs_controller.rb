@@ -69,6 +69,7 @@ class FoodStuffsController < ApplicationController
     @food_stuff_tags = @food_stuff.tags
     @food_stuff_storage = @food_stuff.storage
     @categories = Categories.all
+    @food_stuff_categories = FoodStuffsCategories.find(:all, :conditions => ['food_stuff_id = ?', @food_stuff.id])
   end
 
   # POST /food_stuffs

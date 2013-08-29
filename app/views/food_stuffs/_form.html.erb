@@ -460,8 +460,9 @@
   <%= raw @food_stuff_mark_names.to_json %>
 </script>
 
-
-
+<script id="food_stuff_categories_json" type="text/json">
+  <%= raw @food_stuff_categories.to_json %>
+</script>
 
 
 <script type="text/javascript">
@@ -484,6 +485,10 @@
     
     var categoriesJSON = $("#categories_json").html();
     var categories     = $.parseJSON(categoriesJSON);
+    var categories_clone = categories.slice();
+    
+    var food_stuff_categoriesJSON = $("#food_stuff_categories_json").html();
+    var food_stuff_categories     = $.parseJSON(food_stuff_categoriesJSON);
 
     var food_stuff_mark_namesJSON = $("#food_stuff_mark_names_json").html();
     var food_stuff_mark_names     = $.parseJSON(food_stuff_mark_namesJSON);
@@ -497,11 +502,13 @@
 
     fill_in_saved_food_stuff_marks(food_stuff_marks, food_stuff_mark_names);
     fill_in_saved_food_stuff_tags(food_stuff_tags);
-    fill_in_save_food_stuff_storage(food_stuff_storage);
+    fill_in_saved_food_stuff_storage(food_stuff_storage);
     
     global_tree = categories_json_to_tree(categories);
     
     treeToHTML(global_tree);
+
+    fill_in_saved_food_stuff_categories(food_stuff_categories, categories_clone);
   });
 
   var form = $('form').submit(function () {
@@ -754,9 +761,31 @@
     }
   }
   
-  function fill_in_save_food_stuff_storage(food_stuff_storage)
+  function fill_in_saved_food_stuff_storage(food_stuff_storage)
   {
     $('#' + food_stuff_storage).attr('selected', 'selected');
+  }
+  
+  function find_category_name_by_id(categories, category_id)
+  {
+    for(var i = 0; i < categories.length; i++)
+    {
+      if(categories[i].id === category_id)
+      {
+        return categories[i].name;
+      }
+    }
+    
+    return null;
+  }
+  
+  function fill_in_saved_food_stuff_categories(food_stuff_categories, categories)
+  {
+    for(var i = 0; i < food_stuff_categories.length; i++)
+    {
+      var category_name = find_category_name_by_id(categories, food_stuff_categories[i].categories_id);
+      $('#cat_' + category_name).attr('class', 'confirm');
+    }
   }
 
   function mark(htmlId, dbName) {
