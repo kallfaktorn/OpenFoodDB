@@ -5090,3 +5090,12 @@ java.util.EmptyStackException
 
 !ENTRY com.aptana.ruby.core 4 0 2013-08-29 17:18:38.076
 !MESSAGE (Build 3.2.2.201208201020) [ERROR]  AST stack was empty upon exiting script, but should have contained the script.
+!SESSION 2013-09-01 22:15:29.076 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_38
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2013-09-01 22:15:30.246
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.

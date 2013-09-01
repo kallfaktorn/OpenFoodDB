@@ -97,6 +97,8 @@ function categories_json_to_tree(categories)
       {
         no_root_categories_left = false;
 
+        categories[i].name = categories[i].name.replace(/ /g, "_");
+        
         var root_node = new Node(categories[i].name, tree);
         categories.splice(i--, 1);
         

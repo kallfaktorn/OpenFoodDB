@@ -249,7 +249,8 @@
       return;
     }
     
-    var node = global_tree.find(category_id);
+    var category_name = category_id.replace(/_/g, " ");
+    var node = global_tree.find(category_name);
     
     if(global_clicked === false)
     {
@@ -257,8 +258,9 @@
       
       if(node.hasChildren() === false)
       {
-        var bla = $('#' + node.value);
-        $('#' + node.value + " ul").each(function() {
+        var query_string = node.value.replace(/_/g, " ");
+        
+        $('#' + query_string + " ul").each(function() {
             if($(this).is(':visible'))
             {
               $(this).hide();
@@ -280,25 +282,34 @@
       }
       else
       {
-        if($('#' + node.children[0].value).is(':visible'))
+        var query = '#' + node.children[0].value;
+        var value = $('#' + node.children[0].value);
+        
+        var query_string = node.children[0].value.replace(/ /g, "_");
+        
+        if($('#' + query_string).is(':visible'))
         {
-          hide_children(category_id);
+          hide_children(category_name);
           
-          $('#' + node.value + " ul").each(function() {
+          query_string = node.value.replace(/ /g, "_");
+          
+          $('#' + query_string + " ul").each(function() {
             $(this).hide();
           });
           
-          $('#' + node.value + ' .category').attr('class', 'category orange_category');
+          $('#' + query_string + ' .category').attr('class', 'category orange_category');
         }
         else
         {
-          show_children(category_id);
+          show_children(category_name);
           
-          $('#' + node.value + " > ul").each(function() {
+          query_string = node.value.replace(/ /g, "_");
+          
+          $('#' + query_string + " > ul").each(function() {
             $(this).show();
           });
           
-          $('#' + node.value + ' > .category').attr('class', 'category green_category');
+          $('#' + query_string + ' > .category').attr('class', 'category green_category');
         }
       }
     }
@@ -308,25 +319,28 @@
     }
   }
   
-  function show_children(category_id)
+  function show_children(category_name)
   {
-    var node = global_tree.find(category_id);
+    var node = global_tree.find(category_name);
     
     for(var i = 0; i < node.children.length; i++)
     {
-      $('#' + node.children[i].value).show();
+      var query_string = node.children[i].value.replace(/ /g, "_");
+      
+      var query = $('#' + query_string);
+      $('#' + query_string).show();
     }
   }
 
-  function hide_children(category_id)
+  function hide_children(category_name)
   {
-    var node = global_tree.find(category_id);
-
+    var node = global_tree.find(category_name);
+    
     for(var i = 0; i < node.children.length; i++)
     {
-      var id = "#" + node.children[i].value;
-
-      $(id).hide();
+      var query_string = node.children[i].value.replace(/ /g, "_");
+      
+      $('#' + query_string).hide();
       
       hide_children(node.children[i].value);
     }
@@ -406,7 +420,9 @@
     
     var html_foodStuffs_by_category = find_food_stuffs_by_top_category(tree.value);
     
-    html_tree += "<li " + "id=\"" + tree.value + "\" " + "onclick=\"" + "show_hide_children(\'" + tree.value + "\')\"" + ">" + "<a class='category orange_category'>" + tree.value + "</a>" + "<a class='black'> (" + category_count + ")";
+    var value = tree.value.replace(/ /g, "_");
+    
+    html_tree += "<li " + "id=\"" + value + "\" " + "onclick=\"" + "show_hide_children(\'" + value + "\')\"" + ">" + "<a class='category orange_category'>" + tree.value + "</a>" + "<a class='black'> (" + category_count + ")";
 
     if(tree.children.length > 0)
     {
