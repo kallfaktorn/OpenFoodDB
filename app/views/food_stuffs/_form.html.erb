@@ -564,7 +564,7 @@
   {
     var listElements = [];
     
-    var id = "#cat_" + tree.value;
+    var id = "#cat_" + tree.value.replace(/ /g, "_");
     
     var class_ = "noconfirm";
     
@@ -573,7 +573,9 @@
       class_ = "##";
     }
     
-    listElements += "<li" + " id=cat_" + tree.value + " class=" + class_ + " onclick=\"select_category(\'" + id + "\')\"" + "><a href='##'>" + tree.value + "</a>";
+    var htmlId = tree.value.replace(/ /g, "_");
+    
+    listElements += "<li" + " id=cat_" + htmlId + " class=" + class_ + " onclick=\"select_category(\'" + id + "\')\"" + "><a href='##'>" + tree.value + "</a>";
 
     if(tree.hasChildren() === true)
     {
@@ -618,6 +620,8 @@
       //confirm_node_and_parents(global_tree.lookup(category_id));
 
       var is_confirm = $(category_id).attr("class");
+      
+      //var category_id = category_id.replace(/_/g, " ");
 
       var node = global_tree.lookup(category_id);
 
@@ -718,7 +722,9 @@
   {
     if(node.parent !== null)
     {
-      id = "#cat_" + node.value;
+      var value = node.value.replace(/ /g, "_");
+      
+      id = "#cat_" + value;
       $(id).attr("class", confirm_or_noconfirm);
     
       confirm_or_noconfirm_node_and_parents(node.parent, confirm_or_noconfirm);

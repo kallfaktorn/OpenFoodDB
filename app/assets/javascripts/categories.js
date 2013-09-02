@@ -58,8 +58,10 @@ function Node(value, parent)
   }
 
   this.lookup = function(id) {
+    
+    var value = self.value.replace(/ /g, "_");
 
-    if(("#cat_" + self.value) === id)
+    if(("#cat_" + value) === id)
     {
       return self;
     }
