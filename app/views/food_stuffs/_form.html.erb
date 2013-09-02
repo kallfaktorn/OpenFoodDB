@@ -701,8 +701,10 @@
     {
       return;
     }
+    
+    var value = node.value.replace(/ /g, "_");
 
-    var id = "#cat_" + node.value;
+    var id = "#cat_" + value;
     $(id).attr("class", "noconfirm");
 
     var parent = node.parent;
@@ -795,6 +797,8 @@
     for(var i = 0; i < global_food_stuff_categories.length; i++)
     {
       var category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[i].categories_id);
+      category_name = category_name.replace(/ /g, "_");
+      
       $('#cat_' + category_name).attr('class', 'confirm');
     }
   }
@@ -866,30 +870,30 @@
     $('#food_stuff_retailers_field').attr('value', retailers_field);
   }
   
-  function fill_form_with_categories_field() 
-  {
-    var categories_field = "";
-    
-    if(global_food_stuff_categories.length > 1)
-    {
-      var category_name = null;
-      
-      for(var i = 0; i < global_food_stuff_categories.length - 1; i++)
-      {
-        category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[i].categories_id);
-        categories_field += category_name + ", ";
-      }
-      
-      category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[global_food_stuff_categories.length - 1].categories_id);
-      categories_field += category_name;
-    }
-    else if(global_food_stuff_categories.length === 1)
-    {
-      categories_field += category_name;
-    }
-    
-    $('#food_stuff_categories_field').attr('value', categories_field);
-  }
+  // function fill_form_with_categories_field() 
+  // {
+    // var categories_field = "";
+//     
+    // if(global_food_stuff_categories.length > 1)
+    // {
+      // var category_name = null;
+//       
+      // for(var i = 0; i < global_food_stuff_categories.length - 1; i++)
+      // {
+        // category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[i].categories_id);
+        // categories_field += category_name + ", ";
+      // }
+//       
+      // category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[global_food_stuff_categories.length - 1].categories_id);
+      // categories_field += category_name;
+    // }
+    // else if(global_food_stuff_categories.length === 1)
+    // {
+      // categories_field += category_name;
+    // }
+//     
+    // $('#food_stuff_categories_field').attr('value', categories_field);
+  // }
 
   function fill_form_with_ingredients_field() {
 
@@ -920,6 +924,8 @@
     var categories_field = "";
     var confirm = $('.confirm');
     
+    var food_stuff_categories_field = "";
+    
     var categoriesDiv = $('#categories_input_field');
     
     var categoryInputBegin = "<input class='categories' name='category[name][]' size='30' type='text' hidden='true'";
@@ -928,16 +934,28 @@
     if(confirm.length > 0)
     {
       
-      categories_field = categoryInputBegin + "value=" + "'" + confirm[0].id.slice(4) + "'" + ">" + categoryInputEnd;
+      categories_field = categoryInputBegin + "value=" + "'" + confirm[0].id.slice(4).replace(/_/g, " ") + "'" + ">" + categoryInputEnd;
       categoriesDiv.append(categories_field);
 
       if(confirm.length > 1)
       {
         for(var i = 1; i < confirm.length; i++)
         {
-          categories_field = categoryInputBegin + "value=" + "'" + confirm[i].id.slice(4) + "'" + ">" + categoryInputEnd;
+          categories_field = categoryInputBegin + "value=" + "'" + confirm[i].id.slice(4).replace(/_/g, " ") + "'" + ">" + categoryInputEnd;
           categoriesDiv.append(categories_field);
         }
+        
+        for(var i = 0; i < (confirm.length - 1); i++)
+        {
+          food_stuff_categories_field += confirm[i].id.slice(4).replace(/_/g, " ") + ", ";
+        }
+        
+        food_stuff_categories_field += confirm[confirm.length - 1].id.slice(4).replace(/_/g, " ");
+        $('#food_stuff_categories_field').attr('value', food_stuff_categories_field);
+      }
+      else
+      {
+        $('#food_stuff_categories_field').attr('value', food_stuff_categories_field);
       }
     }
   }
