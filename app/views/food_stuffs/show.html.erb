@@ -396,11 +396,13 @@
     var url = window.location.href;
     var audit_str = "/audit/";
     
-    var history_id_start = url.indexOf("/audit/") + audit_str.length;
+    var audit_of_url = url.indexOf("/audit/");
     
-    if(history_id_start !== -1)
+    if(audit_of_url !== -1)
     {
+      var history_id_start = audit_of_url + audit_str.length;
       var history_id_end = url.indexOf("?");
+     
       if(history_id_end === -1)
       {
         history_id_end = url.length;
