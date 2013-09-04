@@ -7,7 +7,7 @@ set :repository,  "https://github.com/kallfaktorn/OpenFoodDB.git"
 set :scm, 'git'
 
 set :user, 'kallfaktorn'
-set :branch, "collaborative"
+set :branch, "master"
 
 set :git_shallow_clone, 1
 set :use_sudo, false
