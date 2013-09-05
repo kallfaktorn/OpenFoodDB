@@ -564,7 +564,7 @@
   {
     var listElements = [];
     
-    var id = "#cat_" + tree.value.replace(/ /g, "_");
+    var id = "cat_" + tree.value;
     
     var class_ = "noconfirm";
     
@@ -573,9 +573,9 @@
       class_ = "##";
     }
     
-    var htmlId = tree.value.replace(/ /g, "_");
+    var value = tree.value.replace(/_/g, " ");
     
-    listElements += "<li" + " id=cat_" + htmlId + " class=" + class_ + " onclick=\"select_category(\'" + id + "\')\"" + "><a href='##'>" + tree.value + "</a>";
+    listElements += "<li" + " id=" + id + " class=" + class_ + " onclick=\"select_category(\'#" + id + "\')\"" + "><a href='##'>" + value + "</a>";
 
     if(tree.hasChildren() === true)
     {
@@ -617,12 +617,9 @@
     }
     if(global_category_selected === false)
     {
-      //confirm_node_and_parents(global_tree.lookup(category_id));
-
-      var is_confirm = $(category_id).attr("class");
+      var html_tag = $(category_id);
+      var is_confirm = html_tag.attr("class");
       
-      //var category_id = category_id.replace(/_/g, " ");
-
       var node = global_tree.lookup(category_id);
 
       if(is_confirm === "confirm")
@@ -928,7 +925,7 @@
     
     var categoriesDiv = $('#categories_input_field');
     
-    var categoryInputBegin = "<input class='categories' name='category[name][]' size='30' type='text' hidden='true'";
+    var categoryInputBegin = "<input class='categories' name='category[name][]' size='30' type='text' hidden='true' ";
     var categoryInputEnd = "</input>";
     
     if(confirm.length > 0)
@@ -955,6 +952,7 @@
       }
       else
       {
+        food_stuff_categories_field += confirm[0].id.slice(4).replace(/_/g, " ");
         $('#food_stuff_categories_field').attr('value', food_stuff_categories_field);
       }
     }

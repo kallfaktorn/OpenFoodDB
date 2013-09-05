@@ -98,10 +98,11 @@ function categories_json_to_tree(categories)
       if(categories[i].parent === "null")
       {
         no_root_categories_left = false;
-
-        categories[i].name = categories[i].name.replace(/ /g, "_");
         
-        var root_node = new Node(categories[i].name, tree);
+        var name = categories[i].name.replace(/ /g, "_");
+
+        var root_node = new Node(name, tree);
+        
         categories.splice(i--, 1);
         
         categories_json_to_tree_children(categories, root_node);
@@ -116,9 +117,12 @@ function categories_json_to_tree_children(categories_json, node)
 {
   for(var i = 0; i < categories_json.length; i++)
   {
-    if(categories_json[i].parent === node.value)
+    var parent = categories_json[i].parent.replace(/ /g, "_");
+    
+    if(parent === node.value)
     {
-      var child = new Node(categories_json[i].name, node);
+      name = categories_json[i].name.replace(/ /g, "_");
+      var child = new Node(name, node);
       categories_json.splice(i--, 1);
       
       categories_json_to_tree_children(categories_json, child);

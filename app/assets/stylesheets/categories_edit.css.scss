@@ -14,7 +14,7 @@ nav ul {
   border-style:solid;
   border-color:#d0cfcf;
   list-style: none;
-
+  
   background-image: -webkit-gradient(
     linear,
     left bottom,
@@ -30,6 +30,8 @@ nav ul:after {
 
 
 nav ul ul {
+  width:auto;
+  white-space:nowrap;
   display: none;
 }
 
