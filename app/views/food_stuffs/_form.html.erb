@@ -4,51 +4,63 @@
 
 <%= form_for(@food_stuff, :html => { :multipart => true }) do |f| %>
   <% if @food_stuff.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@food_stuff.errors.count, "error") %> prohibited this food_stuff from being saved:</h2>
-
-      <ul>
-      <% @food_stuff.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+    <%= content_tag :div, :id => "error_explanation" do %>
+      <%= content_tag :h2 do %>
+        <%= pluralize(@food_stuff.errors.count, "error") %> 
+        prohibited this food_stuff from being saved:
       <% end %>
-      </ul>
-    </div>
+
+
+      <%= content_tag :ul do %>
+        <% @food_stuff.errors.full_messages.each do |msg| %>
+          <%= content_tag :li do %>
+            <%= msg %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
 
-  <div class="container">
-    <table class="expandedTable2">
-      <tr>
-        <td align="left">
-        </td>
-        <td align="middle">
-        </td>
-        <td align="right">
+  <%= content_tag :div, :class => "container" do %>
+    <%= content_tag :table, :class => "expandedTable2" do %>
+      <%= content_tag :tr do %>
+        <%= content_tag :td, :align => "left" do %>
+        <% end %>
+        <%= content_tag :td, :align => "middle" do %>
+        <% end %>
+        <%= content_tag :td, :align => "right" do %>
           <%= label_tag "", :class => "field_width" do %>
             <%= content_tag :b, t(:FoodStuff_Per_Hundred_Grams) %>
-          <% end %>  
-        </td>
-      <tr>
-        <td align="left">
+            <% end %>  
+          <% end %>
+        <% end %>
+      <%= content_tag :tr do %>
+        <%= content_tag :td, :align => "left" do %>
           <%= f.label t(:FoodStuff_Name) %>
-        </td>
-        <td align="middle">
+        <% end %>
+        <%= content_tag :td, :align => "middle" do %>
           <%= f.text_field :name, :class => "field_width" %>
-        </td>
-      </tr>
-      <tr>
-        <td align="left">
+        <% end %>
+      <% end %>
+      <%= content_tag :tr do %>
+        <%= content_tag :td, :align => "left" do %>
           <%= label_tag t(:FoodStuff_Energy) %>
-        </td>
-        <td align="middle">
+        <% end %>
+        <%= content_tag :td, :align => "middle" do %>
            <%= f.number_field :energy_kcal, :id => "energy", :class => "field_width", :step => "0.000001" %>
-        </td>
-        <td align="right">
-          <select id="energy_select", class="custom_button">
-            <option value="kcal">KCal</option>
-            <option value="kj">kJ</option>
-          </select>
-        </td>
-      </tr>
+        <% end %>
+        <%= content_tag :td, :align => "right" do %>
+          <%= content_tag :select, :id => "energy_select", :class => "custom_button" do %>
+            <%= content_tag :option, :value => "kcal" do %>
+              KCal
+            <% end %>
+            <%= content_tag :option, :value => "kJ" do %>
+              kJ
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      
       <%= render :partial => 'item2', :locals => {:f => f, :label => t(:FoodStuff_Protein), :number => :protein, :unit => "g" } %>
       <%= render :partial => 'item2', :locals => {:f => f, :label => t(:FoodStuff_Fat), :number => :fat, :unit => "g" } %>
       <%= render :partial => 'item2', :locals => {:f => f, :label => t(:FoodStuff_Carbohydrates), :number => :carbohydrates, :unit => "g" } %>
@@ -57,25 +69,25 @@
       <%= render :partial => 'item2', :locals => {:f => f, :label => t(:FoodStuff_Ash), :number => :ash, :unit => "g" } %>
       <%= render :partial => 'item2', :locals => {:f => f, :label => t(:FoodStuff_Water), :number => :water, :unit => "g" } %>
       <%= render :partial => 'item2', :locals => {:f => f, :label => t(:FoodStuff_Alcohol), :number => :alcohol, :unit => "g" } %>
-    </table>
+    <% end %>
     
-    <ul id="my_tree" class="filetree">
-    	<li>
+    <%= content_tag :ul, :id => "my_tree", :class => "filetree" do %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Carbohydrates) } %>
-        <ul id="children_of_0">
-        	<table class="expandedTable">
+          <%= content_tag :ul, :id => "children_of_0" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Monosaccharides), :number => :monosaccharides, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Disaccharides), :number => :disaccharides, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Sackaros), :number => :sackaros, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Lactose), :number =>  :lactose, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Whole_grain_total), :number =>  :whole_grain_total, :unit => "g" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Saturated_fatty_acids) } %>
-        <ul id="children_of_1">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_1" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Total_saturated_fatty_acids), :number =>  :total_saturated_fatty_acids, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_40_100), :number =>  :fatty_acid_40_100, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_120), :number =>  :fatty_acid_120, :unit => "g" } %>
@@ -83,82 +95,82 @@
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_160), :number =>  :fatty_acid_160, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_180), :number =>  :fatty_acid_180, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_200), :number =>  :fatty_acid_200, :unit => "g" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Monounsaturated_fatty_acids) } %>
-        <ul id="children_of_2">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_2" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Total_monounsaturated_fatty_acids), :number =>  :total_monounsaturated_fatty_acids, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_161), :number =>  :fatty_acid_161, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_181), :number =>  :fatty_acid_181, :unit => "g" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Polyunsaturated_fatty_acids) } %>
-        <ul id="children_of_3">
-          <table class="expandedTable">
+          <%= content_tag :ul, :id => "children_of_3" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Total_polyunsaturated_fatty_acids), :number =>  :total_polyunsaturated_fatty_acids, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Total_trans_fatty_acids), :number =>  :total_trans_fatty_acids, :unit => "g" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_N6_fatty_acids) } %>
-        <ul id="children_of_4">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_4" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Total_n6_fatty_acids), :number =>  :total_n6_fatty_acids, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_182), :number =>  :fatty_acid_182, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_204), :number =>  :fatty_acid_204, :unit => "g" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_N3_fatty_acids) } %>
-        <ul id="children_of_5">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_5" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Total_n3_fatty_acids), :number =>  :total_n3_fatty_acids, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Fatty_acid_183), :number =>  :fatty_acid_183, :unit => "g" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Long_N3_fatty_acids) } %>
-        <ul id="children_of_6">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_6" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_EPA_Fatty_acid_205), :number =>  :EPA_fatty_acid_205, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_DPA_Fatty_acid_225), :number =>  :DPA_fatty_acid_225, :unit => "g" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_DHA_Fatty_acid_226), :number =>  :DHA_fatty_acid_226, :unit => "g" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Cholesterol) } %>
-        <ul id="children_of_7">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_7" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Cholesterol), :number =>  :cholesterol, :unit => "mg" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Fatt_soluble_vitamins) } %>
-        <ul id="children_of_8">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_8" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Retinol_equivalents), :number =>  :retinol_equivalents, :unit => "" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Retinol), :number =>  :retinol, :unit => "µg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Beta_Carotene), :number =>  :beta_carotene, :unit => "µg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Vitamin_D), :number =>  :vitamin_d, :unit => "µg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Vitamin_E), :number =>  :vitamin_e, :unit => "mg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Vitamin_K), :number =>  :vitamin_k, :unit => "µg" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Water_soluble_vitamins) } %>
-        <ul id="children_of_9">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_9" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Thiamine), :number =>  :thiamine, :unit => "mg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Riboflavin), :number =>  :riboflavin, :unit => "mg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Vitamin_C), :number =>  :vitamin_c, :unit => "mg" } %>
@@ -167,13 +179,13 @@
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Vitamin_B6), :number =>  :vitamin_b6, :unit => "mg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Vitamin_B12), :number =>  :vitamin_b12, :unit => "µg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Folate), :number =>  :folate, :unit => "µg" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Minerals) } %>
-        <ul id="children_of_10">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_10" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Phosphorus), :number =>  :phosphorus, :unit => "mg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Iodine), :number =>  :iodine, :unit => "µg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Iron), :number =>  :iron, :unit => "mg" } %>
@@ -184,94 +196,93 @@
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Folate), :number =>  :folate, :unit => "mg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Selenium), :number =>  :selenium, :unit => "µg" } %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Zinc), :number =>  :zinc, :unit => "mg" } %>
-          </table>
-        </ul>
-      </li>
-      <li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= content_tag :li do %>
         <%= render :partial => 'category', :locals => {:f => f, :label => t(:FoodStuff_Category_Waste) } %>
-        <ul id="children_of_11">
-          <table class="expandedTable">
+        <%= content_tag :ul, :id => "children_of_11" do %>
+          <%= content_tag :table, :class => "expandedTable" do %>
             <%= render :partial => 'item', :locals => {:f => f, :label => t(:FoodStuff_Waste), :number =>  :waste, :unit => "" } %>
-          </table>
-        </ul>
-      </li>
+          <% end %>
+        <% end %>
+      <% end %>
       
       <br />
       <br />
 
-      <table class="expandedTable2">
-        <tr>
-          <td align="left">
+      <%= content_tag :table, :class => "expandedTable2" do %>
+        <%= content_tag :tr do %>
+          <%= content_tag :td, :align => "left" do %>
             <%= f.label t(:FoodStuff_Bar_Code) %>
-          </td>
-          <td align="middle">
+          <% end %>
+          <%= content_tag :td, :align => "middle" do %>
             <%= f.text_field :bar_code_number, :class => "field_width" %>
-          </td>
-        </tr>
-        <tr>
-          <td align="left">
+          <% end %>
+        <% end %>
+        <%= content_tag :tr do %>
+          <%= content_tag :td, :align => "left" do %>
             <%= f.label t(:FoodStuff_Vendor) %>
-          </td>
-          <td align="middle">
+          <% end %>
+          <%= content_tag :td, :align => "middle" do %>
             <%= f.text_field :vendor, :class => "field_width" %>
-          </td>
-        </tr>
-        <tr>
-          <td align="left">
+          <% end %>
+        <% end %>
+        <%= content_tag :tr do %>
+          <%= content_tag :td, :align => "left" do %>
             <%= f.label t(:FoodStuff_Expiration_Unopened) %>
-          </td>
-          <td align="middle">
+          <% end %>
+          <%= content_tag :td, :align => "middle" do %>
             <%= f.text_field :expiration_date_unopened, :class => "field_width" %>
-          </td>
-        </tr>
-        <tr>
-          <td align="left">
+          <% end %>
+        <% end %>
+        <%= content_tag :tr do %>
+          <%= content_tag :td, :align => "left" do %>
             <%= f.label t(:FoodStuff_Expiration_Broached) %>
-          </td>
-          <td align="middle">
+          <% end %>
+          <%= content_tag :td, :align => "middle" do %>
             <%= f.text_field :expiration_date_broached, :class => "field_width" %>
-          </td>
-        </tr>
+          <% end %>
+        <% end %>
         <%= render :partial => 'item2', :locals => {:f => f, :label => t(:FoodStuff_Weight), :number =>  :weight, :unit => "g" } %>
-      </table>
+      <% end %>
      
-      
-    </ul>
+    <% end %>
 
     </br>
     </br>
     
-    <table>
-      <tr>
-        <td>
+    <%= content_tag :table do %>
+      <%= content_tag :tr do %>
+        <%= content_tag :td do %>
           <%= label_tag t(:FoodStuff_Logo) %>
-        </td>
-        <td>
+        <% end %>
+        <%= content_tag :td do %>
           <%= f.file_field :logo, hidden:"hidden" %>
 
           <%= button_tag "Choose file", type:"button", class:"custom_button", onclick:"javascript:$('#food_stuff_logo').click();" %>
           <%= label_tag "No file chosen", nil, id:"food_stuff_logo_label_fake", onclick:"javascript:$('#food_stuff_logo').click();" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
+        <% end %>
+      <% end %>
+      <%= content_tag :tr do %>
+        <%= content_tag :td do %>
           <%= label_tag t(:FoodStuff_Image) %>
-        </td>
-        <td>
+        <% end %>
+        <%= content_tag :td do %>
           <%= f.file_field :food_stuff_image, hidden:"hidden" %>
 
           <%= button_tag "Choose file", type:"button", class:"custom_button", onclick:"javascript:$('#food_stuff_food_stuff_image').click();" %>
           <%= label_tag "No file chosen", nil, id:"food_stuff_image_label_fake", onclick:"javascript:$('#food_stuff_food_stuff_image').click();" %>
-        </td>
-      </tr>
-    </table>
+        <% end %>
+      <% end %>
+    <% end %>
 
     <br />
     <br />
     
-    <div style="float:left;">
+    <%= content_tag :div, :style => "float: left;" do %>
       <%= label_tag t(:FoodStuff_Marks) %>
-    </div>
+    <% end %>
     
     <br />
     
@@ -291,7 +302,10 @@
     <br />
 
     <%= label_tag t(:FoodStuff_Tags) %>
-    <div class="field" type="hidden">
+    
+    <%= content_tag :div, :class => "field", :type => "hidden" do %>
+    <% end %>
+
     <%= content_tag :select, :multiple => "multiple", :class => "custom_select_multiple", :id => "tags_id" do %>
       <% if @tags != nil %>
         <% @tags.each do |tag| %>
@@ -330,21 +344,22 @@
     <br />
 
 
-    <div class="field" id="ingredients" type="hidden">
+    <%= content_tag :div, :class => "field", :id => "ingredients", :type => "hidden" do %>
 
       <% if @ingredients != [] %> 
         <% @ingredients.each do |ing| %>
-          <p>
+          <%= content_tag :p do %>
             <%= label_tag t(:FoodStuff_Ingredient) %>
             <%= text_field_tag "ingredient[name][]", ing.name, id:"ingredient#{ing.id}", class:"ingredients" %>
-          </p>
+          <% end %>
         <% end %>
       <% else %>
-          <label for="food_stuff_ingredient"><%= t(:FoodStuff_Ingredient) + ": " %></label>
-          <input class="ingredients" name="ingredient[name][]" size="30" type="text" />
+      <%= label_tag 'food_stuff_ingredient', t(:FoodStuff_Ingredient) + ": " %>
+          <%= content_tag :input, :class => "ingredients", :name => "ingredient[name][]", :size => "30", :type => "text" do %>
+          <% end %>
       <% end %>
 
-    </div>
+    <% end %>
 
     <%= button_tag t(:FoodStuff_Button_Add_Ingredient), type:"button", onclick:"javascript:addIngredient();", class:"custom_button" %>
 
@@ -353,20 +368,21 @@
     <br />
     <br />
 
-    <div class="field" id="retailers" type="hidden">
+    <%= content_tag :div, :class => "field", :id => "retailers", :type => "hidden" do %>
 
       <% if @retailers != [] %>
         <% @retailers.each do |ret| %>
-          <p>
+          <%= content_tag :p do %>
             <%= label_tag t(:FoodStuff_Retailer) %>
             <%= text_field_tag "retailer[name][]", ret.name, id:"retailer#{ret.id}", class:"retailers" %>
-          </p>
+          <% end %>
         <% end %>
       <% else %>
-          <label for="food_stuff_retailer"><%= t(:FoodStuff_Retailer) %> </label>
-          <input class="retailers" name="retailer[name][]" size="30" type="text" />
+        <%= label_tag 'food_stuff_retailer', t(:FoodStuff_Retailer) + ": " %>
+          <%= content_tag :input, :class => "retailers", :name => "retailer[name][]", :size => "30", :type => "text" do %>
+          <% end %>
       <% end %>
-    </div>
+    <% end %> 
 
     <%= button_tag t(:FoodStuff_Button_Add_Retailer), type:"button", onclick:"javascript:addRetailer();", class:"custom_button" %>
 
@@ -403,13 +419,13 @@
       </ul>
     </nav>
 -->
-    <nav id="categories">
-    </nav>
+    <%= content_tag :nav, :id => "categories" do %>
+    <% end %>
 
-    <div class="field">
+    <%= content_tag :div, :class => "field" do %>
       <%= f.label t(:FoodStuff_Details) %><br />
       <%= f.text_area :details, :style => "width:550px"%>
-    </div>
+    <% end %>
 
     <%= f.hidden_field :energy_kcal %>
     <%= f.hidden_field :energy_kj %>
@@ -421,22 +437,19 @@
     <%= f.hidden_field :retailers_field %>
     <%= f.hidden_field :categories_field %>
 
-    
-    <div id="categories_input_field">
-    </div>
+    <%= content_tag :div, :id => "categories_input_field" do %>
+    <% end %>
     
     <!--   <%= label_tag "Update note" %>
     <%= f.text_field :audit_comment %>
     -->
 
-    <div class="actions">
+    <%= content_tag :div, :class => "actions" do %>
       <%= f.submit t(:FoodStuff_Edit_Button_Update_FoodStuff), class:"custom_button" %>
-      <% end %>
-    </div>
+    <% end %>
     
-  </div>
-</div>
-
+  <% end %>
+<% end %>
 
 <script id="tags_json" type="text/json">
   <%= raw @tags.to_json %>
@@ -867,31 +880,6 @@
     $('#food_stuff_retailers_field').attr('value', retailers_field);
   }
   
-  // function fill_form_with_categories_field() 
-  // {
-    // var categories_field = "";
-//     
-    // if(global_food_stuff_categories.length > 1)
-    // {
-      // var category_name = null;
-//       
-      // for(var i = 0; i < global_food_stuff_categories.length - 1; i++)
-      // {
-        // category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[i].categories_id);
-        // categories_field += category_name + ", ";
-      // }
-//       
-      // category_name = find_category_name_by_id(global_categories, global_food_stuff_categories[global_food_stuff_categories.length - 1].categories_id);
-      // categories_field += category_name;
-    // }
-    // else if(global_food_stuff_categories.length === 1)
-    // {
-      // categories_field += category_name;
-    // }
-//     
-    // $('#food_stuff_categories_field').attr('value', categories_field);
-  // }
-
   function fill_form_with_ingredients_field() {
 
     var ingredients = $('.ingredients');
@@ -930,29 +918,29 @@
     
     if(confirm.length > 0)
     {
+      categories_field = categoryInputBegin + "value=" + "'" + confirm[0].children[0].innerText + "'" + ">" + categoryInputEnd;
       
-      categories_field = categoryInputBegin + "value=" + "'" + confirm[0].id.slice(4).replace(/_/g, " ") + "'" + ">" + categoryInputEnd;
       categoriesDiv.append(categories_field);
 
       if(confirm.length > 1)
       {
         for(var i = 1; i < confirm.length; i++)
         {
-          categories_field = categoryInputBegin + "value=" + "'" + confirm[i].id.slice(4).replace(/_/g, " ") + "'" + ">" + categoryInputEnd;
+          categories_field = categoryInputBegin + "value=" + "'" + confirm[i].children[0].innerText + "'" + ">" + categoryInputEnd;
           categoriesDiv.append(categories_field);
         }
         
         for(var i = 0; i < (confirm.length - 1); i++)
         {
-          food_stuff_categories_field += confirm[i].id.slice(4).replace(/_/g, " ") + ", ";
+          food_stuff_categories_field += confirm[i].children[0].innerText + ", ";
         }
         
-        food_stuff_categories_field += confirm[confirm.length - 1].id.slice(4).replace(/_/g, " ");
+        food_stuff_categories_field += confirm[confirm.length - 1].children[0].innerText;
         $('#food_stuff_categories_field').attr('value', food_stuff_categories_field);
       }
       else
       {
-        food_stuff_categories_field += confirm[0].id.slice(4).replace(/_/g, " ");
+        food_stuff_categories_field += confirm[0].children[0].innerText;
         $('#food_stuff_categories_field').attr('value', food_stuff_categories_field);
       }
     }

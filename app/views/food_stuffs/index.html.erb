@@ -1,13 +1,14 @@
 <h1>Listing food_stuffs</h1>
 
-<table>
-  <tr>
+<%= content_tag :table  do %>
+  <%= content_tag :tr do %>
     <th>Name</th>
     <th>Protein</th>
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  <% end %>
+<% end %>
 
 <% @food_stuffs.each do |food_stuff| %>
   <tr>

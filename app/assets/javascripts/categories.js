@@ -129,3 +129,12 @@ function categories_json_to_tree_children(categories_json, node)
     }
   }
 }
+
+function remove_swedish_characters(name)
+{
+  var return_name = name.replace(/å/g, "a");
+  return_name = return_name.replace(/ä/g, "a");
+  return_name = return_name.replace(/ö/g, "o");
+  
+  reurn return_name;
+}
