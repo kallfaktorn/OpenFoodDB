@@ -6,26 +6,28 @@
   <br />
   <br />
 
-  <div class="container">
+<%= content_tag :div, :class => "container" do %>
 
   <br />
   <br />
   <br />
   
-  <div align="center">
+  <%= content_tag :div, :align => "center" do %>
     <% if @food_stuff.logo.exists? %>
       <%= image_tag @food_stuff.logo.url(:medium) %>
     <% end %>
-  </div>
+  <% end %>
   
   
 
-  <div class="hero-unit">
-
-    <table class="informationTable">
-      <tr>
-        <th class="informationTH">Information </th>
-      </tr>
+  <%= content_tag :div, :class => "hero-unit" do %>
+  
+    <%= content_tag :table, :class => "informationTable" do %>
+      <%= content_tag :tr do %>
+        <%= content_tag :th, :class => "informationTH" do %>
+          Information
+        <% end %>
+      <% end %>
 
       <% @audit_thumbs_up.each do |a| %>
         <%= content_tag :div, :class => "thumbs_up_div" do %>
@@ -136,18 +138,25 @@
         <% end %>
       <% end %>
      
-    </table>
+    <% end %>
   
     <br />
     <br />
     <br />
     
-    <table class="nutritionTable">
-      <tr>
-        <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Nutrient) %></th>
-        <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Amount) %></th>
-        <th class="nutritionTH"><%= t(:FoodStuff_Table_Header_Unit) %></th>
-      </tr>
+    <%= content_tag :table, :class => "nutritionTable" do %>
+      <%= content_tag :tr do %>
+        <%= content_tag :th, :class => "nutritionTH" do %>
+          <%= t(:FoodStuff_Table_Header_Nutrient) %>
+        <% end %>
+        <%= content_tag :th, :class => "nutritionTH" do %>
+          <%= t(:FoodStuff_Table_Header_Amount) %>
+        <% end %>
+        <%= content_tag :th, :class => "nutritionTH" do %>
+          <%= t(:FoodStuff_Table_Header_Unit) %>
+        <% end %>
+      <% end %>
+
       <%= render :partial => 'tr', :locals => {:id => "energy_kcal_id", :nutrient => t(:FoodStuff_Energy_kcal), :amount => @food_stuff.energy_kcal, :unit => "kcal" } %>
       <%= render :partial => 'tr', :locals => {:id => "energy_kj_id", :nutrient => t(:FoodStuff_Energy_kj), :amount => @food_stuff.energy_kj, :unit => "kj" } %>
       <%= render :partial => 'tr', :locals => {:id => "protein_id", :nutrient => t(:FoodStuff_Protein), :amount => @food_stuff.protein, :unit => "g" } %>
@@ -208,17 +217,17 @@
       <%= render :partial => 'tr', :locals => {:id => "selenium_id", :nutrient => t(:FoodStuff_Selenium), :amount => @food_stuff.selenium, :unit => "µg" } %>
       <%= render :partial => 'tr', :locals => {:id => "zinc_id", :nutrient => t(:FoodStuff_Zinc), :amount => @food_stuff.zinc, :unit => "mg" } %>
       <%= render :partial => 'tr', :locals => {:id => "waste_id", :nutrient => t(:FoodStuff_Waste), :amount => @food_stuff.waste, :unit => "" } %>
-    </table>
+    <% end %>
   
     <br />
   
   
-    <div align="left" style="margin-left:252px;">
+    <%= content_tag :div, :align => "left", :style => "margin-left:252px;" do %>
       <% if @food_stuff.food_stuff_image.exists? %>
         <%= image_tag @food_stuff.food_stuff_image.url(:thumb) %><br />
       <% end %>
-    </div>
-  </div>
+    <% end %>
+  <%end %>
   
   <br />
   <br />
@@ -258,43 +267,43 @@
     <%= form_for([@food_stuff, @food_stuff.comments.build]) do |f| %>
       <%= f.hidden_field :food_stuff_id %>
 
-      <div class="field">
+      <%= content_tag :div, :class => "field" do %>
         <%= f.label t(:FoodStuff_Comment_Label_Title) %><br />
         <%= f.text_area :body, :style => "width:550px"%>
-      </div>
+      <% end %>
 
-      <div class="actions">
+      <%= content_tag :div, :class => "actions" do %>
         <%= f.submit t(:FoodStuff_Show_Button_Post_Comment), :class => 'custom_button' %>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
 
-  <div align="left" style="margin-left:242px;">
+  <%= content_tag :div, :align => "left", :style => "margin-left:242px;" do %>
     <%= link_to "Home", home_index_path, :class => 'account' %> |
     
     <% if current_user != nil %>
       <%= link_to t(:Button_Edit), edit_food_stuff_path(@food_stuff), :class => 'account' %> |
     <% end %>
     <%= link_to t(:Button_Back), :back, :class => 'account' %>
-  </div>
+  <% end %>
 
 
-
-  <div id="footer">
-    <div id="slideout">
+  <%= content_tag :div, :id => "footer" do %>
+    <%= content_tag :div, :id => "slideout" do %>
       <%= image_tag "slider_more.png", :id => "slideout_image_more", :class => "more_anchors", :hidden => "hidden" %>
       <%= image_tag "slider_less.png", :id => "slideout_image_less", :class => "more_anchors", :hidden => "hidden" %>
 
-      <div class="history"></div>
+      <%= content_tag :div, :class => "history" do %><% end %>
 
-      <div id="slideout_inner">
-
-        <a id="history_anchor" class="more_anchors" onclick="javascript:history()">History</a>
-        <a class="more_anchors">Tags</a>
-      </div>
-    </div>
-  </div>
-</div>
+      <%= content_tag :div, :id => "slideout_inner" do %>
+      
+        <%= content_tag :a, :id => "history_anchor", :class => "more_anchors", :onclick => "javascript:history()" do %>
+          History
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
 
 
 
@@ -417,10 +426,10 @@
   
   $('#slideout_image_more').click(function() {
 
-      $('#slideout').animate({right: '90'}, animationTime, function() {});
+      $('#slideout').animate({right: '60'}, animationTime, function() {});
 
       $('#slideout_inner').animate({
-        right: '0'
+        right: '-30'
       }, animationTime, function() {
 
         $('#slideout_image_more').hide();
