@@ -2,15 +2,15 @@
 
 <% provide(:title, t(:Sign_up_Tab_title_Sign_up)) %>
 
-<div class="container" >
-  <div class="row">
-    <div class="span6 offset3">
+<%= content_tag :div, :class => "container" do %>
+  <%= content_tag :div, :class => "row" do %>
+    <%= content_tag :div, :class => "span6 offset3" do %>
 
       <br />
       <br />
       <br />
 
-      <pre id="error_text" hidden=hidden></pre>
+      <%= content_tag :pre, :id => "error_text", :hidden => "hidden" do %><% end %>
 
       <br />
       <br />
@@ -22,58 +22,57 @@
 
       <%= form_for(@user) do |f| %>
 
-
-      <table>
-
-        <tr>
-          <td>
-            <%= f.label t(:Sign_up_Label_Name) %>
-          </td>
-          <td>
-            <%= f.text_field :name %>
-          </td>
-        </tr>
-
-
-        <tr>
-          <td>
-            <%= f.label t(:Sign_up_Label_Email) %>
-          </td>
-          <td>
-            <%= f.text_field :email %>
-          </td>
-        </tr>
-        
-        <tr>
-          <td>
-            <%= f.label t(:Sign_up_Label_Password) %>
-          </td>
-          <td>
-            <%= f.password_field :password %>
-          </td>
-        </tr>
-
-
-        <tr>
-          <td>
-            <%= f.label t(:Sign_up_Label_Confirmation) %>
-          </td>
-          <td>
-            <%= f.password_field :password_confirmation %>
-          </td>
-        </tr>
+        <%= content_tag :table do %>
   
-        <tr>
-          <td>
-            <%= f.button t(:Sign_up_Button_Create_my_account), type: "button", id: "new_user", onclick: "javascript:evaluate_fields();", class: "custom_button" %>
-          </td>
-        </tr>
-      </table>
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
+              <%= f.label t(:Sign_up_Label_Name) %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= f.text_field :name %>
+            <% end %>
+          <% end %>
+  
+  
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
+              <%= f.label t(:Sign_up_Label_Email) %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= f.text_field :email %>
+            <% end %>
+          <% end %>
+          
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
+              <%= f.label t(:Sign_up_Label_Password) %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= f.password_field :password %>
+            <% end %>
+          <% end %>
+  
+  
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
+              <%= f.label t(:Sign_up_Label_Confirmation) %>
+           <% end %>
+            <%= content_tag :td do %>
+              <%= f.password_field :password_confirmation %>
+            <% end %>
+          <% end %>
+    
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
+              <%= f.button t(:Sign_up_Button_Create_my_account), type: "button", id: "new_user", onclick: "javascript:evaluate_fields();", class: "custom_button" %>
+            <% end %>
+          <% end %>
+        <% end %>
   
       <% end %>
-    </div>
-  </div>
-</div>
+    <% end %>
+  <% end %>
+<% end %>
 
 <script type="text/javascript">
 

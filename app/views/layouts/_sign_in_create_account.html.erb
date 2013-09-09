@@ -1,4 +1,7 @@
-  <div id="textbox">
-      <p class="alignright"><%= link_to t(:Account_Link_Sign_in), new_session_path, :class => 'account' %> <%= link_to t(:Account_Link_Create_Account), signup_path, :class => 'account' %></p>
-  </div>
+<%= content_tag :div, :id => "textbox" do %>
+  <%= content_tag :p, :class => "alignright" do %>
+    <%= link_to t(:Account_Link_Sign_in), new_session_path, :class => 'account' %>
+    <%= link_to t(:Account_Link_Create_Account), signup_path, :class => 'account' %>
+  <% end %>
+<% end %>
 

@@ -1,46 +1,49 @@
 <%= stylesheet_link_tag "shared" %>
 
-<div class="container">
-  <div class="row">
-    <div class="span6 offset3">
+<%= content_tag :div, :class => "container" do %>
+  <%= content_tag :div, :class => "row" do %>
+    <%= content_tag :div, :class => "span offset3" do %>
       <%= form_for(:session, url: sessions_path) do |f| %>
       
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
   
-        <table>
-          
-          <tr>
-            <td>
+        <%= content_tag :table do %>
+        
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
               <%= f.label t(:Sign_in_Label_Email) %>
-            </td>
-            <td>
+            <% end %>
+            <%= content_tag :td do %>
               <%= f.text_field :email %>
-            </td>
-          </tr>
+            <% end %>
+          <% end %>
   
-          <tr>
-            <td>
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
               <%= f.label t(:Sign_in_Label_Password) %>
-            </td>
-            <td>
+            <% end %>
+            <%= content_tag :td do %>
               <%= f.password_field :password %>
-            </td>
-          </tr>
+            <% end %>
+          <% end %>
   
-          <tr>
-            <td>
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
               <%= f.submit t(:Sign_in_Button_Sign_in), class: "btn btn-large btn-primary" %>
-            </td>
-          </tr>
-  
-        </table>
+            <% end %>
+          <% end %>
+    
+        <% end %>
       <% end %>
   
-      <p><%= t(:Sign_in_Text_New_user) %> <%= link_to t(:Sign_in_Link_Sign_up_now), signup_path, :class => 'account' %></p>
-    </div>
-  </div>
-</div>
+      <%= content_tag :p do %>
+        <%= t(:Sign_in_Text_New_user) %>
+        <%= link_to t(:Sign_in_Link_Sign_up_now), signup_path, :class => 'account' %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

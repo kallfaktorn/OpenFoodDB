@@ -1,21 +1,21 @@
 <%= stylesheet_link_tag "shared" %>
 
-<div class="container">
+<%= content_tag :div, :class => "container" do %>
   
   <br />
   <br />
   <br />
   <br />
   
-  <table class="profile" summary="Profile information">
-    <tr>
-      <td class="main">
-        <h1>
+  <%= content_tag :table, :class => "profile", :summary => "Profile information" do %>
+    <%= content_tag :tr do %>
+      <%= content_tag :td, :class => "main" do %>
+        <%= content_tag :h1 do %>
           <%= @user.name %>
-        </h1>
-      </td>
-    </tr>
-  </table>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
   
   <%= image_tag('thumb_up_green.jpg', :border => 0) %>
   <%= earned_thumbs_up %>
@@ -37,13 +37,19 @@
   <br />
   <br />
 
-  <p><%= label_tag t(:User_Show_Label_FoodStuffs_added_by) %><strong><%= @user.name %></strong></p>
+  <%= content_tag :p do %>
+    <%= label_tag t(:User_Show_Label_FoodStuffs_added_by) %>
+    <%= content_tag :strong do %>
+      <%= @user.name %>
+    <% end %>
+  <% end %>
   
     
   
   <% @food_stuffs.each do |f| %>
     <% if f != nil %>
-      <%= link_to f.name, f, :class => 'account' %> <%= link_to t(:Button_Edit), edit_food_stuff_path(f), :class => 'account' %>
+      <%= link_to f.name, f, :class => 'account' %> 
+      <%= link_to t(:Button_Edit), edit_food_stuff_path(f), :class => 'account' %>
     <% end %>
     <br />
   <% end %>
@@ -54,4 +60,4 @@
   <br />
   <%= link_to t(:Button_Home), home_index_path, :class => 'account' %>
 
-</div>
+<% end %>

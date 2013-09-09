@@ -1,9 +1,9 @@
-<div class="comment-body">
+<%= content_tag :div, :class => "comment-body" do %>
   <%= label_tag "", comment.name, :class => "comment-name" %> 
   <%= label_tag "", comment.created_at, :class => "comment-date" %>
   
-  <div class="comment-message">
+  <%= content_tag :div, :class => "comment-message" do %>
     <%= comment.body %>
-  </div>
-</div>
+  <% end %>
+<% end %>
 <br/>

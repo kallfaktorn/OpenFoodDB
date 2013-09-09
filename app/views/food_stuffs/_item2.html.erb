@@ -1,5 +1,13 @@
-<tr>
-	<td align="left" class="left"><%= f.label label %></td>
-  <td align="middle" class="middle"><%= f.number_field number, :class => "field_width", :step => "0.000001" %></td>
-  <td align="right" class="right" width="1px"><label><%= unit %></label></td>
-</tr>
+<%= content_tag :tr do %>
+	<%= content_tag :td, :align => "left", :class => "left" do %>
+	  <%= f.label label %>
+	<% end %>
+	<%= content_tag :td, :align => "middle", :class => "middle" do %>
+	  <%= f.number_field number, :class => "field_width", :step => "0.000001" %>
+	<% end %>
+	<%= content_tag :td, :align => "right", :class => "right", :width => "1px" do %>
+    <%= content_tag :label do %>
+      <%= unit %>
+    <% end %>
+  <% end %>
+<% end %>

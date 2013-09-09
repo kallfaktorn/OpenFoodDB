@@ -1,61 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>openfoodDB</title>
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-
-
-  <div class="header">
-
-  <% if signed_in? %>
-    <% if request.path_parameters == {:action=>"show", :controller=>"users", :id => "#{current_user.id}"} %>
-    <% elsif request.path_parameters == {:controller=>"sessions", :action=>"show"} %>
-    <% else %>
-      <%= render 'layouts/greet_user' %>
+<%= content_tag :html do %>
+  <%= content_tag :head do %>
+    
+    <%= content_tag :title do %>
+      openfoodDB
     <% end %>
-  <% else %>
-    <% if request.path_parameters == {:controller=>"sessions", :action=>"new"} %>
-    <% elsif request.path_parameters == {:controller=>"users", :action=>"new"} %>
-    <% else %>
-      <%= render 'layouts/sign_in_create_account' %>
+    
+    <%= content_tag :link, :rel => "shortcut icon", :href => "/favicon.ico"  do %><% end %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  
+  
+    <%= content_tag :div, :class => "header" do %>
+  
+      <% if signed_in? %>
+        <% if request.path_parameters == {:action=>"show", :controller=>"users", :id => "#{current_user.id}"} %>
+        <% elsif request.path_parameters == {:controller=>"sessions", :action=>"show"} %>
+        <% else %>
+          <%= render 'layouts/greet_user' %>
+        <% end %>
+      <% else %>
+        <% if request.path_parameters == {:controller=>"sessions", :action=>"new"} %>
+        <% elsif request.path_parameters == {:controller=>"users", :action=>"new"} %>
+        <% else %>
+          <%= render 'layouts/sign_in_create_account' %>
+        <% end %>
+      <% end %>
+  
+      <%= content_tag :div, :class => "alignleft" do %>
+        <%= content_tag :table do %>
+          <%= content_tag :tr do %>
+            <%= content_tag :td do %>
+              <%= link_to image_tag("home_small.png"), home_index_path %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= link_to image_tag("back_small.png"), :back %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= image_tag("line.png") %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= link_to image_tag("english_flag.gif"), switch_locale('en') %>
+            <% end %>
+            <%= content_tag :td do %>
+              <%= link_to image_tag("swedish_flag.gif"), switch_locale('se') %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
+  
+    <%= stylesheet_link_tag 'jquery.treeview.css' %> 
+   
   <% end %>
 
-
-  <div class="alignleft">
-    <table>
-      <tr>
-        <td>
-          <%= link_to image_tag("home_small.png"), home_index_path %>
-        </td>
-        <td>
-          <%= link_to image_tag("back_small.png"), :back %>
-        </td>
-        <td>
-          <%= image_tag("line.png") %>
-        </td>
-        <td>
-          <%= link_to image_tag("english_flag.gif"), switch_locale('en') %>
-        </td>
-        <td>
-          <%= link_to image_tag("swedish_flag.gif"), switch_locale('se') %>
-        </td>
-      </tr>
-    </table>
-  </div>
-  </div>
-
-  <%= stylesheet_link_tag 'jquery.treeview.css' %>
-
- 
-</head>
-<body>
-
-<%= yield %>
-
-</body>
-</html>
+  <%= content_tag :body do %>
+  
+    <%= yield %>
+  
+  <% end %>
+<% end %>
 

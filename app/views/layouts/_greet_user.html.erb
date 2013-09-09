@@ -1,6 +1,4 @@
-
-
-<div class="alignright">
+<%= content_tag :div, :class => "alignright" do %>
   <%= label_tag t(:Greet_user_Label_Greetings) %>
   <%= link_to current_user.name, current_user, :class => 'account' %>
-</div>
+<% end %>

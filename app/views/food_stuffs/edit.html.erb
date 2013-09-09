@@ -6,7 +6,7 @@
 
 </br>
 
-<div class="container">
+<%= content_tag :div, :class => "container" do %>
   <%= link_to t(:Button_Show), @food_stuff %>
   <%= link_to t(:Button_Back), :back %>
-</div>
+<% end %>
