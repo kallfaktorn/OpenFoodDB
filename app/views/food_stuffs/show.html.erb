@@ -462,6 +462,57 @@
       });
   });
   
+  function split_ingredients(ingredient_list, ingredients)
+  {
+    while(ingredients !== "")
+    {
+      ingredients = split_ingredient(ingredient_list, ingredients)
+    }
+  }
+  
+  function split_ingredient(ingredient_list, ingredients)
+  {
+    var indexer = 0;
+    var length = ingredients.length;
+    var ingredient = "";
+    
+    var look_for = ","
+    
+    while(indexer < length)
+    {
+      if(ingredients[indexer] === look_for)
+      {
+        if(look_for === ",")
+        {
+          ingredient = ingredients.substring(0, indexer);
+          ingredients = ingredients.substring(indexer + 1)
+          
+          ingredient = ingredient.trim();
+          ingredient_list.push(ingredient);
+          
+          return ingredients;
+        }
+        else if(look_for === ")")
+        {
+          look_for = ",";
+        }
+      }
+      else if(ingredients[indexer] === "(")
+      {
+        look_for = ")";
+      }
+      
+      
+      indexer++;
+    }
+    
+    ingredient = ingredients.trim();
+    ingredients = "";
+    ingredient_list.push(ingredient);
+    
+    return ingredients;
+  }
+  
   function multilanguage_translate(multilanguage_support_ingredients)
   {
     var url = window.location.href;
@@ -476,14 +527,26 @@
       {
         multilanguage_translate_ingredients_field_se_to_en(multilanguage_support_ingredients);
       }
+      else if(locale === "se")
+      {
+        var ingredients_field = $('#ingredients_field_id');
+          
+        var ingredient_names = ingredients_field[0].innerHTML;
+        ingredient_names = ingredient_names[0].toUpperCase() + ingredient_names.substring(1);
+          
+        ingredients_field[0].innerHTML = ingredient_names;
+      }
     }
   }
   
   function multilanguage_translate_ingredients_field_se_to_en(multilanguage_support_ingredients)
   {
     var ingredients_field = $('#ingredients_field_id');
+    
     var ingredient_names = ingredients_field[0].innerHTML;
-    var ingredient_names_array = ingredient_names.split(',');
+    var ingredient_names_array = [];
+    
+    ingredients = split_ingredients(ingredient_names_array, ingredient_names);
     
     for(var i = 0; i < ingredient_names_array.length; i++)
     {
@@ -492,6 +555,10 @@
 
     var translated_ingredients_array = multilanguage_translate_ingredients_se_to_en(ingredient_names_array, multilanguage_support_ingredients);
     var translated_ingredients = translated_ingredients_array.join(', ');
+    
+    translated_ingredients = translated_ingredients.replace(/\b[a-z]/, function(letter) {
+      return letter.toUpperCase();
+    });
     
     ingredients_field[0].innerHTML = translated_ingredients;
   }

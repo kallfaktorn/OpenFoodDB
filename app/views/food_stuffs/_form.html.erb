@@ -541,8 +541,9 @@
     fill_form_with_storage();
     
     fill_form_with_categories();
-    fill_form_with_categories_field();
     
+    ingredients_each_lower_case_first_letter();
+    fill_form_with_categories_field();
   });
 
   $('#food_stuff_logo').change(function() {
@@ -879,6 +880,37 @@
     }
 
     $('#food_stuff_retailers_field').attr('value', retailers_field);
+  }
+  
+  function ingredients_each_lower_case_first_letter()
+  {
+    var ingredients = $('.ingredients');
+    
+    for(var i = 0; i < ingredients.length; i++)
+    {
+      var ingredient = ingredients[i].value;
+      
+      ingredient = ingredient.replace(/\b[A-Z]/, function(letter) {
+        return letter.toLowerCase();
+      });
+      
+      if(ingredient[0] === 'Å')
+      {
+        ingredient[0] = 'å';
+      }
+      else if(ingredient[0] === 'Ä')
+      {
+        ingredient[0] = 'ä';
+      }
+
+      else if(ingredient[0] === 'Å')
+      {
+        ingredient[0] = 'å';
+      }
+
+      
+      ingredients[i].value = ingredient;
+    }
   }
   
   function fill_form_with_ingredients_field() {
