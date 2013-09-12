@@ -35,6 +35,8 @@ class FoodStuffsController < ApplicationController
       @categories << category.name
     end
     
+    @multilanguage_support_ingredients = MultilanguageSupportIngredients.all
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @food_stuff }

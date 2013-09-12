@@ -1,0 +1,100 @@
+/* line 1, ../../app/assets/stylesheets/shared.css.scss */
+.account {
+  text-decoration: underline;
+  color: #555;
+}
+
+/* line 6, ../../app/assets/stylesheets/shared.css.scss */
+.account:link {
+  text-decoration: underline;
+}
+
+/* line 7, ../../app/assets/stylesheets/shared.css.scss */
+.account:visited {
+  text-decoration: underline;
+  color: #777;
+}
+
+/* line 8, ../../app/assets/stylesheets/shared.css.scss */
+.account:active {
+  text-decoration: underline;
+}
+
+/* line 9, ../../app/assets/stylesheets/shared.css.scss */
+.account:hover {
+  text-decoration: underline;
+  color: #777;
+}
+
+/* line 11, ../../app/assets/stylesheets/shared.css.scss */
+.foodstuff_link {
+  color: #555;
+}
+/* line 13, ../../app/assets/stylesheets/shared.css.scss */
+.foodstuff_link:visited {
+  color: #777;
+}
+
+/* line 19, ../../app/assets/stylesheets/shared.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 24, ../../app/assets/stylesheets/shared.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 34, ../../app/assets/stylesheets/shared.css.scss */
+.container {
+  width: 43em;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* line 42, ../../app/assets/stylesheets/shared.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 48, ../../app/assets/stylesheets/shared.css.scss */
+.header {
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+  z-index: 9999;
+  background-repeat: repeat-x;
+  background-color: #ececec;
+  background-image: linear-gradient(bottom, #c2bec2 0%, #f2f2f2 100%);
+  background-image: -o-linear-gradient(bottom, #c2bec2 0%, #f2f2f2 100%);
+  background-image: -moz-linear-gradient(bottom, #c2bec2 0%, #f2f2f2 100%);
+  background-image: -webkit-linear-gradient(bottom, #c2bec2 0%, #f2f2f2 100%);
+  background-image: -ms-linear-gradient(bottom, #c2bec2 0%, #f2f2f2 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #c2bec2), color-stop(1, #f2f2f2));
+}
+
+/* line 73, ../../app/assets/stylesheets/shared.css.scss */
+.alignleft {
+  float: left;
+  position: absolute;
+  top: 12%;
+}
+
+/* line 79, ../../app/assets/stylesheets/shared.css.scss */
+.alignright {
+  float: right;
+  position: relative;
+  top: 25%;
+  margin-right: 3px;
+}

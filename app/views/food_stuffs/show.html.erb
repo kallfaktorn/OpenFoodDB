@@ -320,6 +320,10 @@
   <%= raw @audit_thumbs_up.to_json %>
 </script>
 
+<script id="multilanguage_support_ingredients_json" type="text/json">
+  <%= raw @multilanguage_support_ingredients.to_json %>
+</script>
+
 
 <script type="text/javascript">
 
@@ -328,6 +332,9 @@
 
   var auditsJSON = $("#audits_json").html();
   var audits     = $.parseJSON(auditsJSON);
+  
+  var multiLanguageSupportIngredientsJSON = $("#multilanguage_support_ingredients_json").html();
+  var multiLanguageSupportIngredients = $.parseJSON(multiLanguageSupportIngredientsJSON);
   
   var history_hidden = true;
 
@@ -422,6 +429,8 @@
 
       history_click(audits[audit_id].id);
     }
+    
+    multilanguage_translate(multiLanguageSupportIngredients);
   });
   
   $('#slideout_image_more').click(function() {
@@ -452,6 +461,77 @@
         $('#slideout_image_less').hide();
       });
   });
+  
+  function multilanguage_translate(multilanguage_support_ingredients)
+  {
+    var url = window.location.href;
+    var locale_str = "locale=";
+    var locale_of_url = url.indexOf(locale_str);
+      
+    if(locale_of_url !== -1)
+    {
+      var locale = url.substring(locale_of_url + locale_str.length);
+      
+      if(locale === "en")
+      {
+        multilanguage_translate_ingredients_field_se_to_en(multilanguage_support_ingredients);
+      }
+    }
+  }
+  
+  function multilanguage_translate_ingredients_field_se_to_en(multilanguage_support_ingredients)
+  {
+    var ingredients_field = $('#ingredients_field_id');
+    var ingredient_names = ingredients_field[0].innerHTML;
+    var ingredient_names_array = ingredient_names.split(',');
+    
+    for(var i = 0; i < ingredient_names_array.length; i++)
+    {
+      ingredient_names_array[i] = ingredient_names_array[i].trim();
+    }
+
+    var translated_ingredients_array = multilanguage_translate_ingredients_se_to_en(ingredient_names_array, multilanguage_support_ingredients);
+    var translated_ingredients = translated_ingredients_array.join(', ');
+    
+    ingredients_field[0].innerHTML = translated_ingredients;
+  }
+  
+  function multilanguage_translate_ingredients_se_to_en(ingredient_names, multilanguage_support_ingredients)
+  {
+    var translated_ingredients = [];
+    var translated_ingredient = null;
+    
+    for(var i = 0; i < ingredient_names.length; i++)
+    {
+      translated_ingredient = multilanguage_translate_ingredient_se_to_en(ingredient_names[i], multilanguage_support_ingredients);
+      
+      if(translated_ingredient !== null)
+      {
+        translated_ingredients.push(translated_ingredient);
+      }
+      else
+      {
+        translated_ingredients.push(ingredient_names[i]);
+      }
+    }
+    
+    return translated_ingredients;
+  }
+  
+  function multilanguage_translate_ingredient_se_to_en(ingredient_name, multilanguage_support_ingredients)
+  {
+    var ingredient_names = multilanguage_support_ingredients;
+    
+    for(var i = 0; i < ingredient_names.length; i++)
+    {
+      if(ingredient_name === ingredient_names[i].se)
+      {
+        return ingredient_names[i].en;
+      }
+    }
+    
+    return null;
+  }
   
   function details()
   {
